@@ -1,7 +1,7 @@
 <template>
   <Loading :active="isLoading"></Loading>
   <div class="d-flex flex-nowrap my-3">
-    <div class="me-auto">共有 {{ products.length }} 個產品</div>
+    <div class="me-auto">共有 {{ filterProducts.length }} 個產品</div>
     <div class="mx-2">
       <i
         class="icon-editor p-2 bi bi-list-ul"
@@ -21,7 +21,7 @@
     <ul class="list-unstyled">
       <li
         class="d-flex flex-column mb-3 product-effect"
-        v-for="product in products"
+        v-for="product in filterProducts"
         :key="product?.id"
       >
         <router-link class="d-flex" :to="`/product/${product?.id}`">
@@ -62,7 +62,7 @@
   </template>
   <template v-if="state === 'grid'">
     <div class="row row-cols-md-3 gy-3">
-      <div class="col" v-for="product in products" :key="product.id">
+      <div class="col" v-for="product in filterProducts" :key="product.id">
         <router-link :to="`/product/${product.id}`">
           <div class="card border-0 h-100 product-effect">
             <img :src="product.imageUrl" class="card-img-top card-img" />
@@ -114,11 +114,17 @@ export default {
       isLoadingItem: "",
       isLoading: false,
       state: "list",
-      // gategory: this.$route.query,
+      gategory: this.$route.query,
     };
   },
 
   methods: {
+    getProducts() {
+      axios.get(`${url}/api/${path}/products/all`).then((res) => {
+        this.products = res.data.products;
+        this.isLoading = false;
+      });
+    },
     openProductModal(id) {
       this.productId = id;
       this.productModal.show();
@@ -138,22 +144,30 @@ export default {
       this.productModal.hide();
     },
   },
-  mounted() {
+
+  async mounted() {
     this.isLoading = true;
-    axios.get(`${url}/api/${path}/products/all`).then((res) => {
-      this.products = res.data.products;
-      this.isLoading = false;
-    });
+    await this.getProducts();
     this.productModal = new modal(document.getElementById("productModal"), {
       keyboard: false,
     });
+    this.gategory = this?.$route?.qeury?.gategory;
   },
+
   watch: {
-    "$route.query.gategory": {
-      hanlder() {
-        console.log(this.$route.query.gategory);
-      },
-      deep: true,
+    $route(to) {
+      console.log(to.query.gategory);
+      this.gategory = to.query.gategory;
+    },
+  },
+
+  computed: {
+    filterProducts() {
+      const vm = this;
+      let filter = this.products.filter(function (item) {
+        return item.category === vm.gategory;
+      });
+      return filter;
     },
   },
 };
