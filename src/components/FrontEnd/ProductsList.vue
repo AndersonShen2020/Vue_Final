@@ -114,6 +114,7 @@ export default {
       isLoadingItem: "",
       isLoading: false,
       state: "list",
+      // gategory: this.$route.query,
     };
   },
 
@@ -146,6 +147,14 @@ export default {
     this.productModal = new modal(document.getElementById("productModal"), {
       keyboard: false,
     });
+  },
+  watch: {
+    "$route.query.gategory": {
+      hanlder() {
+        console.log(this.$route.query.gategory);
+      },
+      deep: true,
+    },
   },
 };
 </script>
