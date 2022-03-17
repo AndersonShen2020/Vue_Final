@@ -2,58 +2,62 @@
   <div class="container">
     <div class="row mt-3">
       <div class="col-3">
-        <h2>產品分類列表</h2>
-        <div class="filter-all">
-          <router-link :to="{ path: '/products', query: { category: '全部' } }"> 全部 </router-link>
-        </div>
+        <div class="sticky-top pt-3">
+          <h2>產品分類</h2>
+          <div class="filter-all">
+            <router-link :to="{ path: '/products', query: { category: '全部' } }">
+              全站商品
+            </router-link>
+          </div>
 
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingOne">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#flush-collapseOne"
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseOne"
+                >
+                  咖啡豆
+                </button>
+              </h2>
+              <div
+                id="flush-collapseOne"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingOne"
               >
-                咖啡豆
-              </button>
-            </h2>
-            <div
-              id="flush-collapseOne"
-              class="accordion-collapse collapse"
-              aria-labelledby="flush-headingOne"
-            >
-              <div class="accordion-body ms-2">
-                <div v-for="item in categorys[1]" :key="item" class="d-flex">
-                  <router-link :to="{ path: '/products', query: { category: item } }">
-                    {{ item }}
-                  </router-link>
+                <div class="accordion-body ms-2">
+                  <div v-for="item in categorys[1]" :key="item" class="d-flex">
+                    <router-link :to="{ path: '/products', query: { category: item } }">
+                      {{ item }}
+                    </router-link>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingTwo">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#flush-collapseTwo"
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingTwo">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseTwo"
+                >
+                  周邊器材
+                </button>
+              </h2>
+              <div
+                id="flush-collapseTwo"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingTwo"
               >
-                周邊器材
-              </button>
-            </h2>
-            <div
-              id="flush-collapseTwo"
-              class="accordion-collapse collapse"
-              aria-labelledby="flush-headingTwo"
-            >
-              <div class="accordion-body ms-2">
-                <div v-for="item in categorys[2]" :key="item" class="d-flex">
-                  <router-link :to="{ path: '/products', query: { category: item } }">
-                    {{ item }}
-                  </router-link>
+                <div class="accordion-body ms-2">
+                  <div v-for="item in categorys[2]" :key="item" class="d-flex">
+                    <router-link :to="{ path: '/products', query: { category: item } }">
+                      {{ item }}
+                    </router-link>
+                  </div>
                 </div>
               </div>
             </div>
