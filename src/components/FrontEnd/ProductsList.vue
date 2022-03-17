@@ -114,7 +114,7 @@ export default {
       isLoadingItem: "",
       isLoading: false,
       state: "list",
-      gategory: this.$route.query,
+      category: this.$route.query,
     };
   },
 
@@ -151,23 +151,26 @@ export default {
     this.productModal = new modal(document.getElementById("productModal"), {
       keyboard: false,
     });
-    this.gategory = this?.$route?.qeury?.gategory;
+    this.category = this?.$route?.qeury?.category;
   },
 
   watch: {
     $route(to) {
-      console.log(to.query.gategory);
-      this.gategory = to.query.gategory;
+      this.category = to.query.category;
     },
   },
 
   computed: {
     filterProducts() {
       const vm = this;
-      let filter = this.products.filter(function (item) {
-        return item.category === vm.gategory;
-      });
-      return filter;
+      if (this.category === "全部" || this.category === undefined) {
+        return this.products;
+      } else {
+        let filter = this.products.filter(function (item) {
+          return item.category === vm.category;
+        });
+        return filter;
+      }
     },
   },
 };
