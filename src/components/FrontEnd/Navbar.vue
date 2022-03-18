@@ -5,10 +5,10 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <router-link class="nav-link" to="/about"> 簡介 </router-link>
+            <router-link class="nav-link" to="/about"> 關於本店 </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/products"> 產品 </router-link>
+            <router-link class="nav-link" to="/products"> 產品列表 </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/Cart">

@@ -1,6 +1,20 @@
 <template>
   <div class="container">
-    <div class="row align-items-center mt-3">
+    <nav class="py-2 border-bottom">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item">
+          <router-link to="/"> 首頁 </router-link>
+        </li>
+        <li class="breadcrumb-item">
+          <router-link to="/products"> 產品列表 </router-link>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          {{ product.title }}
+        </li>
+      </ol>
+    </nav>
+
+    <div class="row align-items-center">
       <div class="col-sm-6">
         <div class="mb-2">
           <img class="img-fluid" :src="product.imageUrl" alt="" />
