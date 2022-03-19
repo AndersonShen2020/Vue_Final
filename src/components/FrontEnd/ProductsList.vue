@@ -177,10 +177,6 @@ export default {
 </script>
 
 <style scoped>
-a {
-  text-decoration: none;
-}
-
 li {
   border-top: 1px solid #dbdbdb;
   padding-top: 5px;

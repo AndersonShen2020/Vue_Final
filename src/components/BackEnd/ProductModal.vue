@@ -104,13 +104,23 @@
               </div>
 
               <div class="row">
-                <div class="mb-3 col-md-6">
-                  <label for="category" class="form-label">分類</label>
+                <div class="mb-3 col-md-3">
+                  <label for="category" class="form-label">主分類</label>
                   <input
                     id="category"
                     type="text"
                     class="form-control"
-                    placeholder="請輸入分類"
+                    placeholder="請輸入主分類"
+                    v-model="tempProduct.classification"
+                  />
+                </div>
+                <div class="mb-3 col-md-3">
+                  <label for="category" class="form-label">次分類</label>
+                  <input
+                    id="category"
+                    type="text"
+                    class="form-control"
+                    placeholder="請輸入次分類"
                     v-model="tempProduct.category"
                   />
                 </div>

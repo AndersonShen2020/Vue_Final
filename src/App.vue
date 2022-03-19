@@ -7,6 +7,9 @@
 <style lang="scss">
 @import "@/assets/all.scss";
 
+a {
+  text-decoration: none;
+}
 // 切版格線,切版完後要刪除
 // * {
 //   outline: 1px solid #000;
