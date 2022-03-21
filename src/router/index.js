@@ -1,18 +1,19 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
 // 前台
-import HomeView from "../views/FrontEnd/HomeView.vue";
+import HomeView from "@/views/FrontEnd/HomeView.vue";
 import about from "@/views/FrontEnd/AboutView.vue";
-import ProductsList from "../views/FrontEnd/ProductsView.vue";
-import Cart from "../views/FrontEnd/CartView.vue";
+import ProductsList from "@/views/FrontEnd/ProductsView.vue";
+import Cart from "@/views/FrontEnd/CartView.vue";
+import KnowledgeView from "@/views/FrontEnd/KnowledgeView.vue";
 
 // 後台
-import Login from "../views/BackEnd/LoginView.vue";
-import BackEndHomeView from "../views/BackEnd/BackEndHomeView.vue";
-import Dashboard from "../views/BackEnd/DashboardView.vue";
-import Products from "../views/BackEnd/ProductsView.vue";
-import Coupons from "../views/BackEnd/CouponsView.vue";
-import Orders from "../views/BackEnd/OrdersView.vue";
+import Login from "@/views/BackEnd/LoginView.vue";
+import BackEndHomeView from "@/views/BackEnd/BackEndHomeView.vue";
+import Dashboard from "@/views/BackEnd/DashboardView.vue";
+import Products from "@/views/BackEnd/ProductsView.vue";
+import Coupons from "@/views/BackEnd/CouponsView.vue";
+import Orders from "@/views/BackEnd/OrdersView.vue";
 
 const routes = [
   // 前端
@@ -45,6 +46,11 @@ const routes = [
         path: "/Cart",
         name: "Cart",
         component: Cart,
+      },
+      {
+        path: "/KnowledgeView",
+        name: "KnowledgeView",
+        component: KnowledgeView,
       },
     ],
   },
