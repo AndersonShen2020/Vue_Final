@@ -1,11 +1,26 @@
 <template>
   <router-view />
+  <FooterBar></FooterBar>
 </template>
 
-<script></script>
+<script>
+import FooterBar from "@/components/common/FooterBar.vue";
+
+export default {
+  name: "Home",
+  components: {
+    FooterBar,
+  },
+};
+</script>
 
 <style lang="scss">
 @import "@/assets/all.scss";
+
+html {
+  min-height: 100%;
+  position: relative;
+}
 
 a {
   text-decoration: none;

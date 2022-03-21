@@ -51,15 +51,17 @@
       <div class="col-md-12">
         <h4 class="text-center py-3 fw-bold">你可能也會喜歡</h4>
         <swiper
-          :slides-per-view="3"
-          :space-between="50"
+          :modules="modules"
+          :loop="swiperOptions.loop"
+          :breakpoints="swiperOptions.breakpoints"
+          :autoplay="swiperOptions.autoplay"
           @swiper="onSwiper"
-          @slideChange="onSlideChange"
         >
           <swiper-slide v-for="item in products" :key="item.id">
             <router-link :to="`/product/${item.id}`">
               <div class="card">
-                <img :src="item.imageUrl" class="card-img-top card-img" />
+                <div class="card-img" :style="{ backgroundImage: `url(${item.imageUrl})` }"></div>
+                <!-- <img :src="item.imageUrl" class="card-img-top card-img" /> -->
                 <div class="card-body">
                   <h5 class="card-title fw-bold">{{ item.title }}</h5>
                 </div>
@@ -88,6 +90,7 @@ const url = process.env.VUE_APP_API; // 請加入站點
 const path = process.env.VUE_APP_PATH; // 請加入個人 API path
 
 // Import Swiper Vue.js components
+import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue/swiper-vue";
 
 // Import Swiper styles
@@ -101,6 +104,35 @@ export default {
       product: {},
       qty: 1,
       products: [],
+      modules: [Autoplay],
+      swiperOptions: {
+        // Default parameters
+        slidesPerView: 1,
+        spaceBetween: 10,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        loop: true,
+        // Responsive breakpoints
+        breakpoints: {
+          // when window width is >= 320px
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          // when window width is >= 480px
+          480: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          // when window width is >= 640px
+          640: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+        },
+      },
     };
   },
   methods: {
@@ -129,13 +161,16 @@ export default {
     onSwiper(swiper) {
       console.log("onSwiper", swiper);
     },
-    onSlideChange() {
-      console.log("slide change");
-    },
   },
   async mounted() {
     await this.getProduct();
     await this.getProductsWithCategory();
+  },
+  watch: {
+    $route(to) {
+      this.id = to.params.id;
+      this.getProduct();
+    },
   },
 };
 </script>
@@ -144,11 +179,26 @@ export default {
   white-space: pre-wrap;
 }
 
-.card {
-  height: 360px;
+@media screen and (min-width: 320px) {
+  .card {
+    height: 410px;
+  }
+}
+@media screen and (min-width: 480px) {
+  .card {
+    height: 410px;
+  }
+}
+@media screen and (min-width: 640px) {
+  .card {
+    height: 410px;
+  }
 }
 
-.card-img {
-  height: 200px;
+.card > .card-img {
+  min-height: 250px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 </style>
