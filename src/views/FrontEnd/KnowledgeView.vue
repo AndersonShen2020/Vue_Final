@@ -12,13 +12,28 @@
     <div class="row mt-3">
       <div class="col-md-3">
         <div class="d-flex flex-md-column">
-          <button class="btn btn-primary" type="button" @click="state = 'coffeeKind'">
+          <button
+            class="btn"
+            :class="{ 'btn-primary': state === 'coffeeKind' }"
+            type="button"
+            @click="state = 'coffeeKind'"
+          >
             咖啡品種
           </button>
-          <button class="btn btn-primary" type="button" @click="state = 'coffeeRoast'">
+          <button
+            class="btn"
+            :class="{ 'btn-primary': state === 'coffeeRoast' }"
+            type="button"
+            @click="state = 'coffeeRoast'"
+          >
             咖啡豆烘焙
           </button>
-          <button class="btn btn-primary" type="button" @click="state = 'coffeeBrew'">
+          <button
+            class="btn"
+            :class="{ 'btn-primary': state === 'coffeeBrew' }"
+            type="button"
+            @click="state = 'coffeeBrew'"
+          >
             手沖咖啡技巧
           </button>
         </div>
