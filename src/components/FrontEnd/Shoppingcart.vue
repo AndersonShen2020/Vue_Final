@@ -105,6 +105,7 @@ export default {
         console.log(res);
         this.getCart();
         this.isLoadingItem = "";
+        emitter.emit("getCartNum");
       });
     },
     getCart() {
@@ -127,6 +128,7 @@ export default {
     clearAllCarts() {
       axios.delete(`${url}/api/${path}/carts`).then((res) => {
         console.log(res);
+        emitter.emit("getCartNum");
         this.getCart();
       });
     },

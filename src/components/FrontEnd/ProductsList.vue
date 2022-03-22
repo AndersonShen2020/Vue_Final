@@ -92,6 +92,7 @@
 </template>
 
 <script>
+import emitter from "@/api/mitt.js";
 import axios from "axios";
 const url = process.env.VUE_APP_API; // 請加入站點
 const path = process.env.VUE_APP_PATH; // 請加入個人 API path
@@ -138,6 +139,7 @@ export default {
       axios.post(`${url}/api/${path}/cart`, { data }).then((res) => {
         console.log(res);
         this.isLoadingItem = "";
+        emitter.emit("getCartNum");
       });
     },
     hideModal() {
