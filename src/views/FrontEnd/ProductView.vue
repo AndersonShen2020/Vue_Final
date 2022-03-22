@@ -61,7 +61,6 @@
             <router-link :to="`/product/${item.id}`">
               <div class="card">
                 <div class="card-img" :style="{ backgroundImage: `url(${item.imageUrl})` }"></div>
-                <!-- <img :src="item.imageUrl" class="card-img-top card-img" /> -->
                 <div class="card-body">
                   <h5 class="card-title fw-bold">{{ item.title }}</h5>
                 </div>
