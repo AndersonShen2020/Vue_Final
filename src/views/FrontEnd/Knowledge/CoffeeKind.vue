@@ -16,7 +16,7 @@
       >兩種：
     </p>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered border-secondary">
       <tbody>
         <tr>
           <td width="20%">咖啡品種</td>
