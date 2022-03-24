@@ -16,7 +16,7 @@
             class="btn"
             :class="{ 'btn-primary': state === 'coffeeKind' }"
             type="button"
-            @click="state = 'coffeeKind'"
+            @click="(state = 'coffeeKind'), ($route.params.state = 'coffeeKind')"
           >
             咖啡品種
           </button>
@@ -24,7 +24,7 @@
             class="btn"
             :class="{ 'btn-primary': state === 'coffeeRoast' }"
             type="button"
-            @click="state = 'coffeeRoast'"
+            @click="(state = 'coffeeRoast'), ($route.params.state = 'coffeeRoast')"
           >
             咖啡豆烘焙
           </button>
@@ -32,16 +32,16 @@
             class="btn"
             :class="{ 'btn-primary': state === 'coffeeBrew' }"
             type="button"
-            @click="state = 'coffeeBrew'"
+            @click="(state = 'coffeeBrew'), ($route.params.state = 'coffeeBrew')"
           >
             手沖咖啡技巧
           </button>
         </div>
       </div>
       <div class="col-md-9">
-        <CoffeeKind v-if="state === 'coffeeKind'"></CoffeeKind>
-        <CoffeeRoast v-if="state === 'coffeeRoast'"></CoffeeRoast>
-        <CoffeeBrew v-if="state === 'coffeeBrew'"></CoffeeBrew>
+        <CoffeeKind v-if="$route.params.state === 'coffeeKind'"></CoffeeKind>
+        <CoffeeRoast v-if="$route.params.state === 'coffeeRoast'"></CoffeeRoast>
+        <CoffeeBrew v-if="$route.params.state === 'coffeeBrew'"></CoffeeBrew>
       </div>
     </div>
   </div>
@@ -57,6 +57,9 @@ export default {
     return {
       state: "coffeeKind",
     };
+  },
+  created() {
+    this.$route.params.state = "coffeeKind";
   },
 };
 </script>
