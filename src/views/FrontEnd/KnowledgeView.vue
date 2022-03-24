@@ -16,7 +16,7 @@
             class="btn"
             :class="{ 'btn-primary': state === 'coffeeKind' }"
             type="button"
-            @click="(state = 'coffeeKind'), ($route.params.state = 'coffeeKind')"
+            @click="(state = 'coffeeKind'), ($route.query.state = 'coffeeKind')"
           >
             咖啡品種
           </button>
@@ -24,7 +24,7 @@
             class="btn"
             :class="{ 'btn-primary': state === 'coffeeRoast' }"
             type="button"
-            @click="(state = 'coffeeRoast'), ($route.params.state = 'coffeeRoast')"
+            @click="(state = 'coffeeRoast'), ($route.query.state = 'coffeeRoast')"
           >
             咖啡豆烘焙
           </button>
@@ -32,16 +32,22 @@
             class="btn"
             :class="{ 'btn-primary': state === 'coffeeBrew' }"
             type="button"
-            @click="(state = 'coffeeBrew'), ($route.params.state = 'coffeeBrew')"
+            @click="(state = 'coffeeBrew'), ($route.query.state = 'coffeeBrew')"
           >
             手沖咖啡技巧
           </button>
         </div>
       </div>
       <div class="col-md-9">
-        <CoffeeKind v-if="$route.params.state === 'coffeeKind'"></CoffeeKind>
-        <CoffeeRoast v-if="$route.params.state === 'coffeeRoast'"></CoffeeRoast>
-        <CoffeeBrew v-if="$route.params.state === 'coffeeBrew'"></CoffeeBrew>
+        <CoffeeKind
+          v-if="($route.query.state === 'coffeeKind') | (state === 'coffeeKind')"
+        ></CoffeeKind>
+        <CoffeeRoast
+          v-if="($route.query.state === 'coffeeRoast') | (state === 'coffeeRoast')"
+        ></CoffeeRoast>
+        <CoffeeBrew
+          v-if="($route.query.state === 'coffeeBrew') | (state === 'coffeeBrew')"
+        ></CoffeeBrew>
       </div>
     </div>
   </div>
@@ -58,8 +64,13 @@ export default {
       state: "coffeeKind",
     };
   },
-  created() {
-    this.$route.params.state = "coffeeKind";
+  methods: {
+    goTop() {
+      document.documentElement.scrollTop = 0;
+    },
+  },
+  mounted() {
+    this.goTop();
   },
 };
 </script>
