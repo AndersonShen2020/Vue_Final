@@ -17,6 +17,14 @@ export default {
 <style lang="scss">
 @import "@/assets/all.scss";
 
+.text-coffee {
+  padding: 10px 20px;
+  line-height: 1.8;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
 html {
   min-height: 100%;
   position: relative;
@@ -26,7 +34,34 @@ a {
   text-decoration: none;
 }
 
+.coffee-header {
+  margin-top: 0.25rem !important;
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+  padding-left: 0.5rem !important;
+  --bs-text-opacity: 1;
+  --bs-bg-opacity: 1;
+  color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !important;
+  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
+  font-weight: 700 !important;
+}
+
+.coffee-btn {
+  --bs-text-opacity: 1;
+  --bs-bg-opacity: 1;
+  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
+  background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.coffee-btn:hover {
+  --bs-text-opacity: 1;
+  --bs-bg-opacity: 1;
+  color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !important;
+  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
+}
+
 #app {
+  background-attachment: fixed;
   background-size: 100% 100%;
   background: linear-gradient(
       90deg,

@@ -1,30 +1,10 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+  <nav class="navbar navbar-expand-lg navbar-light bg-secondary bg-opacity-50">
     <div class="container">
-      <a class="navbar-brand" href="#">Coffee 專賣店</a>
+      <a class="navbar-brand text-primary" href="#">Coffee 專賣店</a>
 
-      <!-- 摺疊 -->
-      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <router-link class="nav-link" to="/about"> 關於本店 </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/KnowledgeView"> 咖啡知識 </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/products"> 產品列表 </router-link>
-          </li>
-          <li class="nav-item"></li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/Login">
-              <i class="bi bi-person-circle"></i>
-            </router-link>
-          </li>
-        </ul>
-      </div>
       <!-- cart -->
-      <router-link class="nav-link ms-auto" to="/Cart">
+      <router-link class="nav-link ms-auto text-primary order-lg-3" to="/Cart">
         <div class="position-relative">
           <span
             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
@@ -45,6 +25,25 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+      <!-- 摺疊 -->
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <router-link class="nav-link text-primary" to="/about"> 關於本店 </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link text-primary" to="/KnowledgeView"> 咖啡知識 </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link text-primary" to="/products"> 產品列表 </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link text-primary" to="/Login">
+              <i class="bi bi-person-circle"></i>
+            </router-link>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 </template>

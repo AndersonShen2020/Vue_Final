@@ -51,7 +51,7 @@
                     class="spinner-grow spinner-grow-sm"
                     v-show="isLoadingItem === product.id"
                   ></span>
-                  加到購物車
+                  <i class="bi bi-cart"></i>
                 </button>
               </div>
             </div>
@@ -80,7 +80,7 @@
                   class="spinner-grow spinner-grow-sm"
                   v-show="isLoadingItem === product.id"
                 ></span>
-                加到購物車
+                <i class="bi bi-cart"></i>
               </button>
             </div>
           </div>
@@ -153,7 +153,7 @@ export default {
     this.productModal = new modal(document.getElementById("productModal"), {
       keyboard: false,
     });
-    this.category = this?.$route?.qeury?.category;
+    this.category = this?.$route?.query?.category;
   },
 
   watch: {

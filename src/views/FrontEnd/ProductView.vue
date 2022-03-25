@@ -71,7 +71,7 @@
                     class="btn btn-danger align-self-center"
                     @click.prevent="addToCart(item.id)"
                   >
-                    加到購物車
+                    <i class="bi bi-cart"></i>
                   </button>
                 </div>
               </div>
