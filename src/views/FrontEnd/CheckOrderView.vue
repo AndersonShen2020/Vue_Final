@@ -12,12 +12,13 @@
       </div>
     </div>
 
-    <div class="row py-3">
-      <div class="col-md-8">
+    <div class="row py-3 justify-content-between gx-0">
+      <div class="col-md-6">
         <ShoppingCart></ShoppingCart>
       </div>
-      <div class="col-md-4 bg-light bg-opacity-50">
-        <ValidateForm class="my-3"></ValidateForm>
+      <div class="col-md-5 bg-light bg-opacity-50">
+        <p class="d-flex fs-3 fw-bold m-3">填寫訂購資訊</p>
+        <ValidateForm class="p-3"></ValidateForm>
       </div>
     </div>
   </div>

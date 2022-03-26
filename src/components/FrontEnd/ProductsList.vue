@@ -20,7 +20,7 @@
   <template class="table align-middle" v-if="state === 'list'">
     <ul class="list-unstyled">
       <li
-        class="d-flex flex-column mb-3 product-effect"
+        class="d-flex flex-column mb-3 product-effect p-2"
         v-for="product in filterProducts"
         :key="product?.id"
       >
@@ -64,7 +64,7 @@
     <div class="row row-cols-md-3 gy-3">
       <div class="col" v-for="product in filterProducts" :key="product.id">
         <router-link :to="`/product/${product.id}`">
-          <div class="card border-0 h-100 product-effect">
+          <div class="card border-0 h-100 product-effect p-1">
             <img :src="product.imageUrl" class="card-img-top card-img" />
             <div class="card-body">
               <h5 class="card-title fw-bold">{{ product.title }}</h5>
