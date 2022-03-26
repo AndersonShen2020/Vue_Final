@@ -43,8 +43,8 @@ const routes = [
         component: () => import("@/views/FrontEnd/ProductView.vue"),
       },
       {
-        path: "/CheckOrderView",
-        name: "CheckOrderView",
+        path: "/CheckOrder",
+        name: "CheckOrder",
         component: CheckOrderView,
       },
       {

@@ -4,7 +4,7 @@
       <a class="navbar-brand text-primary" href="#">Coffee 專賣店</a>
 
       <!-- cart -->
-      <router-link class="nav-link ms-auto text-primary order-lg-3" to="/CheckOrderView">
+      <router-link class="nav-link ms-auto text-primary order-lg-3" to="/CheckOrder">
         <div class="position-relative">
           <span
             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
