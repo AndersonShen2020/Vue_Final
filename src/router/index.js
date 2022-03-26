@@ -5,6 +5,7 @@ import HomeView from "@/views/FrontEnd/HomeView.vue";
 import about from "@/views/FrontEnd/AboutView.vue";
 import ProductsList from "@/views/FrontEnd/ProductsView.vue";
 import CheckOrderView from "@/views/FrontEnd/CheckOrderView.vue";
+import CheckOutView from "@/views/FrontEnd/CheckOutView.vue";
 import KnowledgeView from "@/views/FrontEnd/KnowledgeView.vue";
 
 // 後台
@@ -46,6 +47,11 @@ const routes = [
         path: "/CheckOrder",
         name: "CheckOrder",
         component: CheckOrderView,
+      },
+      {
+        path: "/CheckOut/:id",
+        name: "CheckOut",
+        component: CheckOutView,
       },
       {
         path: "/KnowledgeView",

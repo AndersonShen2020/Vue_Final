@@ -128,9 +128,11 @@ export default {
       await axios
         .post(`${url}/api/${path}/order`, { data: this.clientFrom })
         .then((res) => {
-          console.log(res);
-          alert(res.data.message);
+          this.clientFrom.message = "";
           this.$refs.form.resetForm();
+          this.$router.push({
+            path: `/CheckOut/${res.data.orderId}`,
+          });
         })
         .catch((err) => console.dir(err));
       this.emit();
