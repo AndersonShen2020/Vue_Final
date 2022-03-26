@@ -17,6 +17,13 @@ export default {
 <style lang="scss">
 @import "@/assets/all.scss";
 
+#app {
+  font-family: "Noto Sans TC", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}
+
 .text-coffee {
   padding: 10px 20px;
   line-height: 1.8;
