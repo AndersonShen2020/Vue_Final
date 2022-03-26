@@ -1,5 +1,5 @@
 <template>
-  <div class="sticky-top pt-3">
+  <div class="sticky-lg-top pt-3" style="z-index: 1500">
     <h2>產品分類</h2>
     <div class="filter-all">
       <router-link :to="{ path: '/products', query: { category: '全部' } }"> 全站商品 </router-link>

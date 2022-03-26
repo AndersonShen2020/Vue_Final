@@ -4,7 +4,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import HomeView from "@/views/FrontEnd/HomeView.vue";
 import about from "@/views/FrontEnd/AboutView.vue";
 import ProductsList from "@/views/FrontEnd/ProductsView.vue";
-import Cart from "@/views/FrontEnd/CartView.vue";
+import CheckOrderView from "@/views/FrontEnd/CheckOrderView.vue";
 import KnowledgeView from "@/views/FrontEnd/KnowledgeView.vue";
 
 // 後台
@@ -43,9 +43,9 @@ const routes = [
         component: () => import("@/views/FrontEnd/ProductView.vue"),
       },
       {
-        path: "/Cart",
-        name: "Cart",
-        component: Cart,
+        path: "/CheckOrderView",
+        name: "CheckOrderView",
+        component: CheckOrderView,
       },
       {
         path: "/KnowledgeView",

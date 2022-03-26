@@ -5,15 +5,15 @@
         <li class="breadcrumb-item">
           <router-link to="/"> 首頁 </router-link>
         </li>
-        <li class="breadcrumb-item active">產品列表</li>
+        <li class="breadcrumb-item">產品列表</li>
       </ol>
     </nav>
 
     <div class="row mt-3">
-      <div class="col-3">
+      <div class="col-md-3">
         <ProductsSidebar></ProductsSidebar>
       </div>
-      <div class="col-9">
+      <div class="col-md-9">
         <ProductsList></ProductsList>
       </div>
     </div>
