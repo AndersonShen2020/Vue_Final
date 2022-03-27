@@ -14,8 +14,11 @@
 
     <div class="row py-3 justify-content-between gx-0">
       <div class="col-md-6">
-        <ul class="list-unstyled">
-          <p class="d-flex fs-3 fw-bold m-3">訂單內容(未付款)</p>
+        <ul class="list-unstyled p-3">
+          <p class="d-flex fs-3 fw-bold">
+            訂單內容
+            <span :class="{ 'text-danger': !is_paid, 'text-success': is_paid }">(未付款)</span>
+          </p>
           <li class="py-3 border-bottom" v-for="product in order.products" :key="product.id">
             <div class="d-flex justify-content-between">
               <div>{{ product.product.title }}</div>
@@ -24,16 +27,30 @@
             <div>數量：{{ product.product.num }}</div>
           </li>
           <li>
-            總計金額：$ <span class="fs-3 fw-bold">{{ order.total }}</span> NTD
+            總計金額：$
+            <span
+              class="fs-5 fw-bold"
+              :class="{ 'text-danger': !is_paid, 'text-success': is_paid }"
+              >{{ order.total }}</span
+            >
+            NTD
           </li>
         </ul>
       </div>
-      <div class="col-md-5 bg-light bg-opacity-50">
-        <p class="d-flex fs-3 fw-bold m-3">訂購資訊</p>
+      <div class="col-md-5 bg-light bg-opacity-50 p-3">
+        <p class="fs-3 fw-bold">訂購資訊</p>
         <ul class="list-unstyled">
           <li class="row">
             <p class="col-4">訂單金額：</p>
-            <p class="col">$ {{ order.total }} NTD</p>
+            <p class="col">
+              $
+              <span
+                class="fs-5 fw-bold"
+                :class="{ 'text-danger': !is_paid, 'text-success': is_paid }"
+                >{{ order.total }}</span
+              >
+              NTD
+            </p>
           </li>
           <li class="row">
             <p class="col-4">訂單編號：</p>
@@ -65,6 +82,9 @@
             <p class="col-4">備註：</p>
             <p class="col">{{ order.message }}</p>
           </li>
+          <li class="row mt-3 px-3">
+            <div class="btn coffee-btn p-4" style="letter-spacing: 2px">信用卡付款</div>
+          </li>
         </ul>
       </div>
     </div>
@@ -80,6 +100,7 @@ export default {
     return {
       id: this.$route.params.id,
       order: {},
+      is_paid: false,
     };
   },
   methods: {
