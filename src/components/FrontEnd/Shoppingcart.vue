@@ -1,6 +1,7 @@
 <template>
   <Loading :active="isLoading"></Loading>
-  <div class="text-end">
+  <div class="d-flex justify-content-around mb-3">
+    <span class="fs-3 fw-bold">確認訂單內容</span>
     <button
       @click="clearAllCarts"
       class="btn btn-outline-danger"
@@ -10,69 +11,53 @@
       清空購物車
     </button>
   </div>
-  <table class="table align-middle">
-    <thead>
-      <tr>
-        <th></th>
-        <th>品名</th>
-        <th style="width: 150px">數量/單位</th>
-        <th class="col-md-2">單價</th>
-      </tr>
-    </thead>
-    <tbody>
-      <template v-if="cartData.carts">
-        <tr v-for="item in cartData.carts" :key="item.id">
-          <td>
-            <button
-              @click="removeCartItem(item.id)"
-              type="button"
-              class="btn btn-outline-danger btn-sm"
-            >
-              x
-            </button>
-          </td>
-          <td>
-            {{ item.product.title }}
-            <div class="text-success">已套用優惠券</div>
-          </td>
-          <td>
-            <div class="input-group input-group-sm">
-              <div class="input-group mb-3">
-                <select
-                  id=""
-                  class="form-select"
-                  v-model="item.qty"
-                  @change="updateCartItem(item)"
-                  :disabled="isLoadingItem === item.id"
-                >
-                  <option :value="num" v-for="num in 20" :key="`${num}${item.id}`">
-                    {{ num }}
-                  </option>
-                </select>
-                <span class="input-group-text" id="basic-addon2">
-                  {{ item.product.unit }}
-                </span>
-              </div>
-            </div>
-          </td>
-          <td class="text-end">
-            <!-- <small class="text-success">折扣價：</small> -->
-            NT${{ item.total }}
-          </td>
-        </tr>
-      </template>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="3" class="text-end">總計</td>
-        <td class="text-end">{{ cartData.total }}</td>
-      </tr>
-      <tr>
-        <td colspan="3" class="text-end text-success">折扣價</td>
-        <td class="text-end text-success">{{ cartData.final_total }}</td>
-      </tr>
-    </tfoot>
-  </table>
+  <ul class="list-unstyled p-3">
+    <li
+      class="py-3 border-bottom d-flex align-items-center"
+      v-for="product in cartData.carts"
+      :key="product.id"
+    >
+      <div class="col-md-1">
+        <button
+          @click="removeCartItem(product.id)"
+          type="button"
+          class="btn btn-outline-danger btn-sm"
+        >
+          x
+        </button>
+      </div>
+      <div class="col me-auto px-3">{{ product.product.title }}</div>
+      <div class="col-md-4">
+        <div class="input-group input-group-sm">
+          <select
+            id=""
+            class="form-select"
+            v-model="product.qty"
+            @change="updateCartItem(product)"
+            :disabled="isLoadingItem === product.id"
+          >
+            <option :value="num" v-for="num in 20" :key="`${num}${product.id}`">
+              {{ num }}
+            </option>
+          </select>
+          <span class="input-group-text" id="basic-addon2">
+            {{ product.product.unit }}
+          </span>
+        </div>
+      </div>
+      <div class="col-md-2 text-end">$ {{ product.final_total }} NTD</div>
+    </li>
+    <li class="py-3">
+      <div class="input-group">
+        <input type="text" class="form-control" v-model="couponCode" />
+        <button type="button" class="btn coffee-btn" @click="useCoupon">套用優惠卷</button>
+      </div>
+    </li>
+    <li class="py-3 text-end">
+      <p>總計 NT$ {{ cartData.total }}</p>
+      <p class="text-success">折扣價 NT$ {{ cartData.final_total }}</p>
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -96,6 +81,7 @@ export default {
       isLoadingItem: "",
       isLoading: false,
       isEnableSend: false,
+      couponCode: "",
     };
   },
   methods: {
@@ -129,6 +115,14 @@ export default {
       axios.delete(`${url}/api/${path}/carts`).then((res) => {
         console.log(res);
         emitter.emit("getCartNum");
+        this.getCart();
+      });
+    },
+    useCoupon() {
+      const coupon = { code: this.couponCode };
+      axios.post(`${url}/api/${path}/coupon`, { data: coupon }).then((res) => {
+        console.log(res);
+        this.isLoading = true;
         this.getCart();
       });
     },
