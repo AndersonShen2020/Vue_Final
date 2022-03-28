@@ -5,10 +5,20 @@
         <div class="p-4 bg-secondary text-primary">STEP1 確認訂單</div>
       </div>
       <div class="col">
-        <div class="p-4 bg-primary text-secondary">STEP2 建立訂單</div>
+        <div
+          class="p-4"
+          :class="[!isPaid ? 'bg-primary text-secondary' : 'bg-secondary text-primary']"
+        >
+          STEP2 建立訂單
+        </div>
       </div>
       <div class="col">
-        <div class="p-4 bg-secondary text-primary">STEP3 完成訂單</div>
+        <div
+          class="p-4"
+          :class="[isPaid ? 'bg-primary text-secondary' : 'bg-secondary text-primary']"
+        >
+          STEP3 完成訂單
+        </div>
       </div>
     </div>
 
@@ -17,7 +27,7 @@
         <ul class="list-unstyled p-3">
           <p class="d-flex fs-3 fw-bold">
             訂單內容
-            <span :class="{ 'text-danger': !is_paid, 'text-success': is_paid }">(未付款)</span>
+            <span :class="{ 'text-danger': !isPaid, 'text-success': isPaid }">(未付款)</span>
           </p>
           <li class="py-3 border-bottom" v-for="product in order.products" :key="product.id">
             <div class="d-flex justify-content-between">
@@ -30,7 +40,7 @@
             總計金額：$
             <span
               class="fs-5 fw-bold"
-              :class="{ 'text-danger': !is_paid, 'text-success': is_paid }"
+              :class="{ 'text-danger': !isPaid, 'text-success': isPaid }"
               >{{ order.total }}</span
             >
             NTD
@@ -46,7 +56,7 @@
               $
               <span
                 class="fs-5 fw-bold"
-                :class="{ 'text-danger': !is_paid, 'text-success': is_paid }"
+                :class="{ 'text-danger': !isPaid, 'text-success': isPaid }"
                 >{{ order.total }}</span
               >
               NTD
@@ -83,7 +93,21 @@
             <p class="col">{{ order.message }}</p>
           </li>
           <li class="row mt-3 px-3">
-            <div class="btn coffee-btn p-4" style="letter-spacing: 2px">信用卡付款</div>
+            <div
+              class="btn coffee-btn p-4"
+              style="letter-spacing: 2px"
+              @click="payBill"
+              v-if="!isPaid"
+            >
+              信用卡付款
+            </div>
+            <router-link
+              class="btn coffee-btn p-4"
+              style="letter-spacing: 2px"
+              to="/Products"
+              v-else
+              >繼續購物 ！</router-link
+            >
           </li>
         </ul>
       </div>
@@ -100,7 +124,7 @@ export default {
     return {
       id: this.$route.params.id,
       order: {},
-      is_paid: false,
+      isPaid: false,
     };
   },
   methods: {
@@ -111,6 +135,15 @@ export default {
       } catch (err) {
         console.dir(err);
       }
+    },
+    async payBill() {
+      try {
+        const { data } = await axios.post(`${url}/api/${path}/pay/${this.id}`);
+        console.log(data);
+      } catch (err) {
+        console.dir(err);
+      }
+      this.isPaid = true;
     },
   },
   mounted() {
