@@ -9,7 +9,8 @@
     <table class="table mt-4">
       <thead>
         <tr>
-          <th>名稱</th>
+          <th>折扣名稱</th>
+          <th>折扣代碼</th>
           <th>折扣百分比</th>
           <th>到期日</th>
           <th>是否啟用</th>
@@ -19,6 +20,7 @@
       <tbody>
         <tr v-for="(item, key) in coupons" :key="key">
           <td>{{ item.title }}</td>
+          <td>{{ item.code }}</td>
           <td>{{ item.percent }}%</td>
           <td>{{ new Date(item.due_date * 1000).toLocaleDateString() }}</td>
           <td>
@@ -87,6 +89,7 @@ export default {
       await axios
         .get(urlPath)
         .then((res) => {
+          console.log(res);
           this.coupons = res.data.coupons;
           this.pagination = res.data.pagination;
         })
