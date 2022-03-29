@@ -43,6 +43,19 @@
   </div>
 </template>
 
+<script>
+import titleMixin from "@/mixins/titleMixin";
+
+export default {
+  mixins: [titleMixin],
+  data() {
+    return {
+      title: "關於本店",
+    };
+  },
+};
+</script>
+
 <style scoped lang="scss">
 .main {
   min-height: calc(100vh - (66px + 120px));

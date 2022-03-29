@@ -1,20 +1,24 @@
 <template>
-  <div class="container main py-3">
-    <div class="row row-cols-3 row-cols-md-3 gx-5 text-center p-3">
-      <div class="col">
-        <div class="p-4 bg-primary text-secondary">STEP1 確認訂單</div>
+  <Loading :active="isLoading"></Loading>
+  <div class="container main py-3" v-if="products.length > 0">
+    <div class="row text-center px-3">
+      <div class="col-4 d-flex flex-column bg-primary text-secondary p-3">
+        <span>STEP1</span>
+        <span>確認訂單</span>
       </div>
-      <div class="col">
-        <div class="p-4 bg-secondary text-primary">STEP2 建立訂單</div>
+      <div class="col-4 d-flex flex-column p-3 bg-secondary text-primary">
+        <span>STEP2</span>
+        <span>建立訂單</span>
       </div>
-      <div class="col">
-        <div class="p-4 bg-secondary text-primary">STEP3 完成訂單</div>
+      <div class="col-4 d-flex flex-column p-3 bg-secondary text-primary">
+        <span>STEP3</span>
+        <span>完成訂單</span>
       </div>
     </div>
 
     <div class="row py-3 justify-content-between gx-0">
       <div class="col-md-6">
-        <ShoppingCart></ShoppingCart>
+        <ShoppingCart @reset-page="getCart"></ShoppingCart>
       </div>
       <div class="col-md-5 bg-light bg-opacity-50">
         <p class="d-flex fs-3 fw-bold m-3">填寫訂購資訊</p>
@@ -22,15 +26,64 @@
       </div>
     </div>
   </div>
+  <div class="container main py-3" v-if="products.length === 0">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+      <i class="bi bi-cart-fill" style="font-size: 10rem"></i>
+      <p>您的購物車中沒有商品</p>
+      <router-link to="/products">
+        <button class="btn coffee-btn">去購物</button>
+      </router-link>
+    </div>
+  </div>
 </template>
 <script>
 import ValidateForm from "@/components/FrontEnd/ClientValidateForm.vue";
 import ShoppingCart from "@/components/FrontEnd/ShoppingCart.vue";
 
+import axios from "axios";
+const url = process.env.VUE_APP_API; // 請加入站點
+const path = process.env.VUE_APP_PATH; // 請加入個人 API path
+
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
+
+import titleMixin from "@/mixins/titleMixin";
+
 export default {
+  mixins: [titleMixin],
   components: {
     ShoppingCart,
     ValidateForm,
+    Loading,
+  },
+  data() {
+    return {
+      title: "確認訂單",
+      products: [],
+      isLoading: false,
+    };
+  },
+  methods: {
+    getCart(message) {
+      axios.get(`${url}/api/${path}/cart`).then((res) => {
+        console.log("getCart");
+        this.products = res.data.data.carts;
+
+        console.log(message);
+        if (message === "delete") {
+          this.products.pop();
+        }
+
+        this.isLoading = false;
+      });
+    },
+    resetCart() {
+      this.products = [];
+    },
+  },
+  mounted() {
+    this.isLoading = true;
+    this.getCart();
   },
 };
 </script>

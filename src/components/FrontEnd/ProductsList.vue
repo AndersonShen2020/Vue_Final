@@ -2,6 +2,7 @@
   <Loading :active="isLoading"></Loading>
   <div class="d-flex flex-nowrap my-3">
     <div class="me-auto">共有 {{ filterProducts.length }} 個產品</div>
+    <!-- 顯示分類 -->
     <div class="mx-2">
       <i
         class="icon-editor p-2 bi bi-list-ul"
@@ -17,18 +18,25 @@
       ></i>
     </div>
   </div>
+  <!-- list 樣式 -->
   <template class="table align-middle" v-if="state === 'list'">
     <ul class="list-unstyled">
       <li
         class="d-flex flex-column mb-3 product-effect p-2"
         v-for="product in filterProducts"
         :key="product?.id"
+        style="min-width: 130px"
       >
         <router-link class="d-flex" :to="`/product/${product?.id}`">
           <div
             class="me-3"
             :style="{ backgroundImage: `url(${product.imageUrl})` }"
-            style="width: 130px; height: 130px; background-size: cover; background-position: center"
+            style="
+              min-width: 130px;
+              min-height: 130px;
+              background-size: cover;
+              background-position: center;
+            "
           ></div>
           <div class="d-flex flex-column justify-content-between flex-fill">
             <div>{{ product.title }}</div>
@@ -43,7 +51,7 @@
               <div class="d-flex">
                 <button
                   type="button"
-                  class="btn btn-danger align-self-center"
+                  class="btn align-self-center btn-cart"
                   @click.prevent="addToCart(product.id)"
                   :disabled="isLoadingItem === product.id"
                 >
@@ -60,8 +68,9 @@
       </li>
     </ul>
   </template>
+  <!-- grid 樣式 -->
   <template v-if="state === 'grid'">
-    <div class="row row-cols-md-3 gy-3">
+    <div class="row row-cols-md-3 row-cols-1 gy-3">
       <div class="col" v-for="product in filterProducts" :key="product.id">
         <router-link :to="`/product/${product.id}`">
           <div class="card border-0 h-100 product-effect p-1">
@@ -69,10 +78,17 @@
             <div class="card-body">
               <h5 class="card-title fw-bold">{{ product.title }}</h5>
             </div>
-            <div class="modal-footer border-top-0">
+            <div class="modal-footer border-top-0 justify-content-between">
+              <div v-if="product.price === product.origin_price" class="h5">
+                NT$ {{ product.price }}
+              </div>
+              <div v-else>
+                <del class="h6 text-gray">NT$ {{ product.origin_price }}</del>
+                <div class="h5 text-danger">NT$ {{ product.price }}</div>
+              </div>
               <button
                 type="button"
-                class="btn btn-danger align-self-center"
+                class="btn btn-cart align-self-center"
                 @click.prevent="addToCart(product.id)"
                 :disabled="isLoadingItem === product.id"
               >
@@ -210,5 +226,10 @@ li:first-child {
 .card-img {
   height: 200px;
   padding: -0.25rem;
+}
+
+.btn-cart:hover {
+  background-color: red;
+  color: white;
 }
 </style>

@@ -1,4 +1,5 @@
 <template>
+  <Loading :active="isLoading"></Loading>
   <!-- 開頭 Swiper -->
   <div class="container py-5">
     <swiper
@@ -25,11 +26,15 @@
       </swiper-slide>
       <swiper-slide>
         <div
-          class="leading-img"
+          class="leading-img d-flex"
           :style="{
             backgroundImage: `url('https://images.unsplash.com/photo-1508984772106-f2a17812774c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')`,
           }"
-        ></div>
+        >
+          <p class="text-secondary text-center w-100 align-self-center leading-text">
+            工作與咖啡是最佳搭配
+          </p>
+        </div>
       </swiper-slide>
     </swiper>
   </div>
@@ -38,7 +43,6 @@
     <div class="container">
       <h2 class="text-center mb-5">我們的產品</h2>
       <swiper
-        class="px-lg-5"
         :loop="true"
         :autoplay="{
           delay: 3000,
@@ -151,11 +155,17 @@ import axios from "axios";
 const url = process.env.VUE_APP_API; // 請加入站點
 const path = process.env.VUE_APP_PATH; // 請加入個人 API path
 
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 import CardComponent from "@/components/common/CardComponent.vue";
+import titleMixin from "@/mixins/titleMixin";
 
 export default {
+  mixins: [titleMixin],
   data() {
     return {
+      isLoading: false,
+      title: "Coffee Roast",
       modules: [Autoplay],
       coffeeProducts: [],
       breakpoints: {
@@ -168,6 +178,10 @@ export default {
         480: {
           slidesPerView: 3,
           spaceBetween: 60,
+        }, // when window width is >= 640px
+        640: {
+          slidesPerView: 4,
+          spaceBetween: 40,
         },
       },
     };
@@ -176,6 +190,7 @@ export default {
     Swiper,
     SwiperSlide,
     CardComponent,
+    Loading,
   },
   methods: {
     async getCoffeeProducts() {
@@ -185,9 +200,11 @@ export default {
       } catch (error) {
         console.dir(error);
       }
+      this.isLoading = false;
     },
   },
   mounted() {
+    this.isLoading = true;
     this.getCoffeeProducts();
   },
 };

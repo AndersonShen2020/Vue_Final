@@ -10,7 +10,7 @@ import KnowledgeView from "@/views/FrontEnd/KnowledgeView.vue";
 
 // 後台
 import Login from "@/views/BackEnd/LoginView.vue";
-import BackEndHomeView from "@/views/BackEnd/BackEndHomeView.vue";
+// import BackEndHomeView from "@/views/BackEnd/BackEndHomeView.vue";
 import Dashboard from "@/views/BackEnd/DashboardView.vue";
 import Products from "@/views/BackEnd/ProductsView.vue";
 import Coupons from "@/views/BackEnd/CouponsView.vue";
@@ -58,6 +58,12 @@ const routes = [
         name: "KnowledgeView",
         component: KnowledgeView,
       },
+      {
+        // 輸入錯誤網址跳回到首頁
+        path: "/:pathMatch(.*)*",
+        name: "Error",
+        component: () => import("@/views/Error.vue"),
+      },
     ],
   },
   // 登入
@@ -72,13 +78,18 @@ const routes = [
     name: "Dashboard",
     component: Dashboard,
     children: [
+      // {
+      //   path: "",
+      //   name: "BackEndHome",
+      //   component: BackEndHomeView,
+      // },
+      // {
+      //   path: "products",
+      //   name: "products",
+      //   component: Products,
+      // },
       {
         path: "",
-        name: "BackEndHome",
-        component: BackEndHomeView,
-      },
-      {
-        path: "products",
         name: "products",
         component: Products,
       },

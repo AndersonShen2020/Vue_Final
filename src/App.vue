@@ -1,16 +1,10 @@
 <template>
   <router-view />
-  <FooterBar></FooterBar>
 </template>
 
 <script>
-import FooterBar from "@/components/common/FooterBar.vue";
-
 export default {
   name: "Home",
-  components: {
-    FooterBar,
-  },
 };
 </script>
 

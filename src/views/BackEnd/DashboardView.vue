@@ -20,6 +20,17 @@ export default {
   async created() {
     await checkAdmin();
   },
+  watch: {
+    $route(to) {
+      if (to.name === "products") {
+        document.title = "產品管理";
+      } else if (to.name === "Coupons") {
+        document.title = "優惠卷管理";
+      } else if (to.name === "Orders") {
+        document.title = "訂單管理";
+      }
+    },
+  },
 };
 </script>
 

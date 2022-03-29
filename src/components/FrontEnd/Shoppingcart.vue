@@ -3,7 +3,7 @@
   <div class="d-flex justify-content-around mb-3">
     <span class="fs-3 fw-bold">確認訂單內容</span>
     <button
-      @click="clearAllCarts"
+      @click="clearAllCarts(), $emit('reset-page')"
       class="btn btn-outline-danger"
       type="button"
       :disabled="cartData.carts?.length === 0"
@@ -19,7 +19,7 @@
     >
       <div class="col-md-1">
         <button
-          @click="removeCartItem(product.id)"
+          @click="removeCartItem(product.id), $emit('reset-page', 'delete')"
           type="button"
           class="btn btn-outline-danger btn-sm"
         >
@@ -49,13 +49,18 @@
     </li>
     <li class="py-3">
       <div class="input-group">
-        <input type="text" class="form-control" v-model="couponCode" />
+        <input
+          type="text"
+          class="form-control"
+          v-model="couponCode"
+          placeholder="輸入 pay88 將享有 8 折優惠"
+        />
         <button type="button" class="btn coffee-btn" @click="useCoupon">套用優惠卷</button>
       </div>
     </li>
     <li class="py-3 text-end">
       <p>總計 NT$ {{ cartData.total }}</p>
-      <p class="text-success">折扣價 NT$ {{ cartData.final_total }}</p>
+      <p class="text-success" v-if="isCoupon">折扣價 NT$ {{ cartData.final_total }}</p>
     </li>
   </ul>
 </template>
@@ -71,6 +76,7 @@ import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
 
 export default {
+  emits: ["reset-page"],
   components: {
     Loading,
   },
@@ -82,6 +88,7 @@ export default {
       isLoading: false,
       isEnableSend: false,
       couponCode: "",
+      isCoupon: false,
     };
   },
   methods: {
@@ -124,6 +131,7 @@ export default {
         console.log(res);
         this.isLoading = true;
         this.getCart();
+        this.isCoupon = true;
       });
     },
   },

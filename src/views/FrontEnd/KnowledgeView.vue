@@ -56,12 +56,15 @@
 import CoffeeKind from "@/views/FrontEnd/Knowledge/CoffeeKind.vue";
 import CoffeeRoast from "@/views/FrontEnd/Knowledge/CoffeeRoast.vue";
 import CoffeeBrew from "@/views/FrontEnd/Knowledge/CoffeeBrew.vue";
+import titleMixin from "@/mixins/titleMixin";
 
 export default {
   components: { CoffeeKind, CoffeeRoast, CoffeeBrew },
+  mixins: [titleMixin],
   data() {
     return {
       state: "coffeeKind",
+      title: "咖啡知識",
     };
   },
   methods: {

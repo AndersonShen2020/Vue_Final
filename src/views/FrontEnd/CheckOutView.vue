@@ -1,24 +1,24 @@
 <template>
+  <Loading :active="isLoading"></Loading>
   <div class="container main py-3">
-    <div class="row row-cols-3 row-cols-md-3 gx-5 text-center p-3">
-      <div class="col">
-        <div class="p-4 bg-secondary text-primary">STEP1 確認訂單</div>
+    <div class="row text-center px-3">
+      <div class="col-4 d-flex flex-column bg-secondary text-primary p-3">
+        <span>STEP1</span>
+        <span>確認訂單</span>
       </div>
-      <div class="col">
-        <div
-          class="p-4"
-          :class="[!isPaid ? 'bg-primary text-secondary' : 'bg-secondary text-primary']"
-        >
-          STEP2 建立訂單
-        </div>
+      <div
+        class="col-4 d-flex flex-column p-3"
+        :class="[!isPaid ? 'bg-primary text-secondary' : 'bg-secondary text-primary']"
+      >
+        <span>STEP2</span>
+        <span>建立訂單</span>
       </div>
-      <div class="col">
-        <div
-          class="p-4"
-          :class="[isPaid ? 'bg-primary text-secondary' : 'bg-secondary text-primary']"
-        >
-          STEP3 完成訂單
-        </div>
+      <div
+        class="col-4 d-flex flex-column p-3"
+        :class="[isPaid ? 'bg-primary text-secondary' : 'bg-secondary text-primary']"
+      >
+        <span>STEP3</span>
+        <span>完成訂單</span>
       </div>
     </div>
 
@@ -115,16 +115,29 @@
   </div>
 </template>
 <script>
+import emitter from "@/api/mitt.js";
+
 import axios from "axios";
 const url = process.env.VUE_APP_API; // 請加入站點
 const path = process.env.VUE_APP_PATH; // 請加入個人 API path
 
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
+
+import titleMixin from "@/mixins/titleMixin";
+
 export default {
+  mixins: [titleMixin],
+  components: {
+    Loading,
+  },
   data() {
     return {
+      title: "建立訂單",
       id: this.$route.params.id,
       order: {},
       isPaid: false,
+      isLoading: false,
     };
   },
   methods: {
@@ -135,18 +148,24 @@ export default {
       } catch (err) {
         console.dir(err);
       }
+      this.isLoading = false;
     },
     async payBill() {
+      this.isLoading = true;
       try {
         const { data } = await axios.post(`${url}/api/${path}/pay/${this.id}`);
         console.log(data);
       } catch (err) {
         console.dir(err);
       }
+      document.title = "完成訂單";
       this.isPaid = true;
+      this.isLoading = false;
+      emitter.emit("getCartNum");
     },
   },
   mounted() {
+    this.isLoading = true;
     this.getOrder();
   },
 };

@@ -1,4 +1,5 @@
 <template>
+  <Loading :active="isLoading"></Loading>
   <div class="container">
     <nav class="py-2 border-bottom">
       <ol class="breadcrumb mb-0">
@@ -57,25 +58,8 @@
           :autoplay="swiperOptions.autoplay"
           @swiper="onSwiper"
         >
-          <swiper-slide v-for="item in products" :key="item.id">
-            <router-link :to="`/product/${item.id}`">
-              <div class="card">
-                <div class="card-img" :style="{ backgroundImage: `url(${item.imageUrl})` }"></div>
-                <div class="card-body">
-                  <h5 class="card-title fw-bold">{{ item.title }}</h5>
-                </div>
-                <div class="modal-footer border-top-0 justify-content-between">
-                  <p>NT ${{ item.price }}</p>
-                  <button
-                    type="button"
-                    class="btn btn-danger align-self-center"
-                    @click.prevent="addToCart(item.id)"
-                  >
-                    <i class="bi bi-cart"></i>
-                  </button>
-                </div>
-              </div>
-            </router-link>
+          <swiper-slide v-for="product in products" :key="product.id">
+            <CardComponent :item="product"></CardComponent>
           </swiper-slide>
         </swiper>
       </div>
@@ -96,11 +80,17 @@ import { Swiper, SwiperSlide } from "swiper/vue/swiper-vue";
 // Import Swiper styles
 import "swiper/swiper.scss";
 
+import CardComponent from "@/components/common/CardComponent.vue";
+
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
+
 export default {
-  components: { Swiper, SwiperSlide },
+  components: { Swiper, SwiperSlide, CardComponent, Loading },
   data() {
     return {
       id: this.$route.params.id,
+      isLoading: false,
       product: {},
       qty: 1,
       products: [],
@@ -149,6 +139,7 @@ export default {
     async getProduct() {
       await axios.get(`${url}/api/${path}/product/${this.id}`).then((res) => {
         this.product = res.data.product;
+        document.title = res.data.product.title;
       });
     },
     async getProductsWithCategory() {
@@ -158,12 +149,14 @@ export default {
           return item.classification === vm.product.classification;
         });
       });
+      this.isLoading = false;
     },
     onSwiper(swiper) {
       console.log("onSwiper", swiper);
     },
   },
   async mounted() {
+    this.isLoading = true;
     await this.getProduct();
     await this.getProductsWithCategory();
   },
