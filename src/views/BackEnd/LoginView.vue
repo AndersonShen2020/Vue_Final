@@ -73,7 +73,7 @@ export default {
   justify-content: center;
   // align-items: center;
   // position: relative;
-  min-height: calc(100vh - (66px + 24px)); // 66 是header, 24 是預計 footer
+  min-height: 100vh; // 66 是header, 24 是預計 footer
   flex-direction: column;
 }
 </style>
