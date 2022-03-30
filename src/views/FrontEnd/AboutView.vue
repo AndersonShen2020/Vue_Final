@@ -75,14 +75,4 @@ p {
     width: 350px;
   }
 }
-@media screen and (max-width: 320px) {
-  iframe {
-    width: 250px;
-  }
-}
-@media screen and (max-width: 280px) {
-  iframe {
-    width: 200px;
-  }
-}
 </style>
