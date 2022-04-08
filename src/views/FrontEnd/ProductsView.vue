@@ -19,6 +19,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import ProductsList from "@/components/FrontEnd/ProductsList.vue";
 import ProductsSidebar from "@/components/FrontEnd/ProductsSidebar.vue";

@@ -15,8 +15,12 @@
         v-for="(page, idx) in pages.total_pages"
         :key="idx"
       >
-        <span class="page-link" v-if="page === pages.current_page"> {{ page }} </span>
-        <a class="page-link" v-else @click.prevent="emitpages(page)"> {{ page }} </a>
+        <span class="page-link" v-if="page === pages.current_page">
+          {{ page }}
+        </span>
+        <a class="page-link" v-else @click.prevent="emitpages(page)">
+          {{ page }}
+        </a>
       </li>
       <!-- 下一頁 -->
       <li class="page-item" :class="{ disabled: pages.current_page === pages.total_pages }">
@@ -28,6 +32,7 @@
     </ul>
   </nav>
 </template>
+
 <script>
 // :pages="{ 頁碼資訊 }" -> 把 res.data.pagination 整串丟進來
 // @emitPages="更新頁面事件" -> 外部取得資料的 API 的 function

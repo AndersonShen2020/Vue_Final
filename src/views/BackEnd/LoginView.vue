@@ -36,6 +36,7 @@
     </form>
   </div>
 </template>
+
 <script>
 import router from "@/router";
 import { login, checkAdmin } from "@/api/axios";
@@ -65,6 +66,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
 .formlogin {
   width: 300px;

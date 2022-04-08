@@ -211,6 +211,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import { addProduct, updateProduct } from "@/api/axios";
 import axios from "axios";

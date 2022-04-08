@@ -29,6 +29,7 @@
     </div>
   </router-link>
 </template>
+
 <script>
 export default {
   props: ["item"],
@@ -42,6 +43,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
 .card {
   height: 250px;

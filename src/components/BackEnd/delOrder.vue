@@ -22,7 +22,8 @@
         </div>
         <div class="modal-body">
           是否刪除
-          <strong class="text-danger">{{ tempOrder?.title }}</strong> (刪除後將無法恢復)。
+          <strong class="text-danger">{{ tempOrder?.title }}</strong>
+          (刪除後將無法恢復)。
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -34,6 +35,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import Modal from "bootstrap/js/dist/modal";
 // import axios from "axios";

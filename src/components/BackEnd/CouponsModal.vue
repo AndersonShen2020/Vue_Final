@@ -83,6 +83,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import modalControl from "@/api/modalControl";
 import axios from "axios";
@@ -152,4 +153,3 @@ export default {
   mixins: [modalControl],
 };
 </script>
-<style lang=""></style>

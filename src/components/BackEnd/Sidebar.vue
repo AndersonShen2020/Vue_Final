@@ -19,6 +19,7 @@
     </ul>
   </aside>
 </template>
+
 <style scoped>
 .nav-link:hover {
   background-color: burlywood;

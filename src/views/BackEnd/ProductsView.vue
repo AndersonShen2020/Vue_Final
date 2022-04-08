@@ -55,6 +55,7 @@
   <delProductModal :productinfo="tempProduct" @update="init"></delProductModal>
   <!-- Modal -->
 </template>
+
 <script>
 import { getProducts } from "@/api/axios";
 import modal from "bootstrap/js/dist/modal";
@@ -151,4 +152,3 @@ export default {
   },
 };
 </script>
-<style lang="scss"></style>

@@ -56,7 +56,9 @@
                   </tr>
                   <tr>
                     <th>下單時間</th>
-                    <td>{{ new Date(tempOrder.create_at * 1000).toLocaleDateString() }}</td>
+                    <td>
+                      {{ new Date(tempOrder.create_at * 1000).toLocaleDateString() }}
+                    </td>
                     <!-- <td>{{ $filters.date(tempOrder.create_at) }}</td> -->
                   </tr>
                   <tr>
@@ -131,6 +133,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import modalControl from "@/api/modalControl";
 

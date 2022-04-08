@@ -7,6 +7,7 @@
     </main>
   </div>
 </template>
+
 <script>
 import Navbar from "@/components/BackEnd/Navbar.vue";
 import Sidebar from "@/components/BackEnd/Sidebar.vue";

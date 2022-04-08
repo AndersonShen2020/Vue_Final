@@ -52,6 +52,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import CoffeeKind from "@/views/FrontEnd/Knowledge/CoffeeKind.vue";
 import CoffeeRoast from "@/views/FrontEnd/Knowledge/CoffeeRoast.vue";
@@ -77,4 +78,3 @@ export default {
   },
 };
 </script>
-<style></style>

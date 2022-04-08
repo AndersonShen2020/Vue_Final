@@ -59,6 +59,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import Collapse from "bootstrap/js/dist/collapse";
 
@@ -75,6 +76,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 a {
   text-decoration: none;

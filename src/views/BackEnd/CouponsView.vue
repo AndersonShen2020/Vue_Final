@@ -50,6 +50,7 @@
   ></couponsModal>
   <delCoupons ref="delCoupon" :coupon="tempCoupon" @reset-coupons="getCoupons"></delCoupons>
 </template>
+
 <script>
 import axios from "axios";
 
@@ -126,4 +127,3 @@ export default {
   },
 };
 </script>
-<style lang=""></style>
