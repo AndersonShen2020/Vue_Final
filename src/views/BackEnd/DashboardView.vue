@@ -3,7 +3,7 @@
   <div class="d-flex">
     <Sidebar></Sidebar>
     <main class="main w-100">
-      <router-view />
+      <RouterView />
     </main>
   </div>
 </template>
