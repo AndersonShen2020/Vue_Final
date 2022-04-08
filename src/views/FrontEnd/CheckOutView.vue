@@ -8,14 +8,14 @@
       </div>
       <div
         class="col-4 d-flex flex-column p-3"
-        :class="[!isPaid ? 'bg-primary text-secondary' : 'bg-secondary text-primary']"
+        :class="!isPaid ? 'bg-primary text-secondary' : 'bg-secondary text-primary'"
       >
         <span>STEP2</span>
         <span>建立訂單</span>
       </div>
       <div
         class="col-4 d-flex flex-column p-3"
-        :class="[isPaid ? 'bg-primary text-secondary' : 'bg-secondary text-primary']"
+        :class="isPaid ? 'bg-primary text-secondary' : 'bg-secondary text-primary'"
       >
         <span>STEP3</span>
         <span>完成訂單</span>
