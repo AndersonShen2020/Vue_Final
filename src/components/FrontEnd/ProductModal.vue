@@ -43,7 +43,7 @@
 
         <div class="modal-footer">
           <select id="" class="form-select w-auto" v-model="qty">
-            <option :value="num" v-for="num in 20" :key="`${num}`">
+            <option :value="num" v-for="num in 20" :key="num">
               {{ num }}
             </option>
           </select>
