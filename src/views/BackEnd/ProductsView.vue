@@ -2,7 +2,7 @@
   <Loading :active="isLoading"></Loading>
   <div class="container">
     <div class="text-end mt-4">
-      <button class="btn btn-primary" @click="showModal('new')">建立新的產品</button>
+      <button type="button" class="btn btn-primary" @click="showModal('new')">建立新的產品</button>
     </div>
     <table class="table mt-4">
       <thead>

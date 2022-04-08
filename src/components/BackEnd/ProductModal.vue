@@ -70,6 +70,7 @@
                   "
                 >
                   <button
+                    type="button"
                     class="btn btn-outline-primary btn-sm d-block w-100"
                     @click="tempProduct.imagesUrl.push('')"
                   >
@@ -78,6 +79,7 @@
                 </div>
                 <div v-else>
                   <button
+                    type="button"
                     class="btn btn-outline-danger btn-sm d-block w-100"
                     @click="tempProduct.imagesUrl.pop()"
                   >
@@ -86,7 +88,11 @@
                 </div>
               </div>
               <div v-else>
-                <button class="btn btn-outline-primary btn-sm d-block w-100" @click="createImages">
+                <button
+                  type="button"
+                  class="btn btn-outline-primary btn-sm d-block w-100"
+                  @click="createImages"
+                >
                   新增圖片
                 </button>
               </div>

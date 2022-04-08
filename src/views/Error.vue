@@ -5,7 +5,7 @@
       <h2>404 Not Found</h2>
       <p>不好意思，這頁面不存在</p>
       <router-link to="/">
-        <button class="btn coffee-btn">回首頁</button>
+        <button type="button" class="btn coffee-btn">回首頁</button>
       </router-link>
     </div>
   </div>

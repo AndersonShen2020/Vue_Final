@@ -31,7 +31,7 @@
       <i class="bi bi-cart-fill" style="font-size: 10rem"></i>
       <p>您的購物車中沒有商品</p>
       <router-link to="/products">
-        <button class="btn coffee-btn">去購物</button>
+        <button type="button" class="btn coffee-btn">去購物</button>
       </router-link>
     </div>
   </div>
