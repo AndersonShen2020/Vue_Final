@@ -36,7 +36,12 @@
                     v-model="tempProduct.imageUrl"
                   />
                 </div>
-                <img class="img-fluid" :src="tempProduct.imageUrl" alt="主要圖片連結" />
+                <img
+                  class="img-fluid"
+                  :src="tempProduct.imageUrl"
+                  alt="主要圖片連結"
+                  v-if="tempProduct.imageUrl"
+                />
               </div>
               <div class="mb-2">
                 <div class="mb-3">
@@ -49,7 +54,12 @@
                     @change="customImageFile"
                   />
                 </div>
-                <img class="img-fluid" :src="tempProduct.fileImage" alt="從本地端上傳圖片" />
+                <img
+                  class="img-fluid"
+                  :src="tempProduct.fileImage"
+                  alt="從本地端上傳圖片"
+                  v-if="tempProduct.fileImage"
+                />
               </div>
               <h3>多圖新增</h3>
               <div v-if="Array.isArray(tempProduct.imagesUrl)">
