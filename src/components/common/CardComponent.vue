@@ -18,11 +18,7 @@
           <del class="h6 text-gray">NT$ {{ product.origin_price }}</del>
           <div class="h5 text-danger">NT$ {{ product.price }}</div>
         </div>
-        <button
-          type="button"
-          class="btn btn-cart align-self-end"
-          @click.prevent="addToCart(product.id)"
-        >
+        <button type="button" class="btn btn-cart align-self-end" @click="addToCart(product.id)">
           <i class="bi bi-cart"></i>
         </button>
       </div>

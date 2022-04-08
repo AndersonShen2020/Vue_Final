@@ -28,9 +28,7 @@
         <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
         <label class="form-check-label" for="flexCheckChecked"> 記住我 </label>
       </div>
-      <button type="submit" class="btn btn-lg btn-primary w-100 mt-3" @click.prevent="signIn">
-        登入
-      </button>
+      <button type="submit" class="btn btn-lg btn-primary w-100 mt-3" @click="signIn">登入</button>
 
       <p class="mt-5 mb-3 text-muted">&copy; 2021~∞ - 六角學院</p>
     </form>
