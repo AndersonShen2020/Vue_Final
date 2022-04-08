@@ -23,7 +23,7 @@
           aria-labelledby="flush-headingOne"
         >
           <div class="accordion-body ms-2">
-            <div v-for="item in categorys[1]" :key="item" class="d-flex">
+            <div v-for="item in categories[1]" :key="item" class="d-flex">
               <router-link :to="{ path: '/products', query: { category: item } }">
                 {{ item }}
               </router-link>
@@ -48,7 +48,7 @@
           aria-labelledby="flush-headingTwo"
         >
           <div class="accordion-body ms-2">
-            <div v-for="item in categorys[2]" :key="item" class="d-flex">
+            <div v-for="item in categories[2]" :key="item" class="d-flex">
               <router-link :to="{ path: '/products', query: { category: item } }">
                 {{ item }}
               </router-link>
@@ -65,7 +65,7 @@ import Collapse from "bootstrap/js/dist/collapse";
 export default {
   data() {
     return {
-      categorys: ["全部", ["淺焙", "中焙", "深焙"], ["馬克杯", "磨豆機", "咖啡機"]],
+      categories: ["全部", ["淺焙", "中焙", "深焙"], ["馬克杯", "磨豆機", "咖啡機"]],
     };
   },
   mounted() {

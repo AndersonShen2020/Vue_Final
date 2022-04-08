@@ -36,7 +36,7 @@
           </div>
           <div class="d-flex">
             <select id="" class="form-select w-auto my-3 ms-auto" v-model="qty">
-              <option :value="num" v-for="num in 20" :key="`${num}`">
+              <option :value="num" v-for="num in 20" :key="num">
                 {{ num }} {{ product.unit }}
               </option>
             </select>
