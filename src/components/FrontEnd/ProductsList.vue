@@ -74,7 +74,7 @@
       <div class="col" v-for="product in filterProducts" :key="product.id">
         <router-link :to="`/product/${product.id}`">
           <div class="card border-0 h-100 product-effect p-1">
-            <img :src="product.imageUrl" class="card-img-top card-img" />
+            <img :src="product.imageUrl" class="card-img-top card-img" :alt="product.title" />
             <div class="card-body">
               <h5 class="card-title fw-bold">{{ product.title }}</h5>
             </div>

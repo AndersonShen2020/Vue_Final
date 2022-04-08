@@ -19,7 +19,7 @@
           <div class="row">
             <div class="col-sm-4">
               <div class="mb-2">
-                <img class="img-fluid" :src="product.imageUrl" alt="" />
+                <img class="img-fluid" :src="product.imageUrl" :alt="product.title" />
               </div>
             </div>
             <div class="col-sm-8">

@@ -36,7 +36,7 @@
                     v-model="tempProduct.imageUrl"
                   />
                 </div>
-                <img class="img-fluid" :src="tempProduct.imageUrl" alt="" />
+                <img class="img-fluid" :src="tempProduct.imageUrl" alt="主要圖片連結" />
               </div>
               <div class="mb-2">
                 <div class="mb-3">
@@ -49,7 +49,7 @@
                     @change="customImageFile"
                   />
                 </div>
-                <img class="img-fluid" :src="tempProduct.fileImage" alt="" />
+                <img class="img-fluid" :src="tempProduct.fileImage" alt="從本地端上傳圖片" />
               </div>
               <h3>多圖新增</h3>
               <div v-if="Array.isArray(tempProduct.imagesUrl)">
@@ -61,7 +61,7 @@
                     placeholder="請輸入次要圖片連結"
                     v-model="tempProduct.imagesUrl[idx]"
                   />
-                  <img class="img-fluid" :src="pic" alt="" />
+                  <img class="img-fluid" :src="pic" alt="次要圖片連結" />
                 </div>
                 <div
                   v-if="
