@@ -63,7 +63,7 @@
 import axios from "axios";
 
 // component
-import Pagination from "@/components/common/Pagination.vue";
+import Pagination from "@/components/common/Pagination";
 import CouponsModal from "@/components/BackEnd/CouponsModal.vue";
 import DelCoupons from "@/components/BackEnd/DelCoupon";
 
