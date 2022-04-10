@@ -67,9 +67,9 @@
 import axios from "axios";
 
 // component
-import Pagination from "@/components/common/pagination.vue";
+import Pagination from "@/components/common/Pagination.vue";
 import OrderModal from "@/components/BackEnd/OrderModal.vue";
-import DelOrderModal from "@/components/BackEnd/delOrder.vue";
+import DelOrderModal from "@/components/BackEnd/DelOrder";
 
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";

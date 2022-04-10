@@ -61,9 +61,9 @@ import { getProducts } from "@/api/axios";
 import modal from "bootstrap/js/dist/modal";
 
 // component
-import Pagination from "@/components/common/pagination.vue";
+import Pagination from "@/components/common/Pagination";
 import ProductModal from "@/components/BackEnd/ProductModal.vue";
-import DelProductModal from "@/components/BackEnd/delProduct.vue";
+import DelProductModal from "@/components/BackEnd/DelProduct";
 
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";

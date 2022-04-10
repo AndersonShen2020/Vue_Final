@@ -63,9 +63,9 @@
 import axios from "axios";
 
 // component
-import Pagination from "@/components/common/pagination.vue";
+import Pagination from "@/components/common/Pagination.vue";
 import CouponsModal from "@/components/BackEnd/CouponsModal.vue";
-import DelCoupons from "@/components/BackEnd/delCoupon.vue";
+import DelCoupons from "@/components/BackEnd/DelCoupon";
 
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
