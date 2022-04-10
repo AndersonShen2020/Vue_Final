@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <form class="formlogin" @submit.prevent="signIn">
-      <h2 class="text-center mb-3">訂單後台管理中心</h2>
+      <h2 class="text-center mb-5">訂單後台管理中心</h2>
       <div class="form-floating mb-3">
         <input
           type="email"
@@ -28,7 +28,8 @@
         <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
         <label class="form-check-label" for="flexCheckChecked"> 記住我 </label>
       </div>
-      <button type="submit" class="btn btn-lg btn-primary w-100 mt-3" @click="signIn">登入</button>
+      <button type="submit" class="btn btn-lg btn-primary w-100 mt-3">登入</button>
+      <p class="text-danger" v-if="!state">帳號或密碼有誤，請重新輸入</p>
 
       <p class="mt-5 mb-3 text-muted">&copy; 2021~∞ - 六角學院</p>
     </form>
@@ -45,6 +46,7 @@ export default {
   data() {
     return {
       title: "後台管理",
+      state: true,
       user: {
         username: "",
         password: "",
@@ -53,14 +55,22 @@ export default {
   },
   methods: {
     async signIn() {
-      const state = await login(this.user);
-      if (state === true) {
-        router.push("/admin");
+      try {
+        let state = await login(this.user);
+        this.state = state;
+        if (state === true) {
+          router.push("/admin");
+        } else if (state === false) {
+          this.user = {};
+        }
+        console.log(this.state);
+      } catch (err) {
+        console.log(err);
       }
     },
   },
-  async mounted() {
-    await checkAdmin();
+  mounted() {
+    checkAdmin();
   },
 };
 </script>

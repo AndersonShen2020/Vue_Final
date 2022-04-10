@@ -4,7 +4,17 @@ import router from "../router";
 const url = process.env.VUE_APP_API; // 請加入站點
 const path = process.env.VUE_APP_PATH; // 請加入個人 API path
 
-// 登入帳號
+/**
+ * @description 登入帳號
+ * @param {object} user 
+ * ```js
+ *user: {
+    username: "",
+    password: "",
+  },
+ * ```
+ * @returns true 為成功
+ */
 export async function login(user) {
   try {
     // 取出 token 跟 expired
@@ -14,7 +24,7 @@ export async function login(user) {
     console.log("登入成功");
     return true;
   } catch (err) {
-    alert(err.response.data.message);
+    return false;
   }
 }
 
@@ -29,7 +39,7 @@ export async function checkAdmin() {
     console.log("確認用戶仍然持續登入");
     router.push("/admin");
   } catch (err) {
-    alert(err.response.data.message);
+    console.log(err.response.data.message);
     router.push("/Login");
   }
 }
