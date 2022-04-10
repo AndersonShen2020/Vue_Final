@@ -19,10 +19,9 @@ import axios from "axios";
 
 export default {
   methods: {
-    async logout() {
-      let urlPath = `${process.env.VUE_APP_API}/logout`;
-      await axios.post(urlPath).then((res) => {
-        alert(res.data.message);
+    logout() {
+      const urlPath = `${process.env.VUE_APP_API}/logout`;
+      axios.post(urlPath).then(() => {
         document.cookie = "hexToken=;expires=;";
         this.$router.push("/");
       });
