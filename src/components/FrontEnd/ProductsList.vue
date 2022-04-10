@@ -27,7 +27,7 @@
         :key="product?.id"
         style="min-width: 130px"
       >
-        <router-link class="d-flex" :to="`/product/${product?.id}`">
+        <RouterLink class="d-flex" :to="`/product/${product?.id}`">
           <div
             class="me-3"
             :style="{ backgroundImage: `url(${product.imageUrl})` }"
@@ -64,7 +64,7 @@
               </div>
             </div>
           </div>
-        </router-link>
+        </RouterLink>
       </li>
     </ul>
   </template>
@@ -72,7 +72,7 @@
   <template v-if="state === 'grid'">
     <div class="row row-cols-md-3 row-cols-1 gy-3">
       <div class="col" v-for="product in filterProducts" :key="product.id">
-        <router-link :to="`/product/${product.id}`">
+        <RouterLink :to="`/product/${product.id}`">
           <div class="card border-0 h-100 product-effect p-1">
             <img :src="product.imageUrl" class="card-img-top card-img" :alt="product.title" />
             <div class="card-body">
@@ -100,7 +100,7 @@
               </button>
             </div>
           </div>
-        </router-link>
+        </RouterLink>
       </div>
     </div>
   </template>

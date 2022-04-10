@@ -4,10 +4,10 @@
     <nav class="py-2 border-bottom">
       <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item">
-          <router-link to="/"> 首頁 </router-link>
+          <RouterLink to="/"> 首頁 </RouterLink>
         </li>
         <li class="breadcrumb-item">
-          <router-link to="/products"> 產品列表 </router-link>
+          <RouterLink to="/products"> 產品列表 </RouterLink>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
           {{ product.title }}

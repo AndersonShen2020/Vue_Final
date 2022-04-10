@@ -2,7 +2,7 @@
   <div class="sticky-lg-top pt-3" style="z-index: 1500">
     <h2>產品分類</h2>
     <div class="filter-all">
-      <router-link :to="{ path: '/products', query: { category: '全部' } }"> 全站商品 </router-link>
+      <RouterLink :to="{ path: '/products', query: { category: '全部' } }"> 全站商品 </RouterLink>
     </div>
 
     <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -24,9 +24,9 @@
         >
           <div class="accordion-body ms-2">
             <div v-for="item in categories[1]" :key="item" class="d-flex">
-              <router-link :to="{ path: '/products', query: { category: item } }">
+              <RouterLink :to="{ path: '/products', query: { category: item } }">
                 {{ item }}
-              </router-link>
+              </RouterLink>
             </div>
           </div>
         </div>
@@ -49,9 +49,9 @@
         >
           <div class="accordion-body ms-2">
             <div v-for="item in categories[2]" :key="item" class="d-flex">
-              <router-link :to="{ path: '/products', query: { category: item } }">
+              <RouterLink :to="{ path: '/products', query: { category: item } }">
                 {{ item }}
-              </router-link>
+              </RouterLink>
             </div>
           </div>
         </div>

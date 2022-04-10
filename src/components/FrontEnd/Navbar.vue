@@ -1,12 +1,12 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-secondary bg-opacity-50">
     <div class="container">
-      <router-link class="navbar-brand" to="/" @click="closeNavHam()">
+      <RouterLink class="navbar-brand" to="/" @click="closeNavHam()">
         <span class="logo">CoffeeRoast</span>
-      </router-link>
+      </RouterLink>
 
       <!-- cart -->
-      <router-link
+      <RouterLink
         class="nav-link ms-auto text-primary order-lg-3"
         to="/CheckOrder"
         @click="closeNavHam()"
@@ -18,7 +18,7 @@
           >
           <i class="bi bi-cart"></i>
         </div>
-      </router-link>
+      </RouterLink>
       <!-- 漢堡選單 -->
       <button
         class="navbar-toggler"
@@ -36,36 +36,36 @@
       >
         <ul class="navbar-nav">
           <li class="nav-item">
-            <router-link
+            <RouterLink
               class="nav-link text-primary coffee-nav-item"
               to="/about"
               @click="closeNavHam()"
             >
               關於本店
-            </router-link>
+            </RouterLink>
           </li>
           <li class="nav-item">
-            <router-link
+            <RouterLink
               class="nav-link text-primary coffee-nav-item"
               to="/KnowledgeView"
               @click="closeNavHam()"
             >
               咖啡知識
-            </router-link>
+            </RouterLink>
           </li>
           <li class="nav-item">
-            <router-link
+            <RouterLink
               class="nav-link text-primary coffee-nav-item"
               to="/products"
               @click="closeNavHam()"
             >
               產品列表
-            </router-link>
+            </RouterLink>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link text-primary" to="/Login">
+            <RouterLink class="nav-link text-primary" to="/Login">
               <i class="bi bi-person-circle"></i>
-            </router-link>
+            </RouterLink>
           </li>
         </ul>
       </div>

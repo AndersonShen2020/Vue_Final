@@ -48,24 +48,24 @@
         </tr>
       </tbody>
     </table>
-    <pagination :pages="pagination" @emitpages="getCoupons"></pagination>
+    <Pagination :pages="pagination" @emitpages="getCoupons"></Pagination>
   </div>
-  <couponsModal
+  <CouponsModal
     ref="couponModal"
     :is-new="isNew"
     :coupon="tempCoupon"
     @reset-coupons="getCoupons"
-  ></couponsModal>
-  <delCoupons ref="delCoupon" :coupon="tempCoupon" @reset-coupons="getCoupons"></delCoupons>
+  ></CouponsModal>
+  <DelCoupons ref="delCoupon" :coupon="tempCoupon" @reset-coupons="getCoupons"></DelCoupons>
 </template>
 
 <script>
 import axios from "axios";
 
 // component
-import pagination from "@/components/common/pagination.vue";
-import couponsModal from "@/components/BackEnd/CouponsModal.vue";
-import delCoupons from "@/components/BackEnd/delCoupon.vue";
+import Pagination from "@/components/common/pagination.vue";
+import CouponsModal from "@/components/BackEnd/CouponsModal.vue";
+import DelCoupons from "@/components/BackEnd/delCoupon.vue";
 
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
@@ -75,9 +75,9 @@ import titleMixin from "@/mixins/titleMixin";
 export default {
   mixins: [titleMixin],
   components: {
-    pagination,
-    couponsModal,
-    delCoupons,
+    Pagination,
+    CouponsModal,
+    DelCoupons,
     Loading,
   },
   data() {

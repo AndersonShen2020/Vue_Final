@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="`/product/${product.id}`">
+  <RouterLink :to="`/product/${product.id}`">
     <div class="card h-100">
       <div
         class="card-img d-flex justify-content-center align-items-center"
@@ -23,7 +23,7 @@
         </button>
       </div>
     </div>
-  </router-link>
+  </RouterLink>
 </template>
 
 <script>

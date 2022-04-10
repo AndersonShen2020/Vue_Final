@@ -48,11 +48,11 @@
         </tr>
       </tbody>
     </table>
-    <pagination :pages="pagination" @emitpages="init"></pagination>
+    <Pagination :pages="pagination" @emitpages="init"></Pagination>
   </div>
   <!-- Modal -->
-  <productModal :productinfo="tempProduct" :state="isNew" @update="init"></productModal>
-  <delProductModal :productinfo="tempProduct" @update="init"></delProductModal>
+  <ProductModal :productinfo="tempProduct" :state="isNew" @update="init"></ProductModal>
+  <DelProductModal :productinfo="tempProduct" @update="init"></DelProductModal>
   <!-- Modal -->
 </template>
 
@@ -61,9 +61,9 @@ import { getProducts } from "@/api/axios";
 import modal from "bootstrap/js/dist/modal";
 
 // component
-import pagination from "@/components/common/pagination.vue";
-import productModal from "@/components/BackEnd/ProductModal.vue";
-import delProductModal from "@/components/BackEnd/delProduct.vue";
+import Pagination from "@/components/common/pagination.vue";
+import ProductModal from "@/components/BackEnd/ProductModal.vue";
+import DelProductModal from "@/components/BackEnd/delProduct.vue";
 
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
@@ -87,9 +87,9 @@ const tempProduct = {
 export default {
   mixins: [titleMixin],
   components: {
-    pagination,
-    productModal,
-    delProductModal,
+    Pagination,
+    ProductModal,
+    DelProductModal,
     Loading,
   },
   data() {

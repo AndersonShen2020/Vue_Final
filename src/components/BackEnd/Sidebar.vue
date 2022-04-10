@@ -2,19 +2,19 @@
   <aside class="sidebar">
     <ul class="list-group list-group-flush bg-transparent">
       <!-- <li class="list-group-item">
-        <router-link class="nav-link" to="/admin">首頁</router-link>
+        <RouterLink class="nav-link" to="/admin">首頁</RouterLink>
       </li> -->
       <!-- <li class="list-group-item">
-        <router-link class="nav-link" to="/admin/Products">產品</router-link>
+        <RouterLink class="nav-link" to="/admin/Products">產品</RouterLink>
       </li> -->
       <li class="list-group-item">
-        <router-link class="nav-link" to="/admin">產品</router-link>
+        <RouterLink class="nav-link" to="/admin">產品</RouterLink>
       </li>
       <li class="list-group-item">
-        <router-link class="nav-link" to="/admin/Coupons">優惠卷</router-link>
+        <RouterLink class="nav-link" to="/admin/Coupons">優惠卷</RouterLink>
       </li>
       <li class="list-group-item">
-        <router-link class="nav-link" to="/admin/Orders">訂單</router-link>
+        <RouterLink class="nav-link" to="/admin/Orders">訂單</RouterLink>
       </li>
     </ul>
   </aside>

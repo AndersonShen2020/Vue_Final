@@ -4,9 +4,9 @@
       <i class="bi bi-emoji-frown" style="font-size: 10rem"></i>
       <h2>404 Not Found</h2>
       <p>不好意思，這頁面不存在</p>
-      <router-link to="/">
+      <RouterLink to="/">
         <button type="button" class="btn coffee-btn">回首頁</button>
-      </router-link>
+      </RouterLink>
     </div>
   </div>
 </template>

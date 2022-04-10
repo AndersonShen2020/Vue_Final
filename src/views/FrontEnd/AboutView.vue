@@ -3,7 +3,7 @@
     <nav class="py-2 border-bottom">
       <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item">
-          <router-link to="/"> 首頁 </router-link>
+          <RouterLink to="/"> 首頁 </RouterLink>
         </li>
         <li class="breadcrumb-item active">關於本店</li>
       </ol>

@@ -45,6 +45,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .disabled {
   cursor: no-drop;

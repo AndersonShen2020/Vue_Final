@@ -101,12 +101,8 @@
             >
               信用卡付款
             </div>
-            <router-link
-              class="btn coffee-btn p-4"
-              style="letter-spacing: 2px"
-              to="/Products"
-              v-else
-              >繼續購物 ！</router-link
+            <RouterLink class="btn coffee-btn p-4" style="letter-spacing: 2px" to="/Products" v-else
+              >繼續購物 ！</RouterLink
             >
           </li>
         </ul>

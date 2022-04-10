@@ -58,7 +58,7 @@
       </template>
     </tbody>
   </table>
-  <pagination :pages="pagination" @emitpages="getOrders"></pagination>
+  <Pagination :pages="pagination" @emitpages="getOrders"></Pagination>
   <OrderModal ref="orderModal" :order-data="tempOrder" @update-orders="updateOrder"></OrderModal>
   <DelOrderModal ref="delModel" :coupon="tempOrder" @del-order="delOrder"></DelOrderModal>
 </template>
@@ -67,7 +67,7 @@
 import axios from "axios";
 
 // component
-import pagination from "@/components/common/pagination.vue";
+import Pagination from "@/components/common/pagination.vue";
 import OrderModal from "@/components/BackEnd/OrderModal.vue";
 import DelOrderModal from "@/components/BackEnd/delOrder.vue";
 
@@ -79,7 +79,7 @@ import titleMixin from "@/mixins/titleMixin";
 export default {
   mixins: [titleMixin],
   components: {
-    pagination,
+    Pagination,
     OrderModal,
     DelOrderModal,
     Loading,

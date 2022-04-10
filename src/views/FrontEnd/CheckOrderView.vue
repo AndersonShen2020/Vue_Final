@@ -30,9 +30,9 @@
     <div class="d-flex flex-column justify-content-center align-items-center">
       <i class="bi bi-cart-fill" style="font-size: 10rem"></i>
       <p>您的購物車中沒有商品</p>
-      <router-link to="/products">
+      <RouterLink to="/products">
         <button type="button" class="btn coffee-btn">去購物</button>
-      </router-link>
+      </RouterLink>
     </div>
   </div>
 </template>

@@ -2,7 +2,7 @@
   <Loading :active="isLoading"></Loading>
   <!-- 開頭 Swiper -->
   <div class="container py-5">
-    <swiper
+    <Swiper
       :slidesPerView="1"
       :spaceBetween="10"
       :loop="true"
@@ -12,7 +12,7 @@
       }"
       :modules="modules"
     >
-      <swiper-slide>
+      <SwiperSlide>
         <div
           class="leading-img d-flex"
           :style="{
@@ -23,8 +23,8 @@
             一天的起點，從咖啡開始
           </p>
         </div>
-      </swiper-slide>
-      <swiper-slide>
+      </SwiperSlide>
+      <SwiperSlide>
         <div
           class="leading-img d-flex"
           :style="{
@@ -35,8 +35,8 @@
             工作與咖啡是最佳搭配
           </p>
         </div>
-      </swiper-slide>
-    </swiper>
+      </SwiperSlide>
+    </Swiper>
   </div>
   <!-- 產品 -->
   <div class="bg-light bg-opacity-50 py-5">
@@ -51,9 +51,9 @@
         :modules="modules"
         :breakpoints="breakpoints"
       >
-        <swiper-slide v-for="product in coffeeProducts" :key="product.id">
+        <SwiperSlide v-for="product in coffeeProducts" :key="product.id">
           <CardComponent :item="product"></CardComponent>
-        </swiper-slide>
+        </SwiperSlide>
       </swiper>
     </div>
   </div>
@@ -79,9 +79,9 @@
           <p>亞洲則是酸度低並帶有香料風味</p>
         </div>
         <div class="d-flex justify-content-end">
-          <router-link class="btn coffee-btn text-secondary" to="/KnowledgeView">
+          <RouterLink class="btn coffee-btn text-secondary" to="/KnowledgeView">
             查看咖啡品種
-          </router-link>
+          </RouterLink>
         </div>
       </div>
     </div>
@@ -95,12 +95,12 @@
           <p>最簡單的判斷方式是，豆子烘烤的時間越長，酸味越淡，咖啡因含量也越少。</p>
         </div>
         <div class="d-flex justify-content-end">
-          <router-link
+          <RouterLink
             class="btn coffee-btn text-secondary"
             :to="{ path: '/KnowledgeView', query: { state: 'coffeeRoast' } }"
           >
             查看咖啡烘焙
-          </router-link>
+          </RouterLink>
         </div>
       </div>
       <div class="col-md-6 d-none d-md-block">
@@ -132,12 +132,12 @@
           </p>
         </div>
         <div class="d-flex justify-content-end">
-          <router-link
+          <RouterLink
             class="btn coffee-btn text-secondary"
             :to="{ path: '/KnowledgeView', query: { state: 'coffeeBrew' } }"
           >
             查看手沖咖啡
-          </router-link>
+          </RouterLink>
         </div>
       </div>
     </div>
