@@ -18,8 +18,8 @@ export default {
     Navbar,
     Sidebar,
   },
-  async created() {
-    await checkAdmin();
+  created() {
+    checkAdmin();
   },
   watch: {
     $route(to) {
