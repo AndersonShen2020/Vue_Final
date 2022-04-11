@@ -16,24 +16,12 @@
         </div>
       </div>
       <div class="col-md-6 d-none d-md-block">
-        <div
-          style="
-            background-image: url('https://images.unsplash.com/photo-1561986810-4f3ba2f46ceb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
-            height: 200px;
-            background-size: cover;
-          "
-        ></div>
+        <div class="bg-roast-image1"></div>
       </div>
     </div>
     <div class="row mt-3">
       <div class="col-md-6 d-none d-md-block">
-        <div
-          style="
-            background-image: url('https://images.unsplash.com/photo-1537130508299-46ab547b4be3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
-            height: 300px;
-            background-size: cover;
-          "
-        ></div>
+        <div class="bg-roast-image2"></div>
       </div>
       <div class="col-md-6">
         <div class="m-1">
@@ -66,24 +54,39 @@
         </div>
       </div>
       <div class="col-md-6 d-none d-md-block">
-        <div
-          style="
-            background-image: url('https://images.unsplash.com/photo-1589646101665-d287dc7a9802?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
-            height: 300px;
-            background-size: cover;
-          "
-        ></div>
+        <div class="bg-roast-image3"></div>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 /* * {
   margin: 1rem auto;
 } */
 
 p {
   line-height: 1.8rem;
+}
+
+.bg-roast-image1 {
+  background-image: url("../../../assets/img/image04.jpg");
+  height: 200px;
+  background-size: cover;
+  // background-position: center;
+}
+
+.bg-roast-image2 {
+  background-image: url("../../../assets/img/image02.jpg");
+  height: 300px;
+  background-size: cover;
+  // background-position: center;
+}
+
+.bg-roast-image3 {
+  background-image: url("../../../assets/img/image01.jpg");
+  height: 300px;
+  background-size: cover;
+  // background-position: center;
 }
 </style>

@@ -13,24 +13,14 @@
       :modules="modules"
     >
       <SwiperSlide>
-        <div
-          class="leading-img d-flex"
-          :style="{
-            backgroundImage: `url('https://images.unsplash.com/photo-1563297871-fbbf4e345a04?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80')`,
-          }"
-        >
+        <div class="leading-img d-flex bg-cover1">
           <p class="text-primary text-center fw-bold w-100 align-self-center leading-text">
             一天的起點，從咖啡開始
           </p>
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <div
-          class="leading-img d-flex"
-          :style="{
-            backgroundImage: `url('https://images.unsplash.com/photo-1508984772106-f2a17812774c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')`,
-          }"
-        >
+        <div class="leading-img d-flex bg-cover2">
           <p class="text-secondary text-center w-100 align-self-center leading-text">
             工作與咖啡是最佳搭配
           </p>
@@ -61,14 +51,7 @@
   <div class="container my-3">
     <div class="row">
       <div class="col-md-6 d-none d-md-block">
-        <div
-          style="
-            background-image: url('https://images.unsplash.com/photo-1589646101665-d287dc7a9802?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
-            height: 400px;
-            background-size: cover;
-            background-position: center;
-          "
-        ></div>
+        <div class="bg-image1"></div>
       </div>
       <div class="col-md-6 d-flex flex-column justify-content-center">
         <h3 class="coffee-header">咖啡品種</h3>
@@ -104,24 +87,12 @@
         </div>
       </div>
       <div class="col-md-6 d-none d-md-block">
-        <div
-          style="
-            background-image: url('https://images.unsplash.com/photo-1537130508299-46ab547b4be3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
-            height: 400px;
-            background-size: cover;
-          "
-        ></div>
+        <div class="bg-image2"></div>
       </div>
     </div>
     <div class="row mt-3">
       <div class="col-md-6 d-none d-md-block">
-        <div
-          style="
-            background-image: url('https://images.unsplash.com/photo-1545665613-29394cee622b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
-            height: 400px;
-            background-size: cover;
-          "
-        ></div>
+        <div class="bg-image3"></div>
       </div>
       <div class="col-md-6 d-flex flex-column justify-content-center">
         <h3 class="coffee-header">手沖咖啡</h3>
@@ -254,5 +225,34 @@ export default {
 
 .swiper-slide {
   height: auto;
+}
+
+.bg-cover1 {
+  background-image: url("../../assets/img/cover01.jpg");
+}
+
+.bg-cover2 {
+  background-image: url("../../assets/img/cover02.jpg");
+}
+
+.bg-image1 {
+  background-image: url("../../assets/img/image01.jpg");
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-image2 {
+  background-image: url("../../assets/img/image02.jpg");
+  height: 400px;
+  background-size: cover;
+  // background-position: center;
+}
+
+.bg-image3 {
+  background-image: url("../../assets/img/image03.jpg");
+  height: 400px;
+  background-size: cover;
+  // background-position: center;
 }
 </style>
