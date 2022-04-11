@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import Modal from "bootstrap/js/dist/modal";
+import modalControl from "@/api/modalControl";
 import axios from "axios";
 
 import Loading from "vue-loading-overlay";
@@ -50,6 +50,7 @@ export default {
   },
   props: ["coupon"],
   emits: ["resetCoupons"],
+  mixins: [modalControl],
   data() {
     return {
       modal: null,
@@ -58,12 +59,6 @@ export default {
     };
   },
   methods: {
-    openModal() {
-      this.modal.show();
-    },
-    hideModal() {
-      this.modal.hide();
-    },
     async deleteItem() {
       this.isLoading = true;
       const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempProduct.id}`;
@@ -82,9 +77,6 @@ export default {
     coupon(newVal) {
       this.tempProduct = newVal;
     },
-  },
-  mounted() {
-    this.modal = new Modal(this.$refs.modal);
   },
 };
 </script>

@@ -37,11 +37,11 @@
 </template>
 
 <script>
-import Modal from "bootstrap/js/dist/modal";
-// import axios from "axios";
+import modalControl from "@/api/modalControl";
 
 export default {
   props: ["coupon"],
+  mixins: [modalControl],
   data() {
     return {
       modal: null,
@@ -49,12 +49,6 @@ export default {
     };
   },
   methods: {
-    openModal() {
-      this.modal.show();
-    },
-    hideModal() {
-      this.modal.hide();
-    },
     deleteOrder() {
       this.$emit("delOrder", this.tempOrder);
     },
@@ -63,9 +57,6 @@ export default {
     coupon(newVal) {
       this.tempOrder = newVal;
     },
-  },
-  mounted() {
-    this.modal = new Modal(this.$refs.modal);
   },
 };
 </script>
