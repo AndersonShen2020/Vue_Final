@@ -69,12 +69,11 @@ export default {
       const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempProduct.id}`;
       await axios
         .delete(urlPath)
-        .then((res) => {
-          console.log(res.data.message);
+        .then(() => {
           this.$emit("resetCoupons");
         })
-        .catch((err) => {
-          console.error(err.response.data.message);
+        .catch(() => {
+          this.isLoading = false;
         });
       this.isLoading = false;
     },
