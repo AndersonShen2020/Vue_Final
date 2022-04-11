@@ -97,17 +97,10 @@ export default {
     async getOrders(page = 1) {
       this.isLoading = true;
       const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders?page=${page}`;
-      await axios
-        .get(urlPath)
-        .then((res) => {
-          console.log(`Orders 更新成功`);
-          this.orders = res.data.orders;
-          this.pagination = res.data.pagination;
-          console.log(this.orders);
-        })
-        .catch((err) => {
-          console.dir(err.response);
-        });
+      await axios.get(urlPath).then((res) => {
+        this.orders = res.data.orders;
+        this.pagination = res.data.pagination;
+      });
       this.$refs.orderModal.hideModal();
       this.$refs.delModel.hideModal();
       this.isLoading = false;
@@ -118,16 +111,8 @@ export default {
     },
     async updateOrder(item) {
       this.isLoading = true;
-      console.log(item.id);
       const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`;
-      await axios
-        .put(urlPath, { data: item })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.dir(err);
-        });
+      await axios.put(urlPath, { data: item });
       await this.getOrders();
       this.isLoading = false;
     },
@@ -138,15 +123,9 @@ export default {
     async delOrder(item) {
       this.isLoading = true;
       const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`;
-      await axios
-        .delete(urlPath)
-        .then((res) => {
-          console.log(res.data.message);
-          this.getOrders();
-        })
-        .catch((err) => {
-          console.error(err.response.data.message);
-        });
+      await axios.delete(urlPath).then(() => {
+        this.getOrders();
+      });
       this.isLoading = false;
     },
   },

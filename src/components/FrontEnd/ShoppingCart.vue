@@ -94,8 +94,7 @@ export default {
   methods: {
     removeCartItem(id) {
       this.isLoadingItem = id;
-      axios.delete(`${url}/api/${path}/cart/${id}`).then((res) => {
-        console.log(res);
+      axios.delete(`${url}/api/${path}/cart/${id}`).then(() => {
         this.getCart();
         this.isLoadingItem = "";
         emitter.emit("getCartNum");
@@ -112,23 +111,20 @@ export default {
         product_id: item.id,
         qty: item.qty,
       };
-      axios.put(`${url}/api/${path}/cart/${item.id}`, { data }).then((res) => {
-        console.log(res);
+      axios.put(`${url}/api/${path}/cart/${item.id}`, { data }).then(() => {
         this.getCart();
         this.isLoadingItem = "";
       });
     },
     clearAllCarts() {
-      axios.delete(`${url}/api/${path}/carts`).then((res) => {
-        console.log(res);
+      axios.delete(`${url}/api/${path}/carts`).then(() => {
         emitter.emit("getCartNum");
         this.getCart();
       });
     },
     useCoupon() {
       const coupon = { code: this.couponCode };
-      axios.post(`${url}/api/${path}/coupon`, { data: coupon }).then((res) => {
-        console.log(res);
+      axios.post(`${url}/api/${path}/coupon`, { data: coupon }).then(() => {
         this.isLoading = true;
         this.getCart();
         this.isCoupon = true;
@@ -150,7 +146,6 @@ export default {
     });
   },
   mounted() {
-    console.log(emitter);
     this.isLoading = true;
     this.getCart();
   },

@@ -109,7 +109,7 @@
             </div>
             <div class="col-sm-8">
               <div class="mb-3">
-                <label for="title" class="form-label">標題</label>
+                <label for="title" class="form-label"><span class="text-danger">*</span>標題</label>
                 <input
                   id="title"
                   type="text"
@@ -121,7 +121,9 @@
 
               <div class="row">
                 <div class="mb-3 col-md-3">
-                  <label for="category" class="form-label">主分類</label>
+                  <label for="category" class="form-label"
+                    ><span class="text-danger">*</span> 主分類</label
+                  >
                   <input
                     id="category"
                     type="text"
@@ -131,7 +133,9 @@
                   />
                 </div>
                 <div class="mb-3 col-md-3">
-                  <label for="category" class="form-label">次分類</label>
+                  <label for="category" class="form-label"
+                    ><span class="text-danger">*</span>次分類</label
+                  >
                   <input
                     id="category"
                     type="text"
@@ -141,7 +145,9 @@
                   />
                 </div>
                 <div class="mb-3 col-md-6">
-                  <label for="price" class="form-label">單位</label>
+                  <label for="price" class="form-label"
+                    ><span class="text-danger">*</span> 單位</label
+                  >
                   <input
                     id="unit"
                     type="text"
@@ -276,7 +282,6 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res);
           this.tempProduct.fileImage = res.data.imageUrl;
           this.$refs.fileInput.value = "";
         });

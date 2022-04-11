@@ -143,17 +143,16 @@ export default {
         const { data } = await axios.get(`${url}/api/${path}/order/${this.id}`);
         this.order = data.order;
       } catch (err) {
-        console.dir(err);
+        this.isLoading = false;
       }
       this.isLoading = false;
     },
     async payBill() {
       this.isLoading = true;
       try {
-        const { data } = await axios.post(`${url}/api/${path}/pay/${this.id}`);
-        console.log(data);
+        await axios.post(`${url}/api/${path}/pay/${this.id}`);
       } catch (err) {
-        console.dir(err);
+        this.isLoading = false;
       }
       document.title = "完成訂單";
       this.isPaid = true;

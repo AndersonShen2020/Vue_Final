@@ -63,9 +63,8 @@ export default {
         } else if (state === false) {
           this.user = {};
         }
-        console.log(this.state);
       } catch (err) {
-        console.log(err);
+        return;
       }
     },
   },

@@ -25,7 +25,7 @@
         </div>
         <div class="modal-body">
           <div class="mb-3">
-            <label for="title">標題</label>
+            <label for="title"><span class="text-danger">*</span> 標題</label>
             <input
               type="text"
               class="form-control"
@@ -35,7 +35,7 @@
             />
           </div>
           <div class="mb-3">
-            <label for="coupon_code">優惠碼</label>
+            <label for="coupon_code"><span class="text-danger">*</span> 優惠碼</label>
             <input
               type="text"
               class="form-control"
@@ -45,11 +45,11 @@
             />
           </div>
           <div class="mb-3">
-            <label for="due_date">到期日</label>
+            <label for="due_date"><span class="text-danger">*</span> 到期日</label>
             <input type="date" class="form-control" id="due_date" v-model="due_date" />
           </div>
           <div class="mb-3">
-            <label for="price">折扣百分比</label>
+            <label for="price"><span class="text-danger">*</span> 折扣百分比</label>
             <input
               type="number"
               class="form-control"
@@ -59,7 +59,7 @@
               placeholder="請輸入折扣百分比"
             />
           </div>
-          <div class="mb-3">
+          <div class="mb-3" v-if="!isNew">
             <div class="form-check">
               <input
                 class="form-check-input"
@@ -69,7 +69,7 @@
                 v-model="tempCoupon.is_enabled"
                 id="is_enabled"
               />
-              <label class="form-check-label" for="is_enabled"> 是否啟用 </label>
+              <label class="form-check-label" for="is_enabled">是否啟用</label>
             </div>
           </div>
         </div>
@@ -128,13 +128,7 @@ export default {
         authorization = `put`;
         urlPath = urlPath + `/${this.coupon.id}`;
       }
-      await axios[authorization](urlPath, { data })
-        .then((res) => {
-          console.log(res.data.message);
-        })
-        .catch((err) => {
-          console.error(err.response.data.message);
-        });
+      await axios[authorization](urlPath, { data });
       this.$emit("resetCoupons");
       this.isLoading = false;
     },

@@ -67,10 +67,7 @@ export default {
   methods: {
     getCart(message) {
       axios.get(`${url}/api/${path}/cart`).then((res) => {
-        console.log("getCart");
         this.products = res.data.data.carts;
-
-        console.log(message);
         if (message === "delete") {
           this.products.pop();
         }

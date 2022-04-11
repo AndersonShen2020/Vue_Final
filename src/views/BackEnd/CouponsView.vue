@@ -102,13 +102,10 @@ export default {
       await axios
         .get(urlPath)
         .then((res) => {
-          console.log(res);
           this.coupons = res.data.coupons;
           this.pagination = res.data.pagination;
         })
-        .catch((err) => {
-          console.dir(err.response);
-        });
+        .catch();
       this.$refs.couponModal.hideModal();
       this.$refs.delCoupon.hideModal();
       this.isLoading = false;
@@ -118,6 +115,7 @@ export default {
       if (this.isNew === true) {
         this.tempCoupon = {
           due_date: new Date().getTime() / 1000,
+          is_enabled: 1,
         };
       } else {
         this.tempCoupon = { ...item };

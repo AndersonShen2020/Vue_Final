@@ -56,7 +56,6 @@ export default {
       this.modal.hide();
     },
     deleteOrder() {
-      console.log(`delete`);
       this.$emit("delOrder", this.tempOrder);
     },
   },

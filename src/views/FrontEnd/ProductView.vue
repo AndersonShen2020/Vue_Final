@@ -56,7 +56,6 @@
           :loop="swiperOptions.loop"
           :breakpoints="swiperOptions.breakpoints"
           :autoplay="swiperOptions.autoplay"
-          @swiper="onSwiper"
         >
           <swiper-slide v-for="product in products" :key="product.id">
             <CardComponent :item="product"></CardComponent>
@@ -127,13 +126,14 @@ export default {
   },
   methods: {
     addToCart(id, qty = 1) {
+      this.isLoading = true;
       const data = {
         product_id: id,
         qty: this.qty | qty,
       };
-      axios.post(`${url}/api/${path}/cart`, { data }).then((res) => {
-        alert(res.data.message);
+      axios.post(`${url}/api/${path}/cart`, { data }).then(() => {
         emitter.emit("getCartNum");
+        this.isLoading = false;
       });
     },
     async getProduct() {
@@ -150,9 +150,6 @@ export default {
         });
       });
       this.isLoading = false;
-    },
-    onSwiper(swiper) {
-      console.log("onSwiper", swiper);
     },
   },
   async mounted() {

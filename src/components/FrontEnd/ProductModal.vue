@@ -77,8 +77,7 @@ export default {
         qty: this.qty | qty,
       };
       this.isLoadingItem = id;
-      axios.post(`${url}/api/${path}/cart`, { data }).then((res) => {
-        console.log(res);
+      axios.post(`${url}/api/${path}/cart`, { data }).then(() => {
         this.isLoadingItem = "";
         this.$emit("closeModal");
       });
@@ -87,7 +86,6 @@ export default {
   watch: {
     id(newVal) {
       axios.get(`${url}/api/${path}/product/${newVal}`).then((res) => {
-        console.log(res.data.product);
         this.product = res.data.product;
       });
     },

@@ -125,16 +125,13 @@ export default {
   },
   methods: {
     async onSubmit() {
-      await axios
-        .post(`${url}/api/${path}/order`, { data: this.clientFrom })
-        .then((res) => {
-          this.clientFrom.message = "";
-          this.$refs.form.resetForm();
-          this.$router.push({
-            path: `/CheckOut/${res.data.orderId}`,
-          });
-        })
-        .catch((err) => console.dir(err));
+      await axios.post(`${url}/api/${path}/order`, { data: this.clientFrom }).then((res) => {
+        this.clientFrom.message = "";
+        this.$refs.form.resetForm();
+        this.$router.push({
+          path: `/CheckOut/${res.data.orderId}`,
+        });
+      });
       this.emit();
     },
     emit() {
@@ -148,7 +145,6 @@ export default {
   mounted() {
     const vm = this;
     emitter.on("cartSend", (res) => {
-      console.log(`isEnableSend = ${res}`);
       vm.isEnableSend = res;
     });
   },

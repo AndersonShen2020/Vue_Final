@@ -198,7 +198,7 @@ export default {
         const { data: res } = await axios.get(`${url}/api/${path}/products/all`);
         this.coffeeProducts = res.products.filter((item) => item.classification === "咖啡豆");
       } catch (error) {
-        console.dir(error);
+        this.isLoading = false;
       }
       this.isLoading = false;
     },

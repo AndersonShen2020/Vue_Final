@@ -21,7 +21,6 @@ export async function login(user) {
     const { data } = await axios.post(`${url}/admin/signin`, user);
     // 設定 cookie
     document.cookie = `hexToken=${data.token}; expires=${new Date(data.expired)};`;
-    console.log("登入成功");
     return true;
   } catch (err) {
     return false;
@@ -36,10 +35,8 @@ export async function checkAdmin() {
   axios.defaults.headers.common["Authorization"] = token;
   try {
     await axios.post(`${url}/api/user/check`);
-    console.log("確認用戶仍然持續登入");
     router.push("/admin");
   } catch (err) {
-    console.log(err.response.data.message);
     router.push("/Login");
   }
 }
@@ -50,7 +47,6 @@ export async function getProducts(page) {
     const { data } = await axios.get(`${url}/api/${path}/admin/products?page=${page}`);
     return data;
   } catch (err) {
-    alert(err.response.data.message);
     router.push("/Login");
   }
 }
@@ -60,26 +56,24 @@ export async function addProduct(product) {
   try {
     await axios.post(`${url}/api/${path}/admin/product`, product);
   } catch (err) {
-    alert(err.response.data.message);
+    return;
   }
 }
 
 // 修改單一產品
 export async function updateProduct(product) {
   try {
-    console.log(product.data.id);
     await axios.put(`${url}/api/${path}/admin/product/${product.data.id}`, product);
   } catch (err) {
-    alert(err.response.data.message);
+    return;
   }
 }
 
 // 刪除單一產品
 export async function deleteProduct(id) {
   try {
-    console.log(`${url}/api/${path}/admin/product/${id}`);
     await axios.delete(`${url}/api/${path}/admin/product/${id}`);
   } catch (err) {
-    alert(err.response.data.message);
+    return;
   }
 }

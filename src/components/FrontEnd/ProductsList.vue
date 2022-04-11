@@ -152,8 +152,7 @@ export default {
         qty,
       };
       this.isLoadingItem = id;
-      axios.post(`${url}/api/${path}/cart`, { data }).then((res) => {
-        console.log(res);
+      axios.post(`${url}/api/${path}/cart`, { data }).then(() => {
         this.isLoadingItem = "";
         emitter.emit("getCartNum");
       });

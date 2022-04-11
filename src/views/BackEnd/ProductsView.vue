@@ -107,7 +107,6 @@ export default {
 
   methods: {
     async init(page = 1) {
-      console.log("從遠端抓新資料");
       this.isLoading = true;
       const { products, pagination } = await getProducts(page);
       this.products = products;
@@ -122,12 +121,10 @@ export default {
         this.isNew = true;
         this.productModal.show();
       } else if (state === "update") {
-        console.log("update");
         this.tempProduct = JSON.parse(JSON.stringify(item));
         this.isNew = false;
         this.productModal.show();
       } else if (state === "delete") {
-        console.log("delete");
         this.tempProduct = { ...item };
         this.delProductModal.show();
       }
