@@ -13,6 +13,6 @@
 
 <style lang="scss">
 .main {
-  min-height: calc(100vh - (66px + 120px));
+  min-height: calc(100vh);
 }
 </style>

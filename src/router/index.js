@@ -58,12 +58,6 @@ const routes = [
         name: "KnowledgeView",
         component: KnowledgeView,
       },
-      {
-        // 輸入錯誤網址跳回到首頁
-        path: "/:pathMatch(.*)*",
-        name: "Error",
-        component: () => import("@/views/Error.vue"),
-      },
     ],
   },
   // 登入
@@ -104,6 +98,12 @@ const routes = [
         component: Orders,
       },
     ],
+  },
+  {
+    // 輸入錯誤網址跳回到首頁
+    path: "/:pathMatch(.*)*",
+    name: "Error",
+    component: () => import("@/views/Error.vue"),
   },
 ];
 
