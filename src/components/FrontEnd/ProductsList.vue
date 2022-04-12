@@ -2,24 +2,9 @@
   <Loading :active="isLoading"></Loading>
   <div class="d-flex flex-nowrap my-3">
     <div class="me-auto">共有 {{ filterProducts.length }} 個產品</div>
-    <!-- 顯示分類 -->
-    <div class="mx-2">
-      <i
-        class="icon-editor p-2 bi bi-list-ul"
-        :class="{ 'bg-gray': state === 'list' }"
-        @click="state = 'list'"
-      ></i>
-    </div>
-    <div class="mx-2">
-      <i
-        class="icon-editor p-2 bi bi-grid"
-        :class="{ 'bg-gray': state === 'grid' }"
-        @click="state = 'grid'"
-      ></i>
-    </div>
   </div>
   <!-- list 樣式 -->
-  <template class="table align-middle" v-if="state === 'list'">
+  <template class="table align-middle d-lg-none d-block">
     <ul class="list-unstyled">
       <li
         class="d-flex flex-column mb-3 product-effect p-2"
@@ -69,7 +54,7 @@
     </ul>
   </template>
   <!-- grid 樣式 -->
-  <template v-if="state === 'grid'">
+  <template class="d-none d-lg-block">
     <div class="row row-cols-md-3 row-cols-1 gy-3">
       <div class="col" v-for="product in filterProducts" :key="product.id">
         <RouterLink :to="`/product/${product.id}`">
