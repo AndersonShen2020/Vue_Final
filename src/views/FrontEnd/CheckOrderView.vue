@@ -26,6 +26,7 @@
       </div>
     </div>
   </div>
+
   <div class="container main py-3" v-if="products.length === 0">
     <div class="d-flex flex-column justify-content-center align-items-center">
       <i class="bi bi-cart-fill" style="font-size: 10rem"></i>
@@ -65,15 +66,16 @@ export default {
     };
   },
   methods: {
-    getCart(message) {
-      axios.get(`${url}/api/${path}/cart`).then((res) => {
+    async getCart() {
+      this.isLoading = true;
+      try {
+        const res = await axios.get(`${url}/api/${path}/cart`);
         this.products = res.data.data.carts;
-        if (message === "delete") {
-          this.products.pop();
-        }
-
+        console.log("[CheckOut] getCart");
+      } catch (err) {
         this.isLoading = false;
-      });
+      }
+      this.isLoading = false;
     },
     resetCart() {
       this.products = [];

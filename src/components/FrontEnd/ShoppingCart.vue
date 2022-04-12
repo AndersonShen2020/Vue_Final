@@ -3,7 +3,7 @@
   <div class="d-flex justify-content-around mb-3">
     <span class="fs-3 fw-bold">確認訂單內容</span>
     <button
-      @click="clearAllCarts(), $emit('reset-page')"
+      @click="clearAllCarts()"
       class="btn btn-outline-danger"
       type="button"
       :disabled="cartData.carts?.length === 0"
@@ -19,7 +19,7 @@
     >
       <div class="col-md-1">
         <button
-          @click="removeCartItem(product.id), $emit('reset-page', 'delete')"
+          @click="removeCartItem(product.id)"
           type="button"
           class="btn btn-outline-danger btn-sm"
         >
@@ -82,7 +82,7 @@ export default {
   },
   data() {
     return {
-      cartData: [],
+      cartData: {},
       productId: null,
       isLoadingItem: "",
       isLoading: false,
@@ -96,6 +96,7 @@ export default {
       this.isLoadingItem = id;
       axios.delete(`${url}/api/${path}/cart/${id}`).then(() => {
         this.getCart();
+        this.$emit("reset-page");
         this.isLoadingItem = "";
         emitter.emit("getCartNum");
       });
@@ -118,8 +119,9 @@ export default {
     },
     clearAllCarts() {
       axios.delete(`${url}/api/${path}/carts`).then(() => {
-        emitter.emit("getCartNum");
         this.getCart();
+        this.$emit("reset-page");
+        emitter.emit("getCartNum");
       });
     },
     useCoupon() {
