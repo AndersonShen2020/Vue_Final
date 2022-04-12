@@ -3,7 +3,7 @@
   <div class="d-flex justify-content-around mb-3">
     <span class="fs-3 fw-bold">確認訂單內容</span>
     <button
-      @click="clearAllCarts()"
+      @click="openDelCartModal()"
       class="btn btn-outline-danger"
       type="button"
       :disabled="cartData.carts?.length === 0"
@@ -63,6 +63,7 @@
       <p class="text-success" v-if="isCoupon">折扣價 NT$ {{ cartData.final_total }}</p>
     </li>
   </ul>
+  <DelCart ref="delCart" @del-cart="clearAllCarts" />
 </template>
 
 <script>
@@ -75,10 +76,13 @@ const path = process.env.VUE_APP_PATH; // 請加入個人 API path
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
 
+import DelCart from "@/components/FrontEnd/DelCart.vue";
+
 export default {
   emits: ["reset-page"],
   components: {
     Loading,
+    DelCart,
   },
   data() {
     return {
@@ -121,6 +125,7 @@ export default {
       axios.delete(`${url}/api/${path}/carts`).then(() => {
         this.getCart();
         this.$emit("reset-page");
+        this.$refs.delCart.hideModal();
         emitter.emit("getCartNum");
       });
     },
@@ -131,6 +136,10 @@ export default {
         this.getCart();
         this.isCoupon = true;
       });
+    },
+    openDelCartModal() {
+      const delCart = this.$refs.delCart;
+      delCart.openModal();
     },
   },
   watch: {
