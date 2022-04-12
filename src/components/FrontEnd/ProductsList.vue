@@ -37,7 +37,7 @@
                 <button
                   type="button"
                   class="btn align-self-center btn-cart"
-                  @click="addToCart(product.id)"
+                  @click.prevent="addToCart(product.id)"
                   :disabled="isLoadingItem === product.id"
                 >
                   <span
@@ -74,7 +74,7 @@
               <button
                 type="button"
                 class="btn btn-cart align-self-center"
-                @click="addToCart(product.id)"
+                @click.prevent="addToCart(product.id)"
                 :disabled="isLoadingItem === product.id"
               >
                 <span
