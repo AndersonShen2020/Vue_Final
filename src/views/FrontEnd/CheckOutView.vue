@@ -27,7 +27,9 @@
         <ul class="list-unstyled p-3">
           <p class="d-flex fs-3 fw-bold">
             訂單內容
-            <span :class="{ 'text-danger': !isPaid, 'text-success': isPaid }">(未付款)</span>
+            <span :class="{ 'text-danger': !isPaid, 'text-success': isPaid }"
+              >({{ isPaid ? "付款成功" : "未付款" }})</span
+            >
           </p>
           <li class="py-3 border-bottom" v-for="product in order.products" :key="product.id">
             <div class="d-flex justify-content-between">
