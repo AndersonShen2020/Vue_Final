@@ -109,7 +109,9 @@
             </div>
             <div class="col-sm-8">
               <div class="mb-3">
-                <label for="title" class="form-label"><span class="text-danger">*</span>標題</label>
+                <label for="title" class="form-label"
+                  >標題 <span class="text-danger">*</span></label
+                >
                 <input
                   id="title"
                   type="text"
@@ -122,7 +124,7 @@
               <div class="row">
                 <div class="mb-3 col-md-3">
                   <label for="category" class="form-label"
-                    ><span class="text-danger">*</span> 主分類</label
+                    >主分類 <span class="text-danger">*</span></label
                   >
                   <input
                     id="category"
@@ -134,7 +136,7 @@
                 </div>
                 <div class="mb-3 col-md-3">
                   <label for="category" class="form-label"
-                    ><span class="text-danger">*</span>次分類</label
+                    >次分類 <span class="text-danger">*</span></label
                   >
                   <input
                     id="category"
@@ -146,7 +148,7 @@
                 </div>
                 <div class="mb-3 col-md-6">
                   <label for="price" class="form-label"
-                    ><span class="text-danger">*</span> 單位</label
+                    >單位 <span class="text-danger">*</span></label
                   >
                   <input
                     id="unit"

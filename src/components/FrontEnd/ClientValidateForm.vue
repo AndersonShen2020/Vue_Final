@@ -1,14 +1,15 @@
 <template>
-  <Form ref="form" autocomplete="off" v-slot="{ errors }" @submit="onSubmit">
-    <div class="mb-3">
-      <label for="email" class="form-label"><span class="text-danger">*</span> Email</label>
+  <Form ref="form" autocomplete="off" v-slot="{ errors }" @submit="onSubmit"
+    ><small class="text-muted"><span class="text-danger">*</span> 為必填資料 </small>
+    <div class="my-3">
+      <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
       <Field
         id="email"
         name="email"
         type="email"
         class="form-control"
         :class="{ 'is-invalid': errors['email'] }"
-        rules="email"
+        rules="required|email"
         placeholder="請輸入 Email"
         v-model="clientFrom.user.email"
       />
@@ -16,7 +17,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="name" class="form-label"><span class="text-danger">*</span> 收件人姓名</label>
+      <label for="name" class="form-label">收件人姓名 <span class="text-danger">*</span></label>
       <Field
         id="name"
         name="姓名"
@@ -31,7 +32,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="tel" class="form-label"><span class="text-danger">*</span> 收件人電話</label>
+      <label for="tel" class="form-label">收件人電話 <span class="text-danger">*</span></label>
       <Field
         id="tel"
         name="mobile"
@@ -39,7 +40,7 @@
         class="form-control"
         :class="{ 'is-invalid': errors['mobile'] }"
         :rules="isPhone"
-        placeholder="請輸入手機號碼"
+        placeholder="請輸入手機號碼 EX:0923456785"
         v-model="clientFrom.user.tel"
       />
       <ErrorMessage name="mobile" v-slot="{ message }">
@@ -48,7 +49,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="address" class="form-label"><span class="text-danger">*</span> 收件人地址</label>
+      <label for="address" class="form-label">收件人地址 <span class="text-danger">*</span></label>
       <Field
         id="address"
         name="地址"
