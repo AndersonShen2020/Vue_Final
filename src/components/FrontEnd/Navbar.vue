@@ -14,6 +14,7 @@
         <div class="position-relative">
           <span
             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            v-if="cartData.length !== 0"
             >{{ cartData.length }}</span
           >
           <i class="bi bi-cart"></i>
