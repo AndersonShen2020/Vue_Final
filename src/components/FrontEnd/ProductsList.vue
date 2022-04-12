@@ -55,7 +55,7 @@
   </template>
   <!-- grid 樣式 -->
   <template class="d-none d-lg-block">
-    <div class="row row-cols-md-3 row-cols-1 gy-3">
+    <div class="row row-cols-md-3 row-cols-1 g-4">
       <div class="col" v-for="product in filterProducts" :key="product.id">
         <RouterLink :to="`/product/${product.id}`">
           <div class="card border-0 h-100 product-effect p-1">
