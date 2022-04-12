@@ -45,7 +45,7 @@
           </span>
         </div>
       </div>
-      <div class="col-md-2 text-end">$ {{ product.final_total }} NTD</div>
+      <div class="col-md-2 text-end">NT$ {{ product.final_total }}</div>
     </li>
     <li class="py-3">
       <div class="input-group">

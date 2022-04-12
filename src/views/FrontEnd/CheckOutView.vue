@@ -32,18 +32,15 @@
           <li class="py-3 border-bottom" v-for="product in order.products" :key="product.id">
             <div class="d-flex justify-content-between">
               <div>{{ product.product.title }}</div>
-              <div>$ {{ product.final_total }} NTD</div>
+              <div>NT$ {{ product.final_total }}</div>
             </div>
             <div>數量：{{ product.product.num }}</div>
           </li>
           <li>
-            總計金額：$
-            <span
-              class="fs-5 fw-bold"
-              :class="{ 'text-danger': !isPaid, 'text-success': isPaid }"
-              >{{ order.total }}</span
+            總計金額：NT$
+            <span class="fs-5 fw-bold" :class="{ 'text-danger': !isPaid, 'text-success': isPaid }">
+              {{ order.total }}</span
             >
-            NTD
           </li>
         </ul>
       </div>
@@ -53,13 +50,13 @@
           <li class="row">
             <p class="col-4">訂單金額：</p>
             <p class="col">
-              $
+              NT$
               <span
                 class="fs-5 fw-bold"
                 :class="{ 'text-danger': !isPaid, 'text-success': isPaid }"
-                >{{ order.total }}</span
               >
-              NTD
+                {{ order.total }}</span
+              >
             </p>
           </li>
           <li class="row">

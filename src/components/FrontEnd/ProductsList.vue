@@ -30,8 +30,8 @@
                 {{ product.price }} 元
               </div>
               <div v-else>
-                <del class="h6 text-gray">NT${{ product.origin_price }}</del>
-                <div class="h5 text-danger">NT${{ product.price }}</div>
+                <del class="h6 text-gray">NT$ {{ product.origin_price }}</del>
+                <div class="h5 text-danger">NT$ {{ product.price }}</div>
               </div>
               <div class="d-flex">
                 <button
