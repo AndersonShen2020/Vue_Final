@@ -171,22 +171,6 @@ export default {
   white-space: pre-wrap;
 }
 
-@media screen and (min-width: 320px) {
-  .card {
-    height: 410px;
-  }
-}
-@media screen and (min-width: 480px) {
-  .card {
-    height: 410px;
-  }
-}
-@media screen and (min-width: 640px) {
-  .card {
-    height: 410px;
-  }
-}
-
 .card > .card-img {
   min-height: 250px;
   background-size: cover;

@@ -200,22 +200,6 @@ export default {
   text-shadow: white 0.1em 0.1em 0.2em;
 }
 
-@media screen and (min-width: 320px) {
-  .card {
-    height: 410px;
-  }
-}
-@media screen and (min-width: 480px) {
-  .card {
-    height: 410px;
-  }
-}
-@media screen and (min-width: 640px) {
-  .card {
-    height: 410px;
-  }
-}
-
 .card > .card-img {
   min-height: 200px;
   background-size: cover;
