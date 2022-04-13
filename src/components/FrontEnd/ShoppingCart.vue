@@ -48,6 +48,9 @@
       <div class="col-md-2 text-end">NT$ {{ product.final_total }}</div>
     </li>
     <li class="py-3">
+      <p :class="{ 'text-success': isCoupon, 'text-danger': !isCoupon }" class="mb-3">
+        {{ couponMsg }}
+      </p>
       <div class="input-group">
         <input
           type="text"
@@ -93,6 +96,7 @@ export default {
       isEnableSend: false,
       couponCode: "",
       isCoupon: false,
+      couponMsg: "",
     };
   },
   methods: {
@@ -131,11 +135,17 @@ export default {
     },
     useCoupon() {
       const coupon = { code: this.couponCode };
-      axios.post(`${url}/api/${path}/coupon`, { data: coupon }).then(() => {
-        this.isLoading = true;
-        this.getCart();
-        this.isCoupon = true;
-      });
+      axios
+        .post(`${url}/api/${path}/coupon`, { data: coupon })
+        .then((res) => {
+          this.isLoading = true;
+          this.getCart();
+          this.isCoupon = true;
+          this.couponMsg = res.data.message;
+        })
+        .catch((err) => {
+          this.couponMsg = err.response.data.message;
+        });
     },
     openDelCartModal() {
       const delCart = this.$refs.delCart;
