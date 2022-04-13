@@ -1,32 +1,15 @@
 <template>
   <Loading :active="isLoading"></Loading>
-  <!-- 開頭 Swiper -->
-  <div class="container py-5">
-    <Swiper
-      :slidesPerView="1"
-      :spaceBetween="10"
-      :loop="true"
-      :autoplay="{
-        delay: 3000,
-        disableOnInteraction: false,
-      }"
-      :modules="modules"
+  <div class="leading-img d-flex justify-content-center bg-cover2 position-relative">
+    <div
+      class="text-primary align-self-center bg-dark bg-opacity-25 p-3 leading-title leading-text"
     >
-      <SwiperSlide>
-        <div class="leading-img d-flex bg-cover1">
-          <p class="text-primary text-center fw-bold w-100 align-self-center leading-text">
-            一天的起點，從咖啡開始
-          </p>
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div class="leading-img d-flex bg-cover2">
-          <p class="text-secondary text-center w-100 align-self-center leading-text">
-            工作與咖啡是最佳搭配
-          </p>
-        </div>
-      </SwiperSlide>
-    </Swiper>
+      <p class="h3">工作與咖啡有各種組合</p>
+      <p class="h3 leading-text-indent">找到專屬於你的最佳搭配</p>
+    </div>
+    <div class="position-absolute bottom-0 start-50 translate-middle-x">
+      <div class="d3 down-animation"></div>
+    </div>
   </div>
   <!-- 產品 -->
   <div class="bg-light bg-opacity-50 py-5">
@@ -50,10 +33,10 @@
   <!-- 知識 -->
   <div class="container my-3">
     <div class="row">
-      <div class="col-md-6 d-none d-md-block">
+      <div class="col-md-7 d-none d-md-block">
         <div class="bg-image1"></div>
       </div>
-      <div class="col-md-6 d-flex flex-column justify-content-center">
+      <div class="col-md-5 d-flex flex-column justify-content-center">
         <h3 class="coffee-header">咖啡品種</h3>
         <div class="text-start text-lg-center text-coffee">
           <p>咖啡豆的產地主要來自非洲、南美洲及亞洲地區</p>
@@ -68,8 +51,8 @@
         </div>
       </div>
     </div>
-    <div class="row mt-3">
-      <div class="col-md-6 d-flex flex-column justify-content-center">
+    <div class="row mt-5">
+      <div class="col-md-5 d-flex flex-column justify-content-center">
         <h3 class="coffee-header">咖啡烘焙</h3>
         <div class="text-start text-lg-center text-coffee">
           <p>烘焙咖啡使咖啡生豆通過烘炒轉變為已烘焙的咖啡製品。</p>
@@ -86,15 +69,15 @@
           </RouterLink>
         </div>
       </div>
-      <div class="col-md-6 d-none d-md-block">
+      <div class="col-md-7 d-none d-md-block">
         <div class="bg-image2"></div>
       </div>
     </div>
-    <div class="row mt-3">
-      <div class="col-md-6 d-none d-md-block">
+    <div class="row mt-5">
+      <div class="col-md-7 d-none d-md-block">
         <div class="bg-image3"></div>
       </div>
-      <div class="col-md-6 d-flex flex-column justify-content-center">
+      <div class="col-md-5 d-flex flex-column justify-content-center">
         <h3 class="coffee-header">手沖咖啡</h3>
         <div class="text-start text-lg-center text-coffee">
           <p>手沖咖啡一點也不難！</p>
@@ -183,21 +166,39 @@ export default {
 
 <style lang="scss">
 .leading-img {
-  min-height: 300px;
+  min-height: calc(100vh - 68px);
   background-size: cover;
-  background-position: center center;
+  background-position: center bottom;
   background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 390px) {
   .leading-img {
-    min-height: 100px;
+    background-position: left;
   }
 }
 
 .leading-text {
+  padding: 1rem;
   letter-spacing: 0.25rem;
   text-shadow: white 0.1em 0.1em 0.2em;
+  &-indent {
+    text-indent: 10vmin;
+  }
+}
+
+.leading-title {
+  transform: translate(100%, -40%);
+}
+
+@media screen and (max-width: 575.98px) {
+  .leading-img {
+    background-position: left;
+  }
+  .leading-title {
+    writing-mode: vertical-rl;
+    transform: translate(-80%, -40%);
+  }
 }
 
 .card > .card-img {
@@ -216,7 +217,7 @@ export default {
 }
 
 .bg-cover2 {
-  background-image: url("../../assets/img/cover02.jpg");
+  background-image: url("../../assets/img/cover04.jpg");
 }
 
 .bg-image1 {
@@ -230,13 +231,44 @@ export default {
   background-image: url("../../assets/img/image02.jpg");
   height: 400px;
   background-size: cover;
-  // background-position: center;
 }
 
 .bg-image3 {
   background-image: url("../../assets/img/image03.jpg");
   height: 400px;
   background-size: cover;
-  // background-position: center;
+}
+
+.d3 {
+  margin-left: 10px;
+  float: left;
+  width: 0;
+  height: 0;
+  border-width: 50px;
+  border-style: solid;
+  border-color: rgb(255, 255, 255) transparent transparent transparent;
+}
+
+.down-animation {
+  position: relative;
+  animation: down-ani 3s ease infinite;
+}
+
+@keyframes down-ani {
+  25% {
+    opacity: 1;
+  }
+  33.3% {
+    opacity: 1;
+    transform: translateY(0.6rem * 3.8);
+  }
+  // 66.6% {
+  //   opacity: 1;
+  //   transform: translateY(0.6rem * 5.2);
+  // }
+  100% {
+    opacity: 0;
+    transform: translateY(0.6rem * 8) scale(0.5);
+  }
 }
 </style>
