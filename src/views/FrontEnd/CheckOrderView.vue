@@ -71,7 +71,6 @@ export default {
       try {
         const res = await axios.get(`${url}/api/${path}/cart`);
         this.products = res.data.data.carts;
-        console.log("[CheckOut] getCart");
       } catch (err) {
         this.isLoading = false;
       }
