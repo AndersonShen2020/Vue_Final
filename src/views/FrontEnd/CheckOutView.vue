@@ -73,7 +73,9 @@
           </li>
           <li class="row">
             <p class="col-4">Email：</p>
-            <p class="col">{{ order?.user?.email }}</p>
+            <p class="col">
+              <a :href="'mailto:' + order?.user?.email">{{ order?.user?.email }}</a>
+            </p>
           </li>
           <li class="row">
             <p class="col-4">收件人姓名：</p>
@@ -81,7 +83,11 @@
           </li>
           <li class="row">
             <p class="col-4">聯絡電話</p>
-            <p class="col">{{ order?.user?.tel }}</p>
+            <p class="col">
+              <a :href="'tel:+' + order?.user?.tel">
+                {{ order?.user?.tel }}
+              </a>
+            </p>
           </li>
           <li class="row">
             <p class="col-4">收件地址：</p>
