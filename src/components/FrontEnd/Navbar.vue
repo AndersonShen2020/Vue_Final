@@ -65,11 +65,6 @@
               產品列表
             </RouterLink>
           </li>
-          <li class="nav-item">
-            <RouterLink class="nav-link text-primary" to="/Login">
-              <i class="bi bi-person-circle"></i>
-            </RouterLink>
-          </li>
         </ul>
       </div>
     </div>
