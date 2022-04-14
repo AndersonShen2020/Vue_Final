@@ -36,7 +36,7 @@
               <div>{{ product.product.title }}</div>
               <div>NT$ {{ product.final_total }}</div>
             </div>
-            <div>數量：{{ product.product.num }}</div>
+            <div>數量：{{ product.qty }}</div>
           </li>
           <li>
             總計金額：NT$
