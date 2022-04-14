@@ -1,13 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-secondary bg-opacity-50">
     <div class="container">
-      <RouterLink class="navbar-brand" to="/" @click="closeNavHam()">
-        <span class="logo">CoffeeRoast</span>
-      </RouterLink>
-
       <!-- cart -->
       <RouterLink
-        class="nav-link ms-auto text-primary order-lg-3"
+        class="nav-link text-primary order-lg-2 order-md-0"
         to="/CheckOrder"
         @click="closeNavHam()"
       >
@@ -20,9 +16,15 @@
           <i class="bi bi-cart"></i>
         </div>
       </RouterLink>
+
+      <!-- Logo -->
+      <RouterLink class="navbar-brand order-lg-0 order-md-1" to="/" @click="closeNavHam()">
+        <span class="logo">CoffeeRoast</span>
+      </RouterLink>
+
       <!-- 漢堡選單 -->
       <button
-        class="navbar-toggler"
+        class="navbar-toggler order-md-2"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#navbarSupportedContent"
@@ -31,7 +33,7 @@
       </button>
       <!-- 摺疊 -->
       <div
-        class="collapse navbar-collapse justify-content-end"
+        class="collapse navbar-collapse justify-content-end order-lg-1"
         id="navbarSupportedContent"
         ref="collapse"
       >
