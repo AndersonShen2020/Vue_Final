@@ -21,10 +21,14 @@ Node 的版本使用 v12.19.0
 
 ## 開發過程的問題紀錄
 
+### Bootstrap Modal 的使用
+
+如果有重複實例化(`new Modal(this.$refs.modal);`)，會無法正常運作。
+擔心會重複實例化就設計成使用 mixins 載入，這樣只要在 mixins 中實例化就好
+
 ### 載入 bootstrap-icons
 
-官方文件並沒有告知要如何在 npm 的情況下使用
-所以模仿 Bootstrap 的模式找到 `bootstrap-icons.css` 這個檔案來載入使用
+官方文件並沒有告知要如何在 npm 的情況下使用，所以模仿 Bootstrap 的模式找到 `bootstrap-icons.css` 這個檔案來載入使用
 
 ```scss
 @import "~bootstrap-icons/font/bootstrap-icons.css";
