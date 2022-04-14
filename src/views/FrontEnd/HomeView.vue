@@ -251,21 +251,13 @@ export default {
 
 .down-animation {
   position: relative;
-  animation: down-ani 3s ease infinite;
+  animation: down-ani 2s ease infinite;
 }
 
 @keyframes down-ani {
   25% {
     opacity: 1;
   }
-  33.3% {
-    opacity: 1;
-    transform: translateY(0.6rem * 3.8);
-  }
-  // 66.6% {
-  //   opacity: 1;
-  //   transform: translateY(0.6rem * 5.2);
-  // }
   100% {
     opacity: 0;
     transform: translateY(0.6rem * 8) scale(0.5);
