@@ -43,8 +43,8 @@ import ValidateForm from "@/components/FrontEnd/ClientValidateForm.vue";
 import ShoppingCart from "@/components/FrontEnd/ShoppingCart.vue";
 
 import axios from "axios";
-const url = process.env.VUE_APP_API; // 請加入站點
-const path = process.env.VUE_APP_PATH; // 請加入個人 API path
+const url = process.env.VUE_APP_API;
+const path = process.env.VUE_APP_PATH;
 
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";

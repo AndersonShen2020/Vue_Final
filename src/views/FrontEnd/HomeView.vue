@@ -102,12 +102,11 @@
 import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue/swiper-vue";
 
-// Import Swiper styles
 import "swiper/swiper.scss";
 
 import axios from "axios";
-const url = process.env.VUE_APP_API; // 請加入站點
-const path = process.env.VUE_APP_PATH; // 請加入個人 API path
+const url = process.env.VUE_APP_API;
+const path = process.env.VUE_APP_PATH;
 
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
@@ -123,16 +122,14 @@ export default {
       modules: [Autoplay],
       coffeeProducts: [],
       breakpoints: {
-        // when window width is >= 320px
         320: {
           slidesPerView: 1,
           spaceBetween: 10,
         },
-        // when window width is >= 480px
         480: {
           slidesPerView: 3,
           spaceBetween: 60,
-        }, // when window width is >= 640px
+        },
         640: {
           slidesPerView: 4,
           spaceBetween: 40,

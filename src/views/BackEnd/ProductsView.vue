@@ -60,7 +60,6 @@
 import { getProducts } from "@/api/axios";
 import modal from "bootstrap/js/dist/modal";
 
-// component
 import Pagination from "@/components/common/Pagination";
 import ProductModal from "@/components/BackEnd/ProductModal.vue";
 import DelProductModal from "@/components/BackEnd/DelProduct";
@@ -142,7 +141,6 @@ export default {
     this.productModal = new modal(document.getElementById("productModal"), {
       keyboard: false,
     });
-    // 刪除使用 delProductModal
     this.delProductModal = new modal(document.getElementById("delProductModal"), {
       keyboard: false,
     });

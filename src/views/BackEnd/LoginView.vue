@@ -80,9 +80,7 @@ export default {
   margin: auto;
   display: flex;
   justify-content: center;
-  // align-items: center;
-  // position: relative;
-  min-height: 100vh; // 66 是header, 24 是預計 footer
+  min-height: 100vh;
   flex-direction: column;
 }
 </style>

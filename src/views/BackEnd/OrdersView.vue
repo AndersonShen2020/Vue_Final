@@ -66,7 +66,6 @@
 <script>
 import axios from "axios";
 
-// component
 import Pagination from "@/components/common/Pagination";
 import OrderModal from "@/components/BackEnd/OrderModal.vue";
 import DelOrderModal from "@/components/BackEnd/DelOrder";

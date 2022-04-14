@@ -174,14 +174,12 @@
 <script>
 import emitter from "@/api/mitt.js";
 import axios from "axios";
-const url = process.env.VUE_APP_API; // 請加入站點
-const path = process.env.VUE_APP_PATH; // 請加入個人 API path
+const url = process.env.VUE_APP_API;
+const path = process.env.VUE_APP_PATH;
 
-// Import Swiper Vue.js components
 import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue/swiper-vue";
 
-// Import Swiper styles
 import "swiper/swiper.scss";
 
 import CardComponent from "@/components/common/CardComponent.vue";
@@ -200,7 +198,6 @@ export default {
       products: [],
       modules: [Autoplay],
       swiperOptions: {
-        // Default parameters
         slidesPerView: 1,
         spaceBetween: 10,
         autoplay: {
@@ -208,19 +205,15 @@ export default {
           disableOnInteraction: false,
         },
         loop: true,
-        // Responsive breakpoints
         breakpoints: {
-          // when window width is >= 320px
           320: {
             slidesPerView: 1,
             spaceBetween: 20,
           },
-          // when window width is >= 480px
           480: {
             slidesPerView: 3,
             spaceBetween: 30,
           },
-          // when window width is >= 640px
           640: {
             slidesPerView: 4,
             spaceBetween: 40,

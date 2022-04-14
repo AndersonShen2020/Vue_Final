@@ -90,16 +90,15 @@ import { localize, setLocale } from "@vee-validate/i18n";
 import zhTW from "@vee-validate/i18n/dist/locale/zh_TW.json";
 
 import axios from "axios";
-const url = process.env.VUE_APP_API; // 請加入站點
-const path = process.env.VUE_APP_PATH; // 請加入個人 API path
+const url = process.env.VUE_APP_API;
+const path = process.env.VUE_APP_PATH;
 
 defineRule("required", required);
 defineRule("email", email);
 defineRule("min", min);
 
 configure({
-  generateMessage: localize({ zh_TW: zhTW }), // 載入繁體中文語系
-  // validateOnInput: true, // 當輸入任何內容直接進行驗證
+  generateMessage: localize({ zh_TW: zhTW }),
 });
 
 setLocale("zh_TW");

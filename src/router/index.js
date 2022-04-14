@@ -100,7 +100,7 @@ const routes = [
     ],
   },
   {
-    // 輸入錯誤網址跳回到首頁
+    // 輸入錯誤網址跳到 404 頁面
     path: "/:pathMatch(.*)*",
     name: "Error",
     component: () => import("@/views/Error.vue"),

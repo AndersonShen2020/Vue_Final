@@ -73,20 +73,17 @@ p {
   background-image: url("../../../assets/img/image04.jpg");
   height: 200px;
   background-size: cover;
-  // background-position: center;
 }
 
 .bg-roast-image2 {
   background-image: url("../../../assets/img/image02.jpg");
   height: 300px;
   background-size: cover;
-  // background-position: center;
 }
 
 .bg-roast-image3 {
   background-image: url("../../../assets/img/image01.jpg");
   height: 300px;
   background-size: cover;
-  // background-position: center;
 }
 </style>
