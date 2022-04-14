@@ -26,8 +26,10 @@
           x
         </button>
       </div>
-      <div class="col me-auto px-3">{{ product.product.title }}</div>
-      <div class="col-md-4">
+      <div class="col me-auto px-3 text-center">
+        {{ product.product.title }}
+      </div>
+      <div class="col-md-3">
         <div class="input-group input-group-sm">
           <select
             id=""
@@ -44,8 +46,8 @@
             {{ product.product.unit }}
           </span>
         </div>
+        <div class="text-end mt-1">NT$ {{ product.final_total }}</div>
       </div>
-      <div class="col-md-2 text-end">NT$ {{ product.final_total }}</div>
     </li>
     <li class="py-3">
       <p :class="{ 'text-success': isCoupon, 'text-danger': !isCoupon }" class="mb-3">
