@@ -50,7 +50,7 @@
           <p>亞洲則是酸度低並帶有香料風味</p>
         </div>
         <div class="d-flex justify-content-end">
-          <RouterLink class="btn coffee-btn text-secondary" to="/KnowledgeView">
+          <RouterLink class="btn coffee-btn" to="/KnowledgeView">
             查看咖啡品種
           </RouterLink>
         </div>
@@ -73,7 +73,7 @@
         </div>
         <div class="d-flex justify-content-end">
           <RouterLink
-            class="btn coffee-btn text-secondary"
+            class="btn coffee-btn"
             :to="{ path: '/KnowledgeView', query: { state: 'coffeeRoast' } }"
           >
             查看咖啡烘焙
@@ -98,7 +98,7 @@
         </div>
         <div class="d-flex justify-content-end">
           <RouterLink
-            class="btn coffee-btn text-secondary"
+            class="btn coffee-btn"
             :to="{ path: '/KnowledgeView', query: { state: 'coffeeBrew' } }"
           >
             查看手沖咖啡

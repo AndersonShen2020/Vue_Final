@@ -36,38 +36,29 @@ a {
 }
 
 .coffee-header {
-  margin-top: 0.25rem !important;
-  padding-top: 0.25rem !important;
-  padding-bottom: 0.25rem !important;
-  padding-left: 0.5rem !important;
+  margin-top: 0.25rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
   --bs-text-opacity: 1;
   --bs-bg-opacity: 1;
-  color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !important;
-  background-color: rgba(
-    var(--bs-primary-rgb),
-    var(--bs-bg-opacity)
-  ) !important;
-  font-weight: 700 !important;
+  color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity));
+  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity));
+  font-weight: 700;
 }
 
 .coffee-btn {
   --bs-text-opacity: 1;
   --bs-bg-opacity: 1;
-  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
-  background-color: rgba(
-    var(--bs-secondary-rgb),
-    var(--bs-bg-opacity)
-  ) !important;
+  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity));
+  background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity));
 }
 
 .coffee-btn:hover {
   --bs-text-opacity: 1;
   --bs-bg-opacity: 1;
-  color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !important;
-  background-color: rgba(
-    var(--bs-primary-rgb),
-    var(--bs-bg-opacity)
-  ) !important;
+  color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity));
+  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity));
 }
 
 #app {

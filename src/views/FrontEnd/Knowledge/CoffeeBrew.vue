@@ -18,7 +18,9 @@
     <p>
       手沖咖啡的溫度影響者咖啡的香氣和口感，建議手沖咖啡的水溫掌握在85～95℃之間，高溫的特色是讓咖啡的香氣更明顯，但超過95℃容易帶出咖啡粉的雜質，沖出苦澀的咖啡。
     </p>
-    <p>低溫的特色是能帶出咖啡的酸甜味，不會過度萃取引出咖啡的苦味，但口感喝起來涼涼的。</p>
+    <p>
+      低溫的特色是能帶出咖啡的酸甜味，不會過度萃取引出咖啡的苦味，但口感喝起來涼涼的。
+    </p>
     <p>手沖咖啡新手也能體驗沖煮不同水溫，比較85℃、90℃的口感找到自己的最愛！</p>
 
     <div class="border border-3 rounded border-secondary">
@@ -45,15 +47,4 @@
 * {
   margin: 1rem auto;
 }
-
-/* .coffee-header {
-  padding-top: 0.25rem !important;
-  padding-bottom: 0.25rem !important;
-  padding-left: 0.5rem !important;
-  --bs-text-opacity: 1;
-  --bs-bg-opacity: 1;
-  color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !important;
-  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
-  font-weight: 700 !important;
-} */
 </style>
