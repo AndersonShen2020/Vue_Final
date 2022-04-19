@@ -72,111 +72,111 @@
 </template>
 
 <script>
-import emitter from "@/api/mitt.js";
+import emitter from '@/api/mitt.js'
 
-import axios from "axios";
-const url = process.env.VUE_APP_API;
-const path = process.env.VUE_APP_PATH;
+import axios from 'axios'
 
-import Loading from "vue-loading-overlay";
-import "vue-loading-overlay/dist/vue-loading.css";
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 
-import DelCart from "@/components/FrontEnd/DelCart.vue";
+import DelCart from '@/components/FrontEnd/DelCart.vue'
+const url = process.env.VUE_APP_API
+const path = process.env.VUE_APP_PATH
 
 export default {
-  emits: ["reset-page"],
+  emits: ['reset-page'],
   components: {
     Loading,
-    DelCart,
+    DelCart
   },
-  data() {
+  data () {
     return {
       cartData: {},
       productId: null,
-      isLoadingItem: "",
+      isLoadingItem: '',
       isLoading: false,
       isEnableSend: false,
-      couponCode: "",
+      couponCode: '',
       isCoupon: false,
-      couponMsg: "",
-    };
+      couponMsg: ''
+    }
   },
   methods: {
-    removeCartItem(id) {
-      this.isLoadingItem = id;
+    removeCartItem (id) {
+      this.isLoadingItem = id
       axios.delete(`${url}/api/${path}/cart/${id}`).then(() => {
-        this.getCart();
-        this.$emit("reset-page");
-        this.isLoadingItem = "";
-        emitter.emit("getCartNum");
-      });
+        this.getCart()
+        this.$emit('reset-page')
+        this.isLoadingItem = ''
+        emitter.emit('getCartNum')
+      })
     },
-    getCart() {
+    getCart () {
       axios.get(`${url}/api/${path}/cart`).then((res) => {
-        this.cartData = res.data.data;
-        this.isLoading = false;
-      });
+        this.cartData = res.data.data
+        this.isLoading = false
+      })
     },
-    updateCartItem(item) {
-      let data = {
+    updateCartItem (item) {
+      const data = {
         product_id: item.id,
-        qty: item.qty,
-      };
+        qty: item.qty
+      }
       axios.put(`${url}/api/${path}/cart/${item.id}`, { data }).then(() => {
-        this.getCart();
-        this.isLoadingItem = "";
-      });
+        this.getCart()
+        this.isLoadingItem = ''
+      })
     },
-    clearAllCarts() {
+    clearAllCarts () {
       axios.delete(`${url}/api/${path}/carts`).then(() => {
-        this.getCart();
-        this.$emit("reset-page");
-        this.$refs.delCart.hideModal();
-        emitter.emit("getCartNum");
-      });
+        this.getCart()
+        this.$emit('reset-page')
+        this.$refs.delCart.hideModal()
+        emitter.emit('getCartNum')
+      })
     },
-    useCoupon() {
-      const coupon = { code: this.couponCode };
+    useCoupon () {
+      const coupon = { code: this.couponCode }
       axios
         .post(`${url}/api/${path}/coupon`, { data: coupon })
         .then((res) => {
-          this.isLoading = true;
-          this.getCart();
-          this.isCoupon = true;
-          this.couponMsg = res.data.message;
+          this.isLoading = true
+          this.getCart()
+          this.isCoupon = true
+          this.couponMsg = res.data.message
         })
         .catch((err) => {
-          this.couponMsg = err.response.data.message;
-        });
+          this.couponMsg = err.response.data.message
+        })
     },
-    openDelCartModal() {
-      const delCart = this.$refs.delCart;
-      delCart.openModal();
-    },
+    openDelCartModal () {
+      const delCart = this.$refs.delCart
+      delCart.openModal()
+    }
   },
   watch: {
-    cartData(newVal) {
-      if (newVal.carts.length === 0) this.isEnableSend = false;
-      else this.isEnableSend = true;
-      const vm = this;
-      emitter.emit("cartSend", vm.isEnableSend);
-    },
+    cartData (newVal) {
+      if (newVal.carts.length === 0) this.isEnableSend = false
+      else this.isEnableSend = true
+      const vm = this
+      emitter.emit('cartSend', vm.isEnableSend)
+    }
   },
-  created() {
-    const vm = this;
-    emitter.on("clearCart", () => {
-      vm.getCart();
-    });
+  created () {
+    const vm = this
+    emitter.on('clearCart', () => {
+      vm.getCart()
+    })
   },
-  mounted() {
-    this.isLoading = true;
-    this.getCart();
+  mounted () {
+    this.isLoading = true
+    this.getCart()
   },
-  unmounted() {
-    const vm = this;
-    emitter.off("clearCart", () => {
-      vm.getCart();
-    });
-  },
-};
+  unmounted () {
+    const vm = this
+    emitter.off('clearCart', () => {
+      vm.getCart()
+    })
+  }
+}
 </script>

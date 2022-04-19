@@ -82,71 +82,71 @@
 </template>
 
 <script>
-import emitter from "@/api/mitt.js";
+import emitter from '@/api/mitt.js'
 
-import { Form, Field, ErrorMessage, defineRule, configure } from "vee-validate";
-import { required, email, min } from "@vee-validate/rules";
-import { localize, setLocale } from "@vee-validate/i18n";
-import zhTW from "@vee-validate/i18n/dist/locale/zh_TW.json";
+import { Form, Field, ErrorMessage, defineRule, configure } from 'vee-validate'
+import { required, email, min } from '@vee-validate/rules'
+import { localize, setLocale } from '@vee-validate/i18n'
+import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
 
-import axios from "axios";
-const url = process.env.VUE_APP_API;
-const path = process.env.VUE_APP_PATH;
+import axios from 'axios'
+const url = process.env.VUE_APP_API
+const path = process.env.VUE_APP_PATH
 
-defineRule("required", required);
-defineRule("email", email);
-defineRule("min", min);
+defineRule('required', required)
+defineRule('email', email)
+defineRule('min', min)
 
 configure({
-  generateMessage: localize({ zh_TW: zhTW }),
-});
+  generateMessage: localize({ zh_TW: zhTW })
+})
 
-setLocale("zh_TW");
+setLocale('zh_TW')
 
 export default {
-  data() {
+  data () {
     return {
       clientFrom: {
         user: {
-          name: "",
-          email: "",
-          tel: "",
-          address: "",
+          name: '',
+          email: '',
+          tel: '',
+          address: ''
         },
-        message: "",
+        message: ''
       },
-      isEnableSend: false,
-    };
+      isEnableSend: false
+    }
   },
   components: {
     Form,
     Field,
-    ErrorMessage,
+    ErrorMessage
   },
   methods: {
-    async onSubmit() {
+    async onSubmit () {
       await axios.post(`${url}/api/${path}/order`, { data: this.clientFrom }).then((res) => {
-        this.clientFrom.message = "";
-        this.$refs.form.resetForm();
+        this.clientFrom.message = ''
+        this.$refs.form.resetForm()
         this.$router.push({
-          path: `/CheckOut/${res.data.orderId}`,
-        });
-      });
-      this.emit();
+          path: `/CheckOut/${res.data.orderId}`
+        })
+      })
+      this.emit()
     },
-    emit() {
-      emitter.emit("clearCart");
+    emit () {
+      emitter.emit('clearCart')
     },
-    isPhone(value) {
-      const phoneNumber = /^(09)[0-9]{8}$/;
-      return phoneNumber.test(value) ? true : "需要正確的電話號碼";
-    },
+    isPhone (value) {
+      const phoneNumber = /^(09)[0-9]{8}$/
+      return phoneNumber.test(value) ? true : '需要正確的電話號碼'
+    }
   },
-  mounted() {
-    const vm = this;
-    emitter.on("cartSend", (res) => {
-      vm.isEnableSend = res;
-    });
-  },
-};
+  mounted () {
+    const vm = this
+    emitter.on('cartSend', (res) => {
+      vm.isEnableSend = res
+    })
+  }
+}
 </script>

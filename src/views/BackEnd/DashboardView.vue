@@ -9,30 +9,30 @@
 </template>
 
 <script>
-import Navbar from "@/components/BackEnd/Navbar.vue";
-import Sidebar from "@/components/BackEnd/Sidebar.vue";
-import { checkAdmin } from "@/api/axios";
+import Navbar from '@/components/BackEnd/Navbar.vue'
+import Sidebar from '@/components/BackEnd/Sidebar.vue'
+import { checkAdmin } from '@/api/axios'
 
 export default {
   components: {
     Navbar,
-    Sidebar,
+    Sidebar
   },
-  created() {
-    checkAdmin();
+  created () {
+    checkAdmin()
   },
   watch: {
-    $route(to) {
-      if (to.name === "products") {
-        document.title = "產品管理";
-      } else if (to.name === "Coupons") {
-        document.title = "優惠卷管理";
-      } else if (to.name === "Orders") {
-        document.title = "訂單管理";
+    $route (to) {
+      if (to.name === 'products') {
+        document.title = '產品管理'
+      } else if (to.name === 'Coupons') {
+        document.title = '優惠卷管理'
+      } else if (to.name === 'Orders') {
+        document.title = '訂單管理'
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style lang="scss">

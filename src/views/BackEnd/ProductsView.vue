@@ -2,7 +2,9 @@
   <Loading :active="isLoading"></Loading>
   <div class="container">
     <div class="text-end mt-4">
-      <button type="button" class="btn btn-primary" @click="showModal('new')">建立新的產品</button>
+      <button type="button" class="btn btn-primary" @click="showModal('new')">
+        建立新的產品
+      </button>
     </div>
     <table class="table mt-4">
       <thead>
@@ -51,37 +53,41 @@
     <Pagination :pages="pagination" @emitpages="init"></Pagination>
   </div>
   <!-- Modal -->
-  <ProductModal :productinfo="tempProduct" :state="isNew" @update="init"></ProductModal>
+  <ProductModal
+    :productinfo="tempProduct"
+    :state="isNew"
+    @update="init"
+  ></ProductModal>
   <DelProductModal :productinfo="tempProduct" @update="init"></DelProductModal>
   <!-- Modal -->
 </template>
 
 <script>
-import { getProducts } from "@/api/axios";
-import modal from "bootstrap/js/dist/modal";
+import { getProducts } from '@/api/axios'
+import Modal from 'bootstrap/js/dist/modal'
 
-import Pagination from "@/components/common/Pagination";
-import ProductModal from "@/components/BackEnd/ProductModal.vue";
-import DelProductModal from "@/components/BackEnd/DelProduct";
+import Pagination from '@/components/common/Pagination'
+import ProductModal from '@/components/BackEnd/ProductModal.vue'
+import DelProductModal from '@/components/BackEnd/DelProduct'
 
-import Loading from "vue-loading-overlay";
-import "vue-loading-overlay/dist/vue-loading.css";
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 
-import titleMixin from "@/mixins/titleMixin";
+import titleMixin from '@/mixins/titleMixin'
 
 const tempProduct = {
-  title: "",
-  category: "",
+  title: '',
+  category: '',
   origin_price: 0,
   price: 0,
-  unit: "",
-  description: "",
-  content: "",
+  unit: '',
+  description: '',
+  content: '',
   is_enabled: 1,
-  imageUrl: "",
+  imageUrl: '',
   imagesUrl: [],
-  fileImage: "",
-};
+  fileImage: ''
+}
 
 export default {
   mixins: [titleMixin],
@@ -89,61 +95,64 @@ export default {
     Pagination,
     ProductModal,
     DelProductModal,
-    Loading,
+    Loading
   },
-  data() {
+  data () {
     return {
-      title: "產品管理",
+      title: '產品管理',
       products: [],
       pagination: null,
       isNew: false,
       tempProduct,
       productModal: null,
       delProductModal: null,
-      isLoading: false,
-    };
+      isLoading: false
+    }
   },
 
   methods: {
-    async init(page = 1) {
-      this.isLoading = true;
-      const { products, pagination } = await getProducts(page);
-      this.products = products;
-      this.pagination = pagination;
-      this.productModal.hide();
-      this.delProductModal.hide();
-      this.isLoading = false;
+    async init (page = 1) {
+      this.isLoading = true
+      const { products, pagination } = await getProducts(page)
+      this.products = products
+      this.pagination = pagination
+      this.productModal.hide()
+      this.delProductModal.hide()
+      this.isLoading = false
     },
-    showModal(state, item) {
-      if (state === "new") {
-        this.tempProduct = JSON.parse(JSON.stringify(tempProduct));
-        this.isNew = true;
-        this.productModal.show();
-      } else if (state === "update") {
-        this.tempProduct = JSON.parse(JSON.stringify(item));
-        this.isNew = false;
-        this.productModal.show();
-      } else if (state === "delete") {
-        this.tempProduct = { ...item };
-        this.delProductModal.show();
+    showModal (state, item) {
+      if (state === 'new') {
+        this.tempProduct = JSON.parse(JSON.stringify(tempProduct))
+        this.isNew = true
+        this.productModal.show()
+      } else if (state === 'update') {
+        this.tempProduct = JSON.parse(JSON.stringify(item))
+        this.isNew = false
+        this.productModal.show()
+      } else if (state === 'delete') {
+        this.tempProduct = { ...item }
+        this.delProductModal.show()
       }
     },
-    createImages() {
-      this.tempProduct.imagesUrl = [];
-      this.tempProduct.imagesUrl.push("");
-    },
+    createImages () {
+      this.tempProduct.imagesUrl = []
+      this.tempProduct.imagesUrl.push('')
+    }
   },
 
-  created() {
-    this.init();
+  created () {
+    this.init()
   },
-  mounted() {
-    this.productModal = new modal(document.getElementById("productModal"), {
-      keyboard: false,
-    });
-    this.delProductModal = new modal(document.getElementById("delProductModal"), {
-      keyboard: false,
-    });
-  },
-};
+  mounted () {
+    this.productModal = new Modal(document.getElementById('productModal'), {
+      keyboard: false
+    })
+    this.delProductModal = new Modal(
+      document.getElementById('delProductModal'),
+      {
+        keyboard: false
+      }
+    )
+  }
+}
 </script>

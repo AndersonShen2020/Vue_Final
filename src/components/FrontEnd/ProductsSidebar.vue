@@ -2,7 +2,9 @@
   <div class="sticky-lg-top pt-3" style="z-index: 1500">
     <h2>產品分類</h2>
     <div class="filter-all">
-      <RouterLink :to="{ path: '/products', query: { category: '全部' } }"> 全站商品 </RouterLink>
+      <RouterLink :to="{ path: '/products', query: { category: '全部' } }">
+        全站商品
+      </RouterLink>
     </div>
 
     <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -24,7 +26,9 @@
         >
           <div class="accordion-body ms-2">
             <div v-for="item in categories[1]" :key="item" class="d-flex">
-              <RouterLink :to="{ path: '/products', query: { category: item } }">
+              <RouterLink
+                :to="{ path: '/products', query: { category: item } }"
+              >
                 {{ item }}
               </RouterLink>
             </div>
@@ -49,7 +53,9 @@
         >
           <div class="accordion-body ms-2">
             <div v-for="item in categories[2]" :key="item" class="d-flex">
-              <RouterLink :to="{ path: '/products', query: { category: item } }">
+              <RouterLink
+                :to="{ path: '/products', query: { category: item } }"
+              >
                 {{ item }}
               </RouterLink>
             </div>
@@ -61,20 +67,28 @@
 </template>
 
 <script>
-import Collapse from "bootstrap/js/dist/collapse";
+import Collapse from 'bootstrap/js/dist/collapse'
 
 export default {
-  data() {
+  data () {
     return {
-      categories: ["全部", ["淺焙", "中焙", "深焙"], ["馬克杯", "磨豆機", "咖啡機"]],
-    };
+      collapse: undefined,
+      categories: [
+        '全部',
+        ['淺焙', '中焙', '深焙'],
+        ['馬克杯', '磨豆機', '咖啡機']
+      ]
+    }
   },
-  mounted() {
-    new Collapse(document.getElementById("accordionFlushExample"), {
-      toggle: false,
-    });
-  },
-};
+  mounted () {
+    this.collapse = new Collapse(
+      document.getElementById('accordionFlushExample'),
+      {
+        toggle: false
+      }
+    )
+  }
+}
 </script>
 
 <style scoped>

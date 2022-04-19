@@ -37,13 +37,13 @@
 // :pages="{ 頁碼資訊 }" -> 把 res.data.pagination 整串丟進來
 // @emitPages="更新頁面事件" -> 外部取得資料的 API 的 function
 export default {
-  props: ["pages"],
+  props: ['pages'],
   methods: {
-    emitpages(item) {
-      this.$emit("emitpages", item);
-    },
-  },
-};
+    emitpages (item) {
+      this.$emit('emitpages', item)
+    }
+  }
+}
 </script>
 
 <style scoped>

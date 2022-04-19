@@ -117,59 +117,59 @@
 </template>
 
 <script>
-import emitter from "@/api/mitt.js";
+import emitter from '@/api/mitt.js'
 
-import axios from "axios";
-const url = process.env.VUE_APP_API;
-const path = process.env.VUE_APP_PATH;
+import axios from 'axios'
 
-import Loading from "vue-loading-overlay";
-import "vue-loading-overlay/dist/vue-loading.css";
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 
-import titleMixin from "@/mixins/titleMixin";
+import titleMixin from '@/mixins/titleMixin'
+const url = process.env.VUE_APP_API
+const path = process.env.VUE_APP_PATH
 
 export default {
   mixins: [titleMixin],
   components: {
-    Loading,
+    Loading
   },
-  data() {
+  data () {
     return {
-      title: "建立訂單",
+      title: '建立訂單',
       id: this.$route.params.id,
       order: {},
       isPaid: false,
-      isLoading: false,
-    };
+      isLoading: false
+    }
   },
   methods: {
-    async getOrder() {
+    async getOrder () {
       try {
-        const { data } = await axios.get(`${url}/api/${path}/order/${this.id}`);
-        this.order = data.order;
+        const { data } = await axios.get(`${url}/api/${path}/order/${this.id}`)
+        this.order = data.order
       } catch (err) {
-        this.isLoading = false;
+        this.isLoading = false
       }
-      this.isLoading = false;
+      this.isLoading = false
     },
-    async payBill() {
-      this.isLoading = true;
+    async payBill () {
+      this.isLoading = true
       try {
-        await axios.post(`${url}/api/${path}/pay/${this.id}`);
+        await axios.post(`${url}/api/${path}/pay/${this.id}`)
       } catch (err) {
-        this.isLoading = false;
+        this.isLoading = false
       }
-      document.title = "完成訂單";
-      this.isPaid = true;
-      this.isLoading = false;
-      emitter.emit("getCartNum");
-    },
+      document.title = '完成訂單'
+      this.isPaid = true
+      this.isLoading = false
+      emitter.emit('getCartNum')
+    }
   },
-  mounted() {
-    this.isLoading = true;
-    this.getOrder();
-  },
-};
+  mounted () {
+    this.isLoading = true
+    this.getOrder()
+  }
+}
 </script>
 
 <style>

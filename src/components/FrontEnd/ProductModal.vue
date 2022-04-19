@@ -58,37 +58,37 @@
 </template>
 
 <script>
-import axios from "axios";
-const url = process.env.VUE_APP_API;
-const path = process.env.VUE_APP_PATH;
+import axios from 'axios'
+const url = process.env.VUE_APP_API
+const path = process.env.VUE_APP_PATH
 
 export default {
-  props: ["id"],
-  data() {
+  props: ['id'],
+  data () {
     return {
       product: {},
-      qty: 1,
-    };
+      qty: 1
+    }
   },
   methods: {
-    addToCart(id, qty = 1) {
+    addToCart (id, qty = 1) {
       const data = {
         product_id: id,
-        qty: this.qty | qty,
-      };
-      this.isLoadingItem = id;
+        qty: this.qty | qty
+      }
+      this.isLoadingItem = id
       axios.post(`${url}/api/${path}/cart`, { data }).then(() => {
-        this.isLoadingItem = "";
-        this.$emit("closeModal");
-      });
-    },
+        this.isLoadingItem = ''
+        this.$emit('closeModal')
+      })
+    }
   },
   watch: {
-    id(newVal) {
+    id (newVal) {
       axios.get(`${url}/api/${path}/product/${newVal}`).then((res) => {
-        this.product = res.data.product;
-      });
-    },
-  },
-};
+        this.product = res.data.product
+      })
+    }
+  }
+}
 </script>

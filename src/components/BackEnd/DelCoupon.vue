@@ -38,45 +38,45 @@
 </template>
 
 <script>
-import modalControl from "@/api/modalControl";
-import axios from "axios";
+import modalControl from '@/api/modalControl'
+import axios from 'axios'
 
-import Loading from "vue-loading-overlay";
-import "vue-loading-overlay/dist/vue-loading.css";
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 
 export default {
   components: {
-    Loading,
+    Loading
   },
-  props: ["coupon"],
-  emits: ["resetCoupons"],
+  props: ['coupon'],
+  emits: ['resetCoupons'],
   mixins: [modalControl],
-  data() {
+  data () {
     return {
       modal: null,
       tempProduct: this.coupon,
-      isLoading: false,
-    };
+      isLoading: false
+    }
   },
   methods: {
-    async deleteItem() {
-      this.isLoading = true;
-      const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempProduct.id}`;
+    async deleteItem () {
+      this.isLoading = true
+      const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempProduct.id}`
       await axios
         .delete(urlPath)
         .then(() => {
-          this.$emit("resetCoupons");
+          this.$emit('resetCoupons')
         })
         .catch(() => {
-          this.isLoading = false;
-        });
-      this.isLoading = false;
-    },
+          this.isLoading = false
+        })
+      this.isLoading = false
+    }
   },
   watch: {
-    coupon(newVal) {
-      this.tempProduct = newVal;
-    },
-  },
-};
+    coupon (newVal) {
+      this.tempProduct = newVal
+    }
+  }
+}
 </script>

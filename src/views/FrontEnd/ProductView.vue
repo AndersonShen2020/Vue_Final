@@ -46,8 +46,16 @@
             </select>
           </div>
           <div class="d-flex justify-content-end">
-            <span class="fs-3 fw-bold me-3">總計 NT$ {{ qty * product.price }} 元</span>
-            <button type="button" class="btn btn-primary" @click="addToCart(id)">加入購物車</button>
+            <span class="fs-3 fw-bold me-3"
+              >總計 NT$ {{ qty * product.price }} 元</span
+            >
+            <button
+              type="button"
+              class="btn btn-primary"
+              @click="addToCart(id)"
+            >
+              加入購物車
+            </button>
           </div>
         </div>
       </div>
@@ -172,24 +180,24 @@
 </template>
 
 <script>
-import emitter from "@/api/mitt.js";
-import axios from "axios";
-const url = process.env.VUE_APP_API;
-const path = process.env.VUE_APP_PATH;
+import emitter from '@/api/mitt.js'
+import axios from 'axios'
 
-import { Autoplay } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/vue/swiper-vue";
+import { Autoplay } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/vue/swiper-vue'
 
-import "swiper/swiper.scss";
+import 'swiper/swiper.scss'
 
-import CardComponent from "@/components/common/CardComponent.vue";
+import CardComponent from '@/components/common/CardComponent.vue'
 
-import Loading from "vue-loading-overlay";
-import "vue-loading-overlay/dist/vue-loading.css";
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
+const url = process.env.VUE_APP_API
+const path = process.env.VUE_APP_PATH
 
 export default {
   components: { Swiper, SwiperSlide, CardComponent, Loading },
-  data() {
+  data () {
     return {
       id: this.$route.params.id,
       isLoading: false,
@@ -202,66 +210,66 @@ export default {
         spaceBetween: 10,
         autoplay: {
           delay: 3000,
-          disableOnInteraction: false,
+          disableOnInteraction: false
         },
         loop: true,
         breakpoints: {
           320: {
             slidesPerView: 1,
-            spaceBetween: 20,
+            spaceBetween: 20
           },
           480: {
             slidesPerView: 3,
-            spaceBetween: 30,
+            spaceBetween: 30
           },
           640: {
             slidesPerView: 4,
-            spaceBetween: 40,
-          },
-        },
-      },
-    };
+            spaceBetween: 40
+          }
+        }
+      }
+    }
   },
   methods: {
-    addToCart(id, qty = 1) {
-      this.isLoading = true;
+    addToCart (id, qty = 1) {
+      this.isLoading = true
       const data = {
         product_id: id,
-        qty: this.qty | qty,
-      };
+        qty: this.qty | qty
+      }
       axios.post(`${url}/api/${path}/cart`, { data }).then(() => {
-        emitter.emit("getCartNum");
-        this.isLoading = false;
-      });
+        emitter.emit('getCartNum')
+        this.isLoading = false
+      })
     },
-    async getProduct() {
+    async getProduct () {
       await axios.get(`${url}/api/${path}/product/${this.id}`).then((res) => {
-        this.product = res.data.product;
-        document.title = res.data.product.title;
-      });
+        this.product = res.data.product
+        document.title = res.data.product.title
+      })
     },
-    async getProductsWithCategory() {
+    async getProductsWithCategory () {
       await axios.get(`${url}/api/${path}/products/all`).then((res) => {
-        const vm = this;
+        const vm = this
         this.products = res.data.products.filter((item) => {
-          return item.classification === vm.product.classification;
-        });
-      });
-      this.isLoading = false;
-    },
+          return item.classification === vm.product.classification
+        })
+      })
+      this.isLoading = false
+    }
   },
-  async mounted() {
-    this.isLoading = true;
-    await this.getProduct();
-    await this.getProductsWithCategory();
+  async mounted () {
+    this.isLoading = true
+    await this.getProduct()
+    await this.getProductsWithCategory()
   },
   watch: {
-    $route(to) {
-      this.id = to.params.id;
-      this.getProduct();
-    },
-  },
-};
+    $route (to) {
+      this.id = to.params.id
+      this.getProduct()
+    }
+  }
+}
 </script>
 
 <style>

@@ -64,16 +64,16 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
 
-import Pagination from "@/components/common/Pagination";
-import OrderModal from "@/components/BackEnd/OrderModal.vue";
-import DelOrderModal from "@/components/BackEnd/DelOrder";
+import Pagination from '@/components/common/Pagination'
+import OrderModal from '@/components/BackEnd/OrderModal.vue'
+import DelOrderModal from '@/components/BackEnd/DelOrder'
 
-import Loading from "vue-loading-overlay";
-import "vue-loading-overlay/dist/vue-loading.css";
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 
-import titleMixin from "@/mixins/titleMixin";
+import titleMixin from '@/mixins/titleMixin'
 
 export default {
   mixins: [titleMixin],
@@ -81,55 +81,55 @@ export default {
     Pagination,
     OrderModal,
     DelOrderModal,
-    Loading,
+    Loading
   },
-  data() {
+  data () {
     return {
-      title: "訂單管理",
+      title: '訂單管理',
       pagination: null,
       orders: [],
       tempOrder: {},
-      isLoading: false,
-    };
+      isLoading: false
+    }
   },
   methods: {
-    async getOrders(page = 1) {
-      this.isLoading = true;
-      const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders?page=${page}`;
+    async getOrders (page = 1) {
+      this.isLoading = true
+      const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders?page=${page}`
       await axios.get(urlPath).then((res) => {
-        this.orders = res.data.orders;
-        this.pagination = res.data.pagination;
-      });
-      this.$refs.orderModal.hideModal();
-      this.$refs.delModel.hideModal();
-      this.isLoading = false;
+        this.orders = res.data.orders
+        this.pagination = res.data.pagination
+      })
+      this.$refs.orderModal.hideModal()
+      this.$refs.delModel.hideModal()
+      this.isLoading = false
     },
-    openOrder(item) {
-      this.tempOrder = item;
-      this.$refs.orderModal.openModal();
+    openOrder (item) {
+      this.tempOrder = item
+      this.$refs.orderModal.openModal()
     },
-    async updateOrder(item) {
-      this.isLoading = true;
-      const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`;
-      await axios.put(urlPath, { data: item });
-      await this.getOrders();
-      this.isLoading = false;
+    async updateOrder (item) {
+      this.isLoading = true
+      const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
+      await axios.put(urlPath, { data: item })
+      await this.getOrders()
+      this.isLoading = false
     },
-    openDelOrder(item) {
-      this.tempOrder = item;
-      this.$refs.delModel.openModal();
+    openDelOrder (item) {
+      this.tempOrder = item
+      this.$refs.delModel.openModal()
     },
-    async delOrder(item) {
-      this.isLoading = true;
-      const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`;
+    async delOrder (item) {
+      this.isLoading = true
+      const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
       await axios.delete(urlPath).then(() => {
-        this.getOrders();
-      });
-      this.isLoading = false;
-    },
+        this.getOrders()
+      })
+      this.isLoading = false
+    }
   },
-  mounted() {
-    this.getOrders();
-  },
-};
+  mounted () {
+    this.getOrders()
+  }
+}
 </script>

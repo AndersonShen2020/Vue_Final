@@ -237,66 +237,66 @@
 </template>
 
 <script>
-import { addProduct, updateProduct } from "@/api/axios";
-import axios from "axios";
+import { addProduct, updateProduct } from '@/api/axios'
+import axios from 'axios'
 
-import Loading from "vue-loading-overlay";
-import "vue-loading-overlay/dist/vue-loading.css";
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 
 export default {
-  props: ["productinfo", "state"],
-  emits: ["update"],
+  props: ['productinfo', 'state'],
+  emits: ['update'],
   components: {
-    Loading,
+    Loading
   },
-  data() {
+  data () {
     return {
       tempProduct: this.productinfo,
       isNew: this.state,
       productModal: null,
-      isLoading: false,
-    };
+      isLoading: false
+    }
   },
   methods: {
-    async updateItem() {
-      this.isLoading = true;
+    async updateItem () {
+      this.isLoading = true
       if (this.isNew === true) {
         // 新增產品
-        await addProduct({ data: this.tempProduct });
+        await addProduct({ data: this.tempProduct })
       } else {
         // 編輯產品
-        await updateProduct({ data: this.tempProduct });
+        await updateProduct({ data: this.tempProduct })
       }
       // 更新畫面
-      this.$emit("update");
-      this.isLoading = false;
+      this.$emit('update')
+      this.isLoading = false
     },
-    async customImageFile() {
-      this.isLoading = true;
-      let urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/upload`;
-      const file = this.$refs.fileInput.files[0];
-      const formData = new FormData();
-      formData.append("file-to-upload", file);
+    async customImageFile () {
+      this.isLoading = true
+      const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/upload`
+      const file = this.$refs.fileInput.files[0]
+      const formData = new FormData()
+      formData.append('file-to-upload', file)
       await axios
         .post(urlPath, formData, {
           headers: {
-            "Content-Type": "multipart/form-data",
-          },
+            'Content-Type': 'multipart/form-data'
+          }
         })
         .then((res) => {
-          this.tempProduct.fileImage = res.data.imageUrl;
-          this.$refs.fileInput.value = "";
-        });
-      this.isLoading = false;
-    },
+          this.tempProduct.fileImage = res.data.imageUrl
+          this.$refs.fileInput.value = ''
+        })
+      this.isLoading = false
+    }
   },
   watch: {
-    state(newVal) {
-      this.isNew = newVal;
+    state (newVal) {
+      this.isNew = newVal
     },
-    productinfo(newVal) {
-      this.tempProduct = newVal;
-    },
-  },
-};
+    productinfo (newVal) {
+      this.tempProduct = newVal
+    }
+  }
+}
 </script>

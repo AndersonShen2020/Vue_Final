@@ -85,65 +85,65 @@
 </template>
 
 <script>
-import modalControl from "@/api/modalControl";
-import axios from "axios";
+import modalControl from '@/api/modalControl'
+import axios from 'axios'
 
-import Loading from "vue-loading-overlay";
-import "vue-loading-overlay/dist/vue-loading.css";
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 
 export default {
   components: {
-    Loading,
+    Loading
   },
   props: {
     coupon: {
       type: Object,
-      default() {
-        return {};
-      },
+      default () {
+        return {}
+      }
     },
     isNew: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
-  emits: ["resetCoupons"],
-  data() {
+  emits: ['resetCoupons'],
+  data () {
     return {
       tempCoupon: {},
-      due_date: "",
-      isLoading: false,
-    };
+      due_date: '',
+      isLoading: false
+    }
   },
-  mounted() {
-    this.tempCoupon = { ...this.coupon };
+  mounted () {
+    this.tempCoupon = { ...this.coupon }
   },
   methods: {
-    async updateCoupon() {
-      this.isLoading = true;
-      let authorization = `post`;
-      let urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon`;
-      const data = this.tempCoupon;
+    async updateCoupon () {
+      this.isLoading = true
+      let authorization = 'post'
+      let urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon`
+      const data = this.tempCoupon
       if (this.isNew === false) {
-        authorization = `put`;
-        urlPath = urlPath + `/${this.coupon.id}`;
+        authorization = 'put'
+        urlPath = urlPath + `/${this.coupon.id}`
       }
-      await axios[authorization](urlPath, { data });
-      this.$emit("resetCoupons");
-      this.isLoading = false;
-    },
+      await axios[authorization](urlPath, { data })
+      this.$emit('resetCoupons')
+      this.isLoading = false
+    }
   },
   watch: {
-    coupon() {
-      this.tempCoupon = { ...this.coupon };
-      const dataAndTime = new Date(this.tempCoupon.due_date * 1000).toISOString().split("T");
-      this.due_date = dataAndTime[0];
+    coupon () {
+      this.tempCoupon = { ...this.coupon }
+      const dataAndTime = new Date(this.tempCoupon.due_date * 1000).toISOString().split('T')
+      this.due_date = dataAndTime[0]
     },
-    due_date() {
-      const timestamp = Math.floor(new Date(this.due_date) / 1000);
-      this.tempCoupon.due_date = timestamp;
-    },
+    due_date () {
+      const timestamp = Math.floor(new Date(this.due_date) / 1000)
+      this.tempCoupon.due_date = timestamp
+    }
   },
-  mixins: [modalControl],
-};
+  mixins: [modalControl]
+}
 </script>

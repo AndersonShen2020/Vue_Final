@@ -38,37 +38,37 @@
 </template>
 
 <script>
-import { deleteProduct } from "@/api/axios";
+import { deleteProduct } from '@/api/axios'
 
-import Loading from "vue-loading-overlay";
-import "vue-loading-overlay/dist/vue-loading.css";
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 
 export default {
   components: {
-    Loading,
+    Loading
   },
-  props: ["productinfo"],
-  emits: ["update"],
-  data() {
+  props: ['productinfo'],
+  emits: ['update'],
+  data () {
     return {
       tempProduct: this.productinfo,
       delProductModal: null,
-      isLoading: false,
-    };
+      isLoading: false
+    }
   },
   methods: {
-    async deleteItem() {
-      this.isLoading = true;
-      await deleteProduct(this.tempProduct.id);
+    async deleteItem () {
+      this.isLoading = true
+      await deleteProduct(this.tempProduct.id)
       // 更新畫面
-      this.$emit("update");
-      this.isLoading = false;
-    },
+      this.$emit('update')
+      this.isLoading = false
+    }
   },
   watch: {
-    productinfo(newVal) {
-      this.tempProduct = newVal;
-    },
-  },
-};
+    productinfo (newVal) {
+      this.tempProduct = newVal
+    }
+  }
+}
 </script>

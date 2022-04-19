@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import Navbar from "@/components/FrontEnd/Navbar.vue";
-import FooterBar from "@/components/common/FooterBarComponent.vue";
+import Navbar from '@/components/FrontEnd/Navbar.vue'
+import FooterBar from '@/components/common/FooterBarComponent.vue'
 
 export default {
   components: {
     Navbar,
-    FooterBar,
-  },
-};
+    FooterBar
+  }
+}
 </script>

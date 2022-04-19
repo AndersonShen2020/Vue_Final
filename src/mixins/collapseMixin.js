@@ -1,17 +1,17 @@
-import Collapse from "bootstrap/js/dist/collapse";
+import Collapse from 'bootstrap/js/dist/collapse'
 
 export default {
   methods: {
-    closeNavHam() {
-      this.collapse.hide();
+    closeNavHam () {
+      this.collapse.hide()
     },
-    toggleNavHam() {
-      this.collapse.toggle();
-    },
+    toggleNavHam () {
+      this.collapse.toggle()
+    }
   },
-  mounted() {
+  mounted () {
     this.collapse = new Collapse(this.$refs.collapse, {
-      toggle: false,
-    });
-  },
-};
+      toggle: false
+    })
+  }
+}

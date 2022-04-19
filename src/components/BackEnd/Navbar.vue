@@ -15,19 +15,19 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
 
 export default {
   methods: {
-    logout() {
-      const urlPath = `${process.env.VUE_APP_API}/logout`;
+    logout () {
+      const urlPath = `${process.env.VUE_APP_API}/logout`
       axios.post(urlPath).then(() => {
-        document.cookie = "hexToken=;expires=;";
-        this.$router.push("/");
-      });
-    },
-  },
-};
+        document.cookie = 'hexToken=;expires=;'
+        this.$router.push('/')
+      })
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

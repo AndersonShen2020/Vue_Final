@@ -135,24 +135,24 @@
 </template>
 
 <script>
-import modalControl from "@/api/modalControl";
+import modalControl from '@/api/modalControl'
 
 export default {
-  data() {
+  data () {
     return {
-      tempOrder: {},
-    };
+      tempOrder: {}
+    }
   },
-  props: ["orderData"],
+  props: ['orderData'],
   methods: {},
-  mounted() {
-    this.tempOrder = this.orderData;
+  mounted () {
+    this.tempOrder = this.orderData
   },
   watch: {
-    orderData() {
-      this.tempOrder = this.orderData;
-    },
+    orderData () {
+      this.tempOrder = this.orderData
+    }
   },
-  mixins: [modalControl],
-};
+  mixins: [modalControl]
+}
 </script>

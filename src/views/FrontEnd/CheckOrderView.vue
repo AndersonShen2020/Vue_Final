@@ -39,52 +39,52 @@
 </template>
 
 <script>
-import ValidateForm from "@/components/FrontEnd/ClientValidateForm.vue";
-import ShoppingCart from "@/components/FrontEnd/ShoppingCart.vue";
+import ValidateForm from '@/components/FrontEnd/ClientValidateForm.vue'
+import ShoppingCart from '@/components/FrontEnd/ShoppingCart.vue'
 
-import axios from "axios";
-const url = process.env.VUE_APP_API;
-const path = process.env.VUE_APP_PATH;
+import axios from 'axios'
 
-import Loading from "vue-loading-overlay";
-import "vue-loading-overlay/dist/vue-loading.css";
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 
-import titleMixin from "@/mixins/titleMixin";
+import titleMixin from '@/mixins/titleMixin'
+const url = process.env.VUE_APP_API
+const path = process.env.VUE_APP_PATH
 
 export default {
   mixins: [titleMixin],
   components: {
     ShoppingCart,
     ValidateForm,
-    Loading,
+    Loading
   },
-  data() {
+  data () {
     return {
-      title: "確認訂單",
+      title: '確認訂單',
       products: [],
-      isLoading: false,
-    };
+      isLoading: false
+    }
   },
   methods: {
-    async getCart() {
-      this.isLoading = true;
+    async getCart () {
+      this.isLoading = true
       try {
-        const res = await axios.get(`${url}/api/${path}/cart`);
-        this.products = res.data.data.carts;
+        const res = await axios.get(`${url}/api/${path}/cart`)
+        this.products = res.data.data.carts
       } catch (err) {
-        this.isLoading = false;
+        this.isLoading = false
       }
-      this.isLoading = false;
+      this.isLoading = false
     },
-    resetCart() {
-      this.products = [];
-    },
+    resetCart () {
+      this.products = []
+    }
   },
-  mounted() {
-    this.isLoading = true;
-    this.getCart();
-  },
-};
+  mounted () {
+    this.isLoading = true
+    this.getCart()
+  }
+}
 </script>
 
 <style>

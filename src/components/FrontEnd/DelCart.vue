@@ -37,14 +37,14 @@
 </template>
 
 <script>
-import modalControl from "@/api/modalControl";
+import modalControl from '@/api/modalControl'
 
 export default {
   mixins: [modalControl],
   methods: {
-    deleteCart() {
-      this.$emit("delCart");
-    },
-  },
-};
+    deleteCart () {
+      this.$emit('delCart')
+    }
+  }
+}
 </script>

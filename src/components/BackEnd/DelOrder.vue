@@ -37,26 +37,26 @@
 </template>
 
 <script>
-import modalControl from "@/api/modalControl";
+import modalControl from '@/api/modalControl'
 
 export default {
-  props: ["coupon"],
+  props: ['coupon'],
   mixins: [modalControl],
-  data() {
+  data () {
     return {
       modal: null,
-      tempOrder: this.coupon,
-    };
+      tempOrder: this.coupon
+    }
   },
   methods: {
-    deleteOrder() {
-      this.$emit("delOrder", this.tempOrder);
-    },
+    deleteOrder () {
+      this.$emit('delOrder', this.tempOrder)
+    }
   },
   watch: {
-    coupon(newVal) {
-      this.tempOrder = newVal;
-    },
-  },
-};
+    coupon (newVal) {
+      this.tempOrder = newVal
+    }
+  }
+}
 </script>

@@ -1,10 +1,10 @@
 export default {
   methods: {
-    setTitle() {
-      document.title = this.title;
-    },
+    setTitle () {
+      document.title = this.title
+    }
   },
-  mounted() {
-    this.setTitle();
-  },
-};
+  mounted () {
+    this.setTitle()
+  }
+}

@@ -44,16 +44,16 @@
 </template>
 
 <script>
-import titleMixin from "@/mixins/titleMixin";
+import titleMixin from '@/mixins/titleMixin'
 
 export default {
   mixins: [titleMixin],
-  data() {
+  data () {
     return {
-      title: "關於本店",
-    };
-  },
-};
+      title: '關於本店'
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

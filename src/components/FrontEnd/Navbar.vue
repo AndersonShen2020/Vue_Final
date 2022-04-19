@@ -72,36 +72,36 @@
 </template>
 
 <script>
-import emitter from "@/api/mitt.js";
+import emitter from '@/api/mitt.js'
 
-import axios from "axios";
-const url = process.env.VUE_APP_API;
-const path = process.env.VUE_APP_PATH;
+import axios from 'axios'
 
-import collapseMixin from "@/mixins/collapseMixin";
+import collapseMixin from '@/mixins/collapseMixin'
+const url = process.env.VUE_APP_API
+const path = process.env.VUE_APP_PATH
 
 export default {
   mixins: [collapseMixin],
-  data() {
+  data () {
     return {
-      cartData: [],
-    };
+      cartData: []
+    }
   },
   methods: {
-    getCartNum() {
+    getCartNum () {
       axios.get(`${url}/api/${path}/cart`).then((res) => {
-        this.cartData = res.data.data.carts;
-      });
-    },
+        this.cartData = res.data.data.carts
+      })
+    }
   },
-  mounted() {
-    this.getCartNum();
-    const vm = this;
-    emitter.on("getCartNum", () => {
-      vm.getCartNum();
-    });
-  },
-};
+  mounted () {
+    this.getCartNum()
+    const vm = this
+    emitter.on('getCartNum', () => {
+      vm.getCartNum()
+    })
+  }
+}
 </script>
 
 <style lang="scss">

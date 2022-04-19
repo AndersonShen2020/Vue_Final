@@ -60,16 +60,16 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
 
-import Pagination from "@/components/common/Pagination";
-import CouponsModal from "@/components/BackEnd/CouponsModal.vue";
-import DelCoupons from "@/components/BackEnd/DelCoupon";
+import Pagination from '@/components/common/Pagination'
+import CouponsModal from '@/components/BackEnd/CouponsModal.vue'
+import DelCoupons from '@/components/BackEnd/DelCoupon'
 
-import Loading from "vue-loading-overlay";
-import "vue-loading-overlay/dist/vue-loading.css";
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 
-import titleMixin from "@/mixins/titleMixin";
+import titleMixin from '@/mixins/titleMixin'
 
 export default {
   mixins: [titleMixin],
@@ -77,58 +77,58 @@ export default {
     Pagination,
     CouponsModal,
     DelCoupons,
-    Loading,
+    Loading
   },
-  data() {
+  data () {
     return {
-      title: "優惠卷管理",
+      title: '優惠卷管理',
       coupons: [],
       pagination: null,
       isNew: false,
       tempCoupon: {
-        title: "",
+        title: '',
         is_enabled: 0,
         percent: 100,
-        code: "",
+        code: ''
       },
-      isLoading: false,
-    };
+      isLoading: false
+    }
   },
   methods: {
-    async getCoupons(page = 1) {
-      this.isLoading = true;
-      const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupons?page=${page}`;
+    async getCoupons (page = 1) {
+      this.isLoading = true
+      const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupons?page=${page}`
       await axios
         .get(urlPath)
         .then((res) => {
-          this.coupons = res.data.coupons;
-          this.pagination = res.data.pagination;
+          this.coupons = res.data.coupons
+          this.pagination = res.data.pagination
         })
-        .catch();
-      this.$refs.couponModal.hideModal();
-      this.$refs.delCoupon.hideModal();
-      this.isLoading = false;
+        .catch()
+      this.$refs.couponModal.hideModal()
+      this.$refs.delCoupon.hideModal()
+      this.isLoading = false
     },
-    openCouponModal(isNew, item) {
-      this.isNew = isNew;
+    openCouponModal (isNew, item) {
+      this.isNew = isNew
       if (this.isNew === true) {
         this.tempCoupon = {
           due_date: new Date().getTime() / 1000,
-          is_enabled: 1,
-        };
+          is_enabled: 1
+        }
       } else {
-        this.tempCoupon = { ...item };
+        this.tempCoupon = { ...item }
       }
-      this.$refs.couponModal.openModal();
+      this.$refs.couponModal.openModal()
     },
-    openDelCouponModal(item) {
-      this.tempCoupon = { ...item };
-      const delComponent = this.$refs.delCoupon;
-      delComponent.openModal();
-    },
+    openDelCouponModal (item) {
+      this.tempCoupon = { ...item }
+      const delComponent = this.$refs.delCoupon
+      delComponent.openModal()
+    }
   },
-  async mounted() {
-    await this.getCoupons();
-  },
-};
+  async mounted () {
+    await this.getCoupons()
+  }
+}
 </script>

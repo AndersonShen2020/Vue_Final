@@ -1,6 +1,8 @@
 <template>
   <Loading :active="isLoading"></Loading>
-  <div class="leading-img d-flex justify-content-center bg-cover2 position-relative">
+  <div
+    class="leading-img d-flex justify-content-center bg-cover2 position-relative"
+  >
     <div
       class="text-primary align-self-center bg-dark bg-opacity-25 p-3 leading-title leading-text"
     >
@@ -19,14 +21,17 @@
         :loop="true"
         :autoplay="{
           delay: 3000,
-          disableOnInteraction: false,
+          disableOnInteraction: false
         }"
         :modules="modules"
         :breakpoints="breakpoints"
+        :navigation="navigation"
       >
         <SwiperSlide v-for="product in coffeeProducts" :key="product.id">
           <CardComponent :item="product"></CardComponent>
         </SwiperSlide>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </swiper>
     </div>
   </div>
@@ -56,9 +61,15 @@
         <h3 class="coffee-header">咖啡烘焙</h3>
         <div class="text-start text-lg-center text-coffee">
           <p>烘焙咖啡使咖啡生豆通過烘炒轉變為已烘焙的咖啡製品。</p>
-          <p>烘炒的過程使得生豆膨脹並改變其顏色、口感、氣味與密度，因而產生了咖啡的特殊風味。</p>
-          <p>未烘焙的咖啡豆與已烘焙的含有相似的酸度、蛋白質與咖啡因，但缺少其美好滋味。</p>
-          <p>最簡單的判斷方式是，豆子烘烤的時間越長，酸味越淡，咖啡因含量也越少。</p>
+          <p>
+            烘炒的過程使得生豆膨脹並改變其顏色、口感、氣味與密度，因而產生了咖啡的特殊風味。
+          </p>
+          <p>
+            未烘焙的咖啡豆與已烘焙的含有相似的酸度、蛋白質與咖啡因，但缺少其美好滋味。
+          </p>
+          <p>
+            最簡單的判斷方式是，豆子烘烤的時間越長，酸味越淡，咖啡因含量也越少。
+          </p>
         </div>
         <div class="d-flex justify-content-end">
           <RouterLink
@@ -99,66 +110,73 @@
 </template>
 
 <script>
-import { Autoplay } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/vue/swiper-vue";
+import { Autoplay, Navigation } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/vue/swiper-vue'
 
-import "swiper/swiper.scss";
+import 'swiper/swiper.scss'
+import 'swiper/modules/navigation/navigation.scss'
 
-import axios from "axios";
-const url = process.env.VUE_APP_API;
-const path = process.env.VUE_APP_PATH;
+import axios from 'axios'
 
-import Loading from "vue-loading-overlay";
-import "vue-loading-overlay/dist/vue-loading.css";
-import CardComponent from "@/components/common/CardComponent.vue";
-import titleMixin from "@/mixins/titleMixin";
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
+import CardComponent from '@/components/common/CardComponent.vue'
+import titleMixin from '@/mixins/titleMixin'
+const url = process.env.VUE_APP_API
+const path = process.env.VUE_APP_PATH
 
 export default {
   mixins: [titleMixin],
-  data() {
+  data () {
     return {
       isLoading: false,
-      title: "Coffee Roast",
-      modules: [Autoplay],
+      title: 'Coffee Roast',
+      modules: [Autoplay, Navigation],
       coffeeProducts: [],
       breakpoints: {
         320: {
           slidesPerView: 1,
-          spaceBetween: 10,
+          spaceBetween: 10
         },
         480: {
           slidesPerView: 3,
-          spaceBetween: 60,
+          spaceBetween: 60
         },
         640: {
           slidesPerView: 4,
-          spaceBetween: 40,
-        },
+          spaceBetween: 40
+        }
       },
-    };
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      }
+    }
   },
   components: {
     Swiper,
     SwiperSlide,
     CardComponent,
-    Loading,
+    Loading
   },
   methods: {
-    async getCoffeeProducts() {
+    async getCoffeeProducts () {
       try {
-        const { data: res } = await axios.get(`${url}/api/${path}/products/all`);
-        this.coffeeProducts = res.products.filter((item) => item.classification === "咖啡豆");
+        const { data: res } = await axios.get(`${url}/api/${path}/products/all`)
+        this.coffeeProducts = res.products.filter(
+          (item) => item.classification === '咖啡豆'
+        )
       } catch (error) {
-        this.isLoading = false;
+        this.isLoading = false
       }
-      this.isLoading = false;
-    },
+      this.isLoading = false
+    }
   },
-  mounted() {
-    this.isLoading = true;
-    this.getCoffeeProducts();
-  },
-};
+  mounted () {
+    this.isLoading = true
+    this.getCoffeeProducts()
+  }
+}
 </script>
 
 <style lang="scss">
@@ -210,28 +228,28 @@ export default {
 }
 
 .bg-cover1 {
-  background-image: url("../../assets/img/cover01.jpg");
+  background-image: url('../../assets/img/cover01.jpg');
 }
 
 .bg-cover2 {
-  background-image: url("../../assets/img/cover04.jpg");
+  background-image: url('../../assets/img/cover04.jpg');
 }
 
 .bg-image1 {
-  background-image: url("../../assets/img/image01.jpg");
+  background-image: url('../../assets/img/image01.jpg');
   height: 400px;
   background-size: cover;
   background-position: center;
 }
 
 .bg-image2 {
-  background-image: url("../../assets/img/image02.jpg");
+  background-image: url('../../assets/img/image02.jpg');
   height: 400px;
   background-size: cover;
 }
 
 .bg-image3 {
-  background-image: url("../../assets/img/image03.jpg");
+  background-image: url('../../assets/img/image03.jpg');
   height: 400px;
   background-size: cover;
 }

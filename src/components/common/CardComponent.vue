@@ -28,16 +28,16 @@
 
 <script>
 export default {
-  props: ["item"],
-  data() {
+  props: ['item'],
+  data () {
     return {
-      product: {},
-    };
+      product: {}
+    }
   },
-  mounted() {
-    this.product = this.item;
-  },
-};
+  mounted () {
+    this.product = this.item
+  }
+}
 </script>
 
 <style lang="scss">
