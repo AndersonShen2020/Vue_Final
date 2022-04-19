@@ -50,15 +50,11 @@
         </tr>
       </tbody>
     </table>
-    <Pagination :pages="pagination" @emitpages="init"></Pagination>
+    <Pagination :pages="pagination" @emitpages="init" />
   </div>
   <!-- Modal -->
-  <ProductModal
-    :productinfo="tempProduct"
-    :state="isNew"
-    @update="init"
-  ></ProductModal>
-  <DelProductModal :productinfo="tempProduct" @update="init"></DelProductModal>
+  <ProductModal :productinfo="tempProduct" :state="isNew" @update="init" />
+  <DelProductModal :productinfo="tempProduct" @update="init" />
   <!-- Modal -->
 </template>
 

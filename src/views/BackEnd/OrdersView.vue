@@ -62,17 +62,13 @@
       </template>
     </tbody>
   </table>
-  <Pagination :pages="pagination" @emitpages="getOrders"></Pagination>
+  <Pagination :pages="pagination" @emitpages="getOrders" />
   <OrderModal
     ref="orderModal"
     :order-data="tempOrder"
     @update-orders="updateOrder"
-  ></OrderModal>
-  <DelOrderModal
-    ref="delModel"
-    :coupon="tempOrder"
-    @del-order="delOrder"
-  ></DelOrderModal>
+  />
+  <DelOrderModal ref="delModel" :coupon="tempOrder" @del-order="delOrder" />
 </template>
 
 <script>

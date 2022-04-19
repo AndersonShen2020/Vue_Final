@@ -18,11 +18,11 @@
 
     <div class="row py-3 justify-content-between gx-0">
       <div class="col-md-6">
-        <ShoppingCart @reset-page="getCart"></ShoppingCart>
+        <ShoppingCart @reset-page="getCart" />
       </div>
       <div class="col-md-5 bg-light bg-opacity-50">
         <p class="d-flex fs-3 fw-bold m-3">填寫訂購資訊</p>
-        <ValidateForm class="p-3"></ValidateForm>
+        <ValidateForm class="p-3" />
       </div>
     </div>
   </div>

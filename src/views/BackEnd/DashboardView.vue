@@ -1,7 +1,7 @@
 <template>
-  <Navbar></Navbar>
+  <Navbar />
   <div class="d-flex">
-    <Sidebar></Sidebar>
+    <Sidebar />
     <main class="main w-100">
       <RouterView />
     </main>

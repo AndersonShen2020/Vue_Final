@@ -52,19 +52,19 @@
         </tr>
       </tbody>
     </table>
-    <Pagination :pages="pagination" @emitpages="getCoupons"></Pagination>
+    <Pagination :pages="pagination" @emitpages="getCoupons" />
   </div>
   <CouponsModal
     ref="couponModal"
     :is-new="isNew"
     :coupon="tempCoupon"
     @reset-coupons="getCoupons"
-  ></CouponsModal>
+  />
   <DelCoupons
     ref="delCoupon"
     :coupon="tempCoupon"
     @reset-coupons="getCoupons"
-  ></DelCoupons>
+  />
 </template>
 
 <script>

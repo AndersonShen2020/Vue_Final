@@ -11,10 +11,10 @@
 
     <div class="row mt-3">
       <div class="col-md-3">
-        <ProductsSidebar></ProductsSidebar>
+        <ProductsSidebar />
       </div>
       <div class="col-md-9">
-        <ProductsList></ProductsList>
+        <ProductsList />
       </div>
     </div>
   </div>

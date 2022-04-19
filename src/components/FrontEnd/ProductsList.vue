@@ -93,7 +93,7 @@
       </div>
     </div>
   </template>
-  <ProductModal :id="productId" @close-modal="hideModal"></ProductModal>
+  <ProductModal :id="productId" @close-modal="hideModal" />
 </template>
 
 <script>

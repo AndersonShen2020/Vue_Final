@@ -49,17 +49,17 @@
           v-if="
             ($route.query.state === 'coffeeKind') | (state === 'coffeeKind')
           "
-        ></CoffeeKind>
+        />
         <CoffeeRoast
           v-if="
             ($route.query.state === 'coffeeRoast') | (state === 'coffeeRoast')
           "
-        ></CoffeeRoast>
+        />
         <CoffeeBrew
           v-if="
             ($route.query.state === 'coffeeBrew') | (state === 'coffeeBrew')
           "
-        ></CoffeeBrew>
+        />
       </div>
     </div>
   </div>

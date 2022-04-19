@@ -164,16 +164,16 @@
     <div class="row my-3">
       <div class="col-md-12">
         <h4 class="text-center py-3 fw-bold">你可能也會喜歡</h4>
-        <swiper
+        <Swiper
           :modules="modules"
           :loop="swiperOptions.loop"
           :breakpoints="swiperOptions.breakpoints"
           :autoplay="swiperOptions.autoplay"
         >
-          <swiper-slide v-for="product in products" :key="product.id">
-            <CardComponent :item="product"></CardComponent>
-          </swiper-slide>
-        </swiper>
+          <SwiperSlide v-for="product in products" :key="product.id">
+            <CardComponent :item="product" />
+          </SwiperSlide>
+        </Swiper>
       </div>
     </div>
   </div>

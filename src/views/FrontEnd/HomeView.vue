@@ -17,7 +17,7 @@
   <div class="bg-light bg-opacity-50 py-5">
     <div class="container">
       <h2 class="text-center mb-5">我們的產品</h2>
-      <swiper
+      <Swiper
         :loop="true"
         :autoplay="{
           delay: 3000,
@@ -28,11 +28,11 @@
         :navigation="navigation"
       >
         <SwiperSlide v-for="product in coffeeProducts" :key="product.id">
-          <CardComponent :item="product"></CardComponent>
+          <CardComponent :item="product" />
         </SwiperSlide>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
-      </swiper>
+      </Swiper>
     </div>
   </div>
   <!-- 知識 -->
