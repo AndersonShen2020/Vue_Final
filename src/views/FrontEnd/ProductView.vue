@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <div class="container">
     <nav class="py-2 border-bottom">
       <ol class="breadcrumb mb-0">

@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <div class="container main py-3" v-if="products.length > 0">
     <div class="row text-center px-3">
       <div class="col-4 d-flex flex-column bg-primary text-secondary p-3">

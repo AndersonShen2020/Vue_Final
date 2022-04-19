@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <div class="container">
     <div class="text-end mt-4">
       <button type="button" class="btn btn-primary" @click="showModal('new')">

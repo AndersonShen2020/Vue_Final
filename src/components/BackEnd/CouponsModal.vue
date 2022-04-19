@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <div
     class="modal fade"
     id="couponModal"
@@ -35,7 +35,9 @@
             />
           </div>
           <div class="mb-3">
-            <label for="coupon_code">優惠碼 <span class="text-danger">*</span></label>
+            <label for="coupon_code"
+              >優惠碼 <span class="text-danger">*</span></label
+            >
             <input
               type="text"
               class="form-control"
@@ -45,11 +47,20 @@
             />
           </div>
           <div class="mb-3">
-            <label for="due_date">到期日 <span class="text-danger">*</span></label>
-            <input type="date" class="form-control" id="due_date" v-model="due_date" />
+            <label for="due_date"
+              >到期日 <span class="text-danger">*</span></label
+            >
+            <input
+              type="date"
+              class="form-control"
+              id="due_date"
+              v-model="due_date"
+            />
           </div>
           <div class="mb-3">
-            <label for="price">折扣百分比 <span class="text-danger">*</span></label>
+            <label for="price"
+              >折扣百分比 <span class="text-danger">*</span></label
+            >
             <input
               type="number"
               class="form-control"
@@ -74,9 +85,15 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
           <button type="button" class="btn btn-primary" @click="updateCoupon">
-            {{ isNew ? "新增優惠卷" : "更新優惠券" }}
+            {{ isNew ? '新增優惠卷' : '更新優惠券' }}
           </button>
         </div>
       </div>
@@ -136,7 +153,9 @@ export default {
   watch: {
     coupon () {
       this.tempCoupon = { ...this.coupon }
-      const dataAndTime = new Date(this.tempCoupon.due_date * 1000).toISOString().split('T')
+      const dataAndTime = new Date(this.tempCoupon.due_date * 1000)
+        .toISOString()
+        .split('T')
       this.due_date = dataAndTime[0]
     },
     due_date () {

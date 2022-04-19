@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <div class="d-flex justify-content-around mb-3">
     <span class="fs-3 fw-bold">確認訂單內容</span>
     <button
@@ -50,7 +50,10 @@
       </div>
     </li>
     <li class="py-3">
-      <p :class="{ 'text-success': isCoupon, 'text-danger': !isCoupon }" class="mb-3">
+      <p
+        :class="{ 'text-success': isCoupon, 'text-danger': !isCoupon }"
+        class="mb-3"
+      >
         {{ couponMsg }}
       </p>
       <div class="input-group">
@@ -60,12 +63,16 @@
           v-model="couponCode"
           placeholder="輸入 pay88 將享有 8 折優惠"
         />
-        <button type="button" class="btn coffee-btn" @click="useCoupon">套用優惠卷</button>
+        <button type="button" class="btn coffee-btn" @click="useCoupon">
+          套用優惠卷
+        </button>
       </div>
     </li>
     <li class="py-3 text-end">
       <p>總計 NT$ {{ cartData.total }}</p>
-      <p class="text-success" v-if="isCoupon">折扣價 NT$ {{ cartData.final_total }}</p>
+      <p class="text-success" v-if="isCoupon">
+        折扣價 NT$ {{ cartData.final_total }}
+      </p>
     </li>
   </ul>
   <DelCart ref="delCart" @del-cart="clearAllCarts" />

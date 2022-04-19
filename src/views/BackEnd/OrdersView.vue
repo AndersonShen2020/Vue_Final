@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <table class="table mt-4">
     <thead>
       <tr>
@@ -42,7 +42,11 @@
           </td>
           <td>
             <div class="btn-group">
-              <button class="btn btn-outline-primary btn-sm" type="button" @click="openOrder(item)">
+              <button
+                class="btn btn-outline-primary btn-sm"
+                type="button"
+                @click="openOrder(item)"
+              >
                 檢視
               </button>
               <button
@@ -59,8 +63,16 @@
     </tbody>
   </table>
   <Pagination :pages="pagination" @emitpages="getOrders"></Pagination>
-  <OrderModal ref="orderModal" :order-data="tempOrder" @update-orders="updateOrder"></OrderModal>
-  <DelOrderModal ref="delModel" :coupon="tempOrder" @del-order="delOrder"></DelOrderModal>
+  <OrderModal
+    ref="orderModal"
+    :order-data="tempOrder"
+    @update-orders="updateOrder"
+  ></OrderModal>
+  <DelOrderModal
+    ref="delModel"
+    :coupon="tempOrder"
+    @del-order="delOrder"
+  ></DelOrderModal>
 </template>
 
 <script>

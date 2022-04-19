@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <div class="d-flex flex-nowrap my-3">
     <div class="me-auto">共有 {{ filterProducts.length }} 個產品</div>
   </div>

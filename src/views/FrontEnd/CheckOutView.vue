@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <div class="container main py-3">
     <div class="row text-center px-3">
       <div class="col-4 d-flex flex-column bg-secondary text-primary p-3">
@@ -8,14 +8,18 @@
       </div>
       <div
         class="col-4 d-flex flex-column p-3"
-        :class="!isPaid ? 'bg-primary text-secondary' : 'bg-secondary text-primary'"
+        :class="
+          !isPaid ? 'bg-primary text-secondary' : 'bg-secondary text-primary'
+        "
       >
         <span>STEP2</span>
         <span>建立訂單</span>
       </div>
       <div
         class="col-4 d-flex flex-column p-3"
-        :class="isPaid ? 'bg-primary text-secondary' : 'bg-secondary text-primary'"
+        :class="
+          isPaid ? 'bg-primary text-secondary' : 'bg-secondary text-primary'
+        "
       >
         <span>STEP3</span>
         <span>完成訂單</span>
@@ -28,10 +32,14 @@
           <p class="d-flex fs-3 fw-bold">
             訂單內容
             <span :class="{ 'text-danger': !isPaid, 'text-success': isPaid }"
-              >({{ isPaid ? "付款成功" : "未付款" }})</span
+              >({{ isPaid ? '付款成功' : '未付款' }})</span
             >
           </p>
-          <li class="py-3 border-bottom" v-for="product in order.products" :key="product.id">
+          <li
+            class="py-3 border-bottom"
+            v-for="product in order.products"
+            :key="product.id"
+          >
             <div class="d-flex justify-content-between">
               <div>{{ product.product.title }}</div>
               <div>NT$ {{ product.final_total }}</div>
@@ -40,7 +48,10 @@
           </li>
           <li>
             總計金額：NT$
-            <span class="fs-5 fw-bold" :class="{ 'text-danger': !isPaid, 'text-success': isPaid }">
+            <span
+              class="fs-5 fw-bold"
+              :class="{ 'text-danger': !isPaid, 'text-success': isPaid }"
+            >
               {{ order.total }}</span
             >
           </li>
@@ -74,7 +85,9 @@
           <li class="row">
             <p class="col-4">Email：</p>
             <p class="col">
-              <a :href="'mailto:' + order?.user?.email">{{ order?.user?.email }}</a>
+              <a :href="'mailto:' + order?.user?.email">{{
+                order?.user?.email
+              }}</a>
             </p>
           </li>
           <li class="row">
@@ -106,7 +119,11 @@
             >
               信用卡付款
             </div>
-            <RouterLink class="btn coffee-btn p-4" style="letter-spacing: 2px" to="/Products" v-else
+            <RouterLink
+              class="btn coffee-btn p-4"
+              style="letter-spacing: 2px"
+              to="/Products"
+              v-else
               >繼續購物 ！</RouterLink
             >
           </li>

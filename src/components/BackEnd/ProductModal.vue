@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <div
     id="productModal"
     ref="productModal"
@@ -45,7 +45,9 @@
               </div>
               <div class="mb-2">
                 <div class="mb-3">
-                  <label for="customImage" class="form-label">從本地端上傳圖片</label>
+                  <label for="customImage" class="form-label"
+                    >從本地端上傳圖片</label
+                  >
                   <input
                     ref="fileInput"
                     type="file"
@@ -218,7 +220,9 @@
                     :false-value="0"
                     v-model="tempProduct.is_enabled"
                   />
-                  <label class="form-check-label" for="is_enabled">是否啟用</label>
+                  <label class="form-check-label" for="is_enabled"
+                    >是否啟用</label
+                  >
                 </div>
               </div>
             </div>
@@ -226,10 +230,16 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            data-bs-dismiss="modal"
+          >
             取消
           </button>
-          <button type="button" class="btn btn-primary" @click="updateItem">確認</button>
+          <button type="button" class="btn btn-primary" @click="updateItem">
+            確認
+          </button>
         </div>
       </div>
     </div>

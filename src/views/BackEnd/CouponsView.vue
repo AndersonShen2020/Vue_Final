@@ -1,8 +1,12 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <div class="container">
     <div class="text-end mt-4">
-      <button class="btn btn-primary" type="button" @click="openCouponModal(true)">
+      <button
+        class="btn btn-primary"
+        type="button"
+        @click="openCouponModal(true)"
+      >
         建立新的優惠券
       </button>
     </div>
@@ -56,7 +60,11 @@
     :coupon="tempCoupon"
     @reset-coupons="getCoupons"
   ></CouponsModal>
-  <DelCoupons ref="delCoupon" :coupon="tempCoupon" @reset-coupons="getCoupons"></DelCoupons>
+  <DelCoupons
+    ref="delCoupon"
+    :coupon="tempCoupon"
+    @reset-coupons="getCoupons"
+  ></DelCoupons>
 </template>
 
 <script>

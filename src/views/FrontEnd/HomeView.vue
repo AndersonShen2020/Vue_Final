@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <div
     class="leading-img d-flex justify-content-center bg-cover2 position-relative"
   >
