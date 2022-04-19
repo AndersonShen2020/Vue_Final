@@ -20,7 +20,9 @@ export async function login (user) {
     // 取出 token 跟 expired
     const { data } = await axios.post(`${url}/admin/signin`, user)
     // 設定 cookie
-    document.cookie = `hexToken=${data.token}; expires=${new Date(data.expired)};`
+    document.cookie = `hexToken=${data.token}; expires=${new Date(
+      data.expired
+    )};`
     return true
   } catch (err) {
     return false
@@ -30,7 +32,10 @@ export async function login (user) {
 // 確認用戶是否仍然持續登入
 export async function checkAdmin () {
   // 取出 Token
-  const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
+  const token = document.cookie.replace(
+    /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/,
+    '$1'
+  )
   // 設定 axios 在 headers 中夾帶 token
   axios.defaults.headers.common.Authorization = token
   try {
@@ -44,7 +49,9 @@ export async function checkAdmin () {
 // 取得產品列表
 export async function getProducts (page) {
   try {
-    const { data } = await axios.get(`${url}/api/${path}/admin/products?page=${page}`)
+    const { data } = await axios.get(
+      `${url}/api/${path}/admin/products?page=${page}`
+    )
     return data
   } catch (err) {
     router.push('/Login')
@@ -55,19 +62,28 @@ export async function getProducts (page) {
 export async function addProduct (product) {
   try {
     await axios.post(`${url}/api/${path}/admin/product`, product)
-  } catch (err) {}
+  } catch (err) {
+    alert(err.response.data.message)
+  }
 }
 
 // 修改單一產品
 export async function updateProduct (product) {
   try {
-    await axios.put(`${url}/api/${path}/admin/product/${product.data.id}`, product)
-  } catch (err) {}
+    await axios.put(
+      `${url}/api/${path}/admin/product/${product.data.id}`,
+      product
+    )
+  } catch (err) {
+    alert(err.response.data.message)
+  }
 }
 
 // 刪除單一產品
 export async function deleteProduct (id) {
   try {
     await axios.delete(`${url}/api/${path}/admin/product/${id}`)
-  } catch (err) {}
+  } catch (err) {
+    alert(err.response.data.message)
+  }
 }
