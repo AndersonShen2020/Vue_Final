@@ -228,28 +228,28 @@ export default {
 }
 
 .bg-cover1 {
-  background-image: url('../../assets/img/cover01.jpg');
+  background-image: url('~@/assets/img/cover01.jpg');
 }
 
 .bg-cover2 {
-  background-image: url('../../assets/img/cover04.jpg');
+  background-image: url('~@/assets/img/cover04.jpg');
 }
 
 .bg-image1 {
-  background-image: url('../../assets/img/image01.jpg');
+  background-image: url('~@/assets/img/image01.jpg');
   height: 400px;
   background-size: cover;
   background-position: center;
 }
 
 .bg-image2 {
-  background-image: url('../../assets/img/image02.jpg');
+  background-image: url('~@/assets/img/image02.jpg');
   height: 400px;
   background-size: cover;
 }
 
 .bg-image3 {
-  background-image: url('../../assets/img/image03.jpg');
+  background-image: url('~@/assets/img/image03.jpg');
   height: 400px;
   background-size: cover;
 }

@@ -26,7 +26,9 @@
       <div class="col-md-6">
         <div class="m-1">
           <h3 class="coffee-header">中焙（medium roast）</h3>
-          <p>口感偏酸帶苦，香氣適中，保留咖啡豆的原始風味，常用來做美式咖啡或混合咖啡。</p>
+          <p>
+            口感偏酸帶苦，香氣適中，保留咖啡豆的原始風味，常用來做美式咖啡或混合咖啡。
+          </p>
         </div>
         <div class="m-1">
           <h3 class="coffee-header">中深焙（high roast）</h3>
@@ -34,7 +36,9 @@
         </div>
         <div class="m-1">
           <h3 class="coffee-header">城市烘焙（city roast）</h3>
-          <p>比中深焙的酸度低一些，完美展現咖啡的風味，是標準的烘焙程度，最受一般大眾歡迎。</p>
+          <p>
+            比中深焙的酸度低一些，完美展現咖啡的風味，是標準的烘焙程度，最受一般大眾歡迎。
+          </p>
         </div>
       </div>
     </div>
@@ -70,19 +74,19 @@ p {
 }
 
 .bg-roast-image1 {
-  background-image: url("../../../assets/img/image04.jpg");
+  background-image: url('~@/assets/img/image04.jpg');
   height: 200px;
   background-size: cover;
 }
 
 .bg-roast-image2 {
-  background-image: url("../../../assets/img/image02.jpg");
+  background-image: url('~@/assets/img/image02.jpg');
   height: 300px;
   background-size: cover;
 }
 
 .bg-roast-image3 {
-  background-image: url("../../../assets/img/image01.jpg");
+  background-image: url('~@/assets/img/image01.jpg');
   height: 300px;
   background-size: cover;
 }
