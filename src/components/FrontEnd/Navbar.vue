@@ -5,7 +5,7 @@
       <RouterLink
         class="nav-link text-primary order-lg-2 order-md-0"
         to="/CheckOrder"
-        @click="closeNavHam()"
+        @click="closeNavHam"
       >
         <div class="position-relative">
           <span
@@ -18,7 +18,11 @@
       </RouterLink>
 
       <!-- Logo -->
-      <RouterLink class="navbar-brand order-lg-0 order-md-1" to="/" @click="closeNavHam()">
+      <RouterLink
+        class="navbar-brand order-lg-0 order-md-1"
+        to="/"
+        @click="closeNavHam"
+      >
         <span class="logo">CoffeeRoast</span>
       </RouterLink>
 
@@ -42,7 +46,7 @@
             <RouterLink
               class="nav-link text-primary coffee-nav-item"
               to="/about"
-              @click="closeNavHam()"
+              @click="closeNavHam"
             >
               關於本店
             </RouterLink>
@@ -51,7 +55,7 @@
             <RouterLink
               class="nav-link text-primary coffee-nav-item"
               to="/KnowledgeView"
-              @click="closeNavHam()"
+              @click="closeNavHam"
             >
               咖啡知識
             </RouterLink>
@@ -60,7 +64,7 @@
             <RouterLink
               class="nav-link text-primary coffee-nav-item"
               to="/products"
-              @click="closeNavHam()"
+              @click="closeNavHam"
             >
               產品列表
             </RouterLink>
@@ -110,7 +114,7 @@ export default {
 }
 
 .logo {
-  font-family: "Carter One", cursive;
+  font-family: 'Carter One', cursive;
   text-align: center;
   font-size: 1.75rem;
   font-weight: 700;

@@ -3,7 +3,7 @@
   <div class="d-flex justify-content-around mb-3">
     <span class="fs-3 fw-bold">確認訂單內容</span>
     <button
-      @click="openDelCartModal()"
+      @click="openDelCartModal"
       class="btn btn-outline-danger"
       type="button"
       :disabled="cartData.carts?.length === 0"
