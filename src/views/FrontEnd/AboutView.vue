@@ -67,10 +67,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.main {
-  min-height: calc(100vh - (66px + 120px));
-}
-
 p {
   line-height: 1.8;
 }

@@ -188,9 +188,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.main {
-  min-height: calc(100vh - (66px + 120px));
-}
-</style>

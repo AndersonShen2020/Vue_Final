@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .main {
   min-height: calc(100vh);
 }

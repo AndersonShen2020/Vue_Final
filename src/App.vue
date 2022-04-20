@@ -18,6 +18,10 @@ export default {
   color: #2c3e50;
 }
 
+.main {
+  min-height: calc(100vh - (68px + 125px));
+}
+
 .text-coffee {
   padding: 10px 20px;
   line-height: 1.8;
