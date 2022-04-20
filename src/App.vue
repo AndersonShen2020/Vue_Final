@@ -22,6 +22,12 @@ export default {
   min-height: calc(100vh - (68px + 125px));
 }
 
+@media screen and (max-width: 390px) {
+  .main {
+    min-height: calc(100vh - (68px + 109px));
+  }
+}
+
 .text-coffee {
   padding: 10px 20px;
   line-height: 1.8;
