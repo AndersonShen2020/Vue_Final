@@ -9,11 +9,11 @@
       </ol>
     </nav>
 
-    <div class="row mt-3">
-      <div class="col-md-3">
+    <div class="row mt-3 products">
+      <div class="col-md-3 products-sidebar">
         <ProductsSidebar />
       </div>
-      <div class="col-md-9">
+      <div class="col-md-9 products-list" ref="ProductsList">
         <ProductsList />
       </div>
     </div>
@@ -35,12 +35,36 @@ export default {
     return {
       title: '產品列表'
     }
+  },
+  methods: {
+    setHeight () {
+      const main = document.querySelector('.main')
+      main.style.height = 266 + this.$refs.ProductsList.clientHeight + 'px'
+      console.log(main.style.height)
+    }
+  },
+  updated () {
+    this.setHeight()
   }
 }
 </script>
 
-<style lang="scss">
-.main {
-  min-height: calc(100vh - (66px + 120px));
+<style lang="scss" scoped>
+@media screen and (max-width: 390px) {
+  .main {
+    position: relative;
+    height: 3721px;
+  }
+  .products {
+    .products-sidebar {
+      position: absolute;
+      z-index: 2;
+    }
+    .products-list {
+      position: absolute;
+      top: 272px;
+      z-index: 1;
+    }
+  }
 }
 </style>
