@@ -38,9 +38,10 @@ export default {
   },
   methods: {
     setHeight () {
-      const main = document.querySelector('.main')
-      main.style.height = 266 + this.$refs.ProductsList.clientHeight + 'px'
-      console.log(main.style.height)
+      if (screen.width <= 390) {
+        const main = document.querySelector('.main')
+        main.style.height = 266 + this.$refs.ProductsList.clientHeight + 'px'
+      }
     }
   },
   updated () {
