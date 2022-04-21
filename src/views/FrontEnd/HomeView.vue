@@ -13,26 +13,22 @@
       <div class="d3 down-animation"></div>
     </div>
   </div>
-  <!-- 產品 -->
+  <!-- 產品頁連結 -->
   <div class="bg-light bg-opacity-50 py-5">
     <div class="container">
-      <h2 class="text-center mb-5">我們的產品</h2>
-      <Swiper
-        :loop="true"
-        :autoplay="{
-          delay: 3000,
-          disableOnInteraction: false
-        }"
-        :modules="modules"
-        :breakpoints="breakpoints"
-        :navigation="navigation"
-      >
-        <SwiperSlide v-for="product in coffeeProducts" :key="product.id">
-          <CardComponent :item="product" />
-        </SwiperSlide>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </Swiper>
+      <div class="row">
+        <div class="col text-center">
+          <h2 class="text-primary">香濃好滋味，獨享你的味道。</h2>
+          <p class="text-coffee">
+            歡迎來到 Coffee Roast，歡慶開幕輸入折扣優惠碼「<span class="fw-bold"
+              >pay88</span
+            >」全品項打 8 折，心動不如馬上行動！
+          </p>
+          <RouterLink class="btn coffee-btn" to="/products">
+            前往商品頁面
+          </RouterLink>
+        </div>
+      </div>
     </div>
   </div>
   <!-- 知識 -->
@@ -107,6 +103,54 @@
       </div>
     </div>
   </div>
+  <!-- 產品 -->
+  <div class="bg-light bg-opacity-50 py-5 my-5">
+    <div class="container">
+      <h2 class="text-center mb-5">我們的咖啡豆</h2>
+      <Swiper
+        :loop="true"
+        :autoplay="{
+          delay: 3000,
+          disableOnInteraction: false
+        }"
+        :modules="modules"
+        :breakpoints="breakpoints"
+        :navigation="navigation"
+      >
+        <SwiperSlide v-for="product in coffeeProducts" :key="product.id">
+          <CardComponent :item="product" />
+        </SwiperSlide>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </Swiper>
+    </div>
+  </div>
+  <!-- 電子報 -->
+  <div class="py-5 my-5">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <form @submit.prevent="subscription">
+            <label class="form-label" for="email">
+              <h2 class="text-primary">訂閱我們以獲得更多優惠資訊</h2>
+            </label>
+            <div class="input-group">
+              <input
+                id="email"
+                type="email"
+                class="form-control"
+                placeholder="輸入 Email 訂閱我們"
+                v-model.trim="subscribeEmail"
+              />
+              <button class="btn btn-primary" type="submit">
+                <span>訂閱</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -129,6 +173,7 @@ export default {
   mixins: [titleMixin],
   data () {
     return {
+      subscribeEmail: '',
       isLoading: false,
       title: 'Coffee Roast',
       modules: [Autoplay, Navigation],
@@ -176,6 +221,26 @@ export default {
         })
       }
       this.isLoading = false
+    },
+    subscription () {
+      const rule =
+        /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/
+      const result = rule.test(this.subscribeEmail)
+      if (result) {
+        this.$swal({
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false,
+          text: '訂閱成功，感謝您的訂閱。'
+        })
+      } else {
+        this.$swal({
+          icon: 'error',
+          timer: 2000,
+          showConfirmButton: false,
+          text: '信箱輸入錯誤，請重新輸入。'
+        })
+      }
     }
   },
   mounted () {
