@@ -40,10 +40,10 @@
       <div class="col-md-5 d-flex flex-column justify-content-center">
         <h3 class="coffee-header">咖啡品種</h3>
         <div class="text-start text-lg-center text-coffee">
-          <p>咖啡豆的產地主要來自非洲、南美洲及亞洲地區</p>
-          <p>非洲產出的咖啡豆大多帶有水果酸味及香氣</p>
-          <p>南美洲整體平衡感佳，口感明亮清爽</p>
-          <p>亞洲則是酸度低並帶有香料風味</p>
+          <p>咖啡豆的產地主要來自非洲、南美洲及亞洲地區。</p>
+          <p>非洲產出的咖啡豆大多帶有水果酸味及香氣。</p>
+          <p>南美洲整體平衡感佳，口感明亮清爽。</p>
+          <p>亞洲則是酸度低並帶有香料風味。</p>
         </div>
         <div class="d-flex justify-content-end">
           <RouterLink class="btn coffee-btn" to="/KnowledgeView">
@@ -126,7 +126,7 @@
     </div>
   </div>
   <!-- 電子報 -->
-  <div class="py-5 my-5">
+  <div class="py-5 mt-5">
     <div class="container">
       <div class="row">
         <div class="col text-center">

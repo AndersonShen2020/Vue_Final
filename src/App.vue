@@ -19,12 +19,12 @@ export default {
 }
 
 .main {
-  min-height: calc(100vh - (68px + 125px));
+  min-height: calc(100vh - (68px + 173px));
 }
 
 @media screen and (max-width: 390px) {
   .main {
-    min-height: calc(100vh - (68px + 109px));
+    min-height: calc(100vh - (68px + 157px));
   }
 }
 
