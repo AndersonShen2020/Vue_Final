@@ -15,7 +15,7 @@
           <h2 class="text-primary fw-bold">
             <i class="bi bi-shop"></i> 門市資訊
           </h2>
-          <p class="my-3 h5">
+          <p class="my-3 text-primary h5">
             我們非常高興能聽到來自客戶的任何意見，歡迎隨時聯絡我們，詢問、訂購產品或提供寶貴建議！
           </p>
 

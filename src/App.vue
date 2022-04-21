@@ -34,6 +34,8 @@ export default {
   font-size: 18px;
   text-align: center;
   letter-spacing: 1px;
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
 }
 
 html {

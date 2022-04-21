@@ -1,6 +1,6 @@
 <template>
   <Loading :active="isLoading" />
-  <div class="d-flex justify-content-around mb-3">
+  <div class="d-flex justify-content-around mb-3 text-primary">
     <span class="fs-3 fw-bold">確認訂單內容</span>
     <button
       @click="openDelCartModal"
@@ -11,7 +11,7 @@
       清空購物車
     </button>
   </div>
-  <ul class="list-unstyled p-3">
+  <ul class="list-unstyled text-primary p-3">
     <li
       class="py-3 border-bottom d-flex align-items-center"
       v-for="product in cartData.carts"

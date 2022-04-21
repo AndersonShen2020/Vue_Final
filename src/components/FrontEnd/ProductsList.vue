@@ -24,7 +24,7 @@
             "
           ></div>
           <div class="d-flex flex-column justify-content-between flex-fill">
-            <div>{{ product.title }}</div>
+            <div class="text-primary">{{ product.title }}</div>
             <div class="d-flex justify-content-between">
               <div v-if="product.price === product.origin_price" class="h5">
                 {{ product.price }} 元
@@ -65,7 +65,9 @@
               :alt="product.title"
             />
             <div class="card-body">
-              <h5 class="card-title fw-bold">{{ product.title }}</h5>
+              <h5 class="text-primary card-title fw-bold">
+                {{ product.title }}
+              </h5>
             </div>
             <div class="modal-footer border-top-0 justify-content-between">
               <div v-if="product.price === product.origin_price" class="h5">

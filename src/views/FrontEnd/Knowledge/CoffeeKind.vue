@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-primary">
     <h3 class="coffee-header">咖啡品種｜阿拉比卡和羅布斯塔有什麼差別？</h3>
 
     <p>

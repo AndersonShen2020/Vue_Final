@@ -2,7 +2,7 @@
   <div class="container">
     <nav class="py-2 border-bottom">
       <ol class="breadcrumb mb-0">
-        <li class="breadcrumb-item">
+        <li class="breadcrumb-item text-primary">
           <RouterLink to="/"> 首頁 </RouterLink>
         </li>
         <li class="breadcrumb-item active">咖啡知識</li>

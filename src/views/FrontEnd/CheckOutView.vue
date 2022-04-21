@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <div class="row py-3 justify-content-between gx-0">
+    <div class="row py-3 justify-content-between gx-0 text-primary">
       <div class="col-md-6">
         <ul class="list-unstyled p-3">
           <p class="d-flex fs-3 fw-bold">
@@ -179,6 +179,12 @@ export default {
       this.isLoading = true
       try {
         await axios.post(`${url}/api/${path}/pay/${this.id}`)
+        this.$swal({
+          iconHtml: '<i class="bi bi-emoji-smile"></i>',
+          timer: 2000,
+          showConfirmButton: false,
+          title: '感謝您購買我們的產品，期待您的再次光臨！'
+        })
       } catch (err) {
         this.isLoading = false
         this.$swal({
@@ -200,3 +206,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.swal2-icon {
+  border-color: none;
+  font-size: 2rem;
+}
+</style>

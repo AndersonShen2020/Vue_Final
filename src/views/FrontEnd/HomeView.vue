@@ -6,8 +6,8 @@
     <div
       class="text-primary align-self-center bg-dark bg-opacity-25 p-3 leading-title leading-text"
     >
-      <p class="h3">工作與咖啡有各種組合</p>
-      <p class="h3 leading-text-indent">找到專屬於你的最佳搭配</p>
+      <p class="h3 fw-bold">工作與咖啡有各種組合</p>
+      <p class="h3 fw-bold leading-text-indent">找到專屬於你的最佳搭配</p>
     </div>
     <div class="position-absolute bottom-0 start-50 translate-middle-x">
       <div class="d3 down-animation"></div>
@@ -106,7 +106,7 @@
   <!-- 產品 -->
   <div class="bg-light bg-opacity-50 py-5 my-5">
     <div class="container">
-      <h2 class="text-center mb-5">我們的咖啡豆</h2>
+      <h2 class="text-center text-primary mb-5">我們的咖啡豆</h2>
       <Swiper
         :loop="true"
         :autoplay="{
@@ -267,7 +267,7 @@ export default {
 .leading-text {
   padding: 1rem;
   letter-spacing: 0.25rem;
-  text-shadow: white 0.1em 0.1em 0.2em;
+  // text-shadow: white 0.1em 0.1em 0.2em;
   &-indent {
     text-indent: 10vmin;
   }

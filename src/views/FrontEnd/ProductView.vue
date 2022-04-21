@@ -4,10 +4,12 @@
     <nav class="py-2 border-bottom">
       <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item">
-          <RouterLink to="/"> 首頁 </RouterLink>
+          <RouterLink class="text-primary" to="/"> 首頁 </RouterLink>
         </li>
         <li class="breadcrumb-item">
-          <RouterLink to="/products"> 產品列表 </RouterLink>
+          <RouterLink class="text-primary" to="/products">
+            產品列表
+          </RouterLink>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
           {{ product.title }}
@@ -15,7 +17,7 @@
       </ol>
     </nav>
 
-    <div class="row align-items-center">
+    <div class="row align-items-center text-primary">
       <div class="col-sm-6">
         <div class="my-2">
           <img
@@ -61,7 +63,7 @@
       </div>
     </div>
 
-    <div class="row mt-5 pt-4 justify-content-center border-top">
+    <div class="row mt-5 pt-4 justify-content-center border-top text-primary">
       <template v-if="product.classification === '咖啡豆'">
         <div class="col-md-6">
           <div class="mb-5">
@@ -163,7 +165,7 @@
 
     <div class="row my-3">
       <div class="col-md-12">
-        <h4 class="text-center py-3 fw-bold">你可能也會喜歡</h4>
+        <h4 class="text-center py-3 fw-bold text-primary">你可能也會喜歡</h4>
         <Swiper
           :modules="modules"
           :loop="swiperOptions.loop"
@@ -268,10 +270,14 @@ export default {
     },
     async getProductsWithCategory () {
       try {
-        const res = axios.get(`${url}/api/${path}/products/all`)
-        this.products = res.data.products.filter((item) => {
-          return item.classification === this.product.classification
-        })
+        const { data } = await axios.get(`${url}/api/${path}/products/all`)
+        // const vm = this
+        this.products = data.products
+        // .filter((item) => {
+        //   console.log(item.classification)
+        //   console.log(vm.product)
+        //   return item.classification === vm.product.classification
+        // })
       } catch (err) {
         this.isLoading = false
         this.$swal({
@@ -284,15 +290,17 @@ export default {
       this.isLoading = false
     }
   },
-  async mounted () {
+  mounted () {
     this.isLoading = true
-    await this.getProduct()
-    await this.getProductsWithCategory()
+    this.getProduct()
+    this.getProductsWithCategory()
   },
   watch: {
     $route (to) {
-      this.id = to.params.id
-      this.getProduct()
+      if (to.params.id !== undefined) {
+        this.id = to.params.id
+        this.getProduct()
+      }
     }
   }
 }

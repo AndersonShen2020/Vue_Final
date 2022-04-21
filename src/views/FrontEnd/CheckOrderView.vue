@@ -21,14 +21,16 @@
         <ShoppingCart @reset-page="getCart" />
       </div>
       <div class="col-md-5 bg-light bg-opacity-50">
-        <p class="d-flex fs-3 fw-bold m-3">填寫訂購資訊</p>
+        <p class="d-flex fs-3 fw-bold m-3 text-primary">填寫訂購資訊</p>
         <ValidateForm class="p-3" />
       </div>
     </div>
   </div>
 
   <div class="container main py-3" v-if="products.length === 0">
-    <div class="d-flex flex-column justify-content-center align-items-center">
+    <div
+      class="d-flex flex-column justify-content-center align-items-center text-primary"
+    >
       <i class="bi bi-cart-fill" style="font-size: 10rem"></i>
       <p>您的購物車中沒有商品</p>
       <RouterLink to="/products">
