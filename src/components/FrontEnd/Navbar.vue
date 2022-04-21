@@ -92,10 +92,16 @@ export default {
     }
   },
   methods: {
-    getCartNum () {
-      axios.get(`${url}/api/${path}/cart`).then((res) => {
+    async getCartNum () {
+      try {
+        const res = await axios.get(`${url}/api/${path}/cart`)
         this.cartData = res.data.data.carts
-      })
+      } catch (err) {
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
+      }
     }
   },
   mounted () {

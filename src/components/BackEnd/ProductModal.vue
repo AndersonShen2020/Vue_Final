@@ -287,16 +287,21 @@ export default {
       const file = this.$refs.fileInput.files[0]
       const formData = new FormData()
       formData.append('file-to-upload', file)
-      await axios
-        .post(urlPath, formData, {
+      try {
+        const res = await axios.post(urlPath, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         })
-        .then((res) => {
-          this.tempProduct.fileImage = res.data.imageUrl
-          this.$refs.fileInput.value = ''
+        this.tempProduct.fileImage = res.data.imageUrl
+        this.$refs.fileInput.value = ''
+      } catch (err) {
+        this.isLoading = false
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
         })
+      }
       this.isLoading = false
     }
   },

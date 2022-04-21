@@ -68,14 +68,17 @@ export default {
     async deleteItem () {
       this.isLoading = true
       const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempProduct.id}`
-      await axios
-        .delete(urlPath)
-        .then(() => {
-          this.$emit('resetCoupons')
+      try {
+        await axios.delete(urlPath)
+        this.$emit('resetCoupons')
+        this.isLoading = false
+      } catch (err) {
+        this.isLoading = false
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
         })
-        .catch(() => {
-          this.isLoading = false
-        })
+      }
       this.isLoading = false
     }
   },

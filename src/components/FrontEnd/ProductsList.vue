@@ -125,35 +125,47 @@ export default {
   },
 
   methods: {
-    getProducts () {
-      axios.get(`${url}/api/${path}/products/all`).then((res) => {
+    async getProducts () {
+      try {
+        const res = await axios.get(`${url}/api/${path}/products/all`)
         this.products = res.data.products
         this.isLoading = false
-      })
+      } catch (err) {
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
+      }
     },
     openProductModal (id) {
       this.productId = id
       this.productModal.show()
     },
-    addToCart (id, qty = 1) {
+    async addToCart (id, qty = 1) {
       const data = {
         product_id: id,
         qty
       }
       this.isLoadingItem = id
-      axios.post(`${url}/api/${path}/cart`, { data }).then(() => {
+      try {
+        await axios.post(`${url}/api/${path}/cart`, { data })
         this.isLoadingItem = ''
         emitter.emit('getCartNum')
-      })
+      } catch (err) {
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
+      }
     },
     hideModal () {
       this.productModal.hide()
     }
   },
 
-  async mounted () {
+  mounted () {
     this.isLoading = true
-    await this.getProducts()
+    this.getProducts()
     this.productModal = new Modal(document.getElementById('productModal'), {
       keyboard: false
     })

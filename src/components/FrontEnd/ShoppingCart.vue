@@ -109,52 +109,74 @@ export default {
     }
   },
   methods: {
-    removeCartItem (id) {
+    async removeCartItem (id) {
       this.isLoadingItem = id
-      axios.delete(`${url}/api/${path}/cart/${id}`).then(() => {
+      try {
+        await axios.delete(`${url}/api/${path}/cart/${id}`)
         this.getCart()
         this.$emit('reset-page')
         this.isLoadingItem = ''
         emitter.emit('getCartNum')
-      })
+      } catch (err) {
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
+      }
     },
-    getCart () {
-      axios.get(`${url}/api/${path}/cart`).then((res) => {
+    async getCart () {
+      try {
+        const res = await axios.get(`${url}/api/${path}/cart`)
         this.cartData = res.data.data
         this.isLoading = false
-      })
+      } catch (err) {
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
+      }
     },
-    updateCartItem (item) {
+    async updateCartItem (item) {
       const data = {
         product_id: item.id,
         qty: item.qty
       }
-      axios.put(`${url}/api/${path}/cart/${item.id}`, { data }).then(() => {
+      try {
+        await axios.put(`${url}/api/${path}/cart/${item.id}`, { data })
         this.getCart()
         this.isLoadingItem = ''
-      })
+      } catch (err) {
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
+      }
     },
-    clearAllCarts () {
-      axios.delete(`${url}/api/${path}/carts`).then(() => {
+    async clearAllCarts () {
+      try {
+        await axios.delete(`${url}/api/${path}/carts`)
         this.getCart()
         this.$emit('reset-page')
         this.$refs.delCart.hideModal()
         emitter.emit('getCartNum')
-      })
+      } catch (err) {
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
+      }
     },
-    useCoupon () {
+    async useCoupon () {
       const coupon = { code: this.couponCode }
-      axios
-        .post(`${url}/api/${path}/coupon`, { data: coupon })
-        .then((res) => {
-          this.isLoading = true
-          this.getCart()
-          this.isCoupon = true
-          this.couponMsg = res.data.message
-        })
-        .catch((err) => {
-          this.couponMsg = err.response.data.message
-        })
+      try {
+        const res = axios.post(`${url}/api/${path}/coupon`, { data: coupon })
+        this.isLoading = true
+        this.getCart()
+        this.isCoupon = true
+        this.couponMsg = res.data.message
+      } catch (err) {
+        this.couponMsg = err.response.data.message
+      }
     },
     openDelCartModal () {
       const delCart = this.$refs.delCart

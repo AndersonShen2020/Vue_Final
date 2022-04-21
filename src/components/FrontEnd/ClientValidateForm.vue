@@ -140,15 +140,21 @@ export default {
   },
   methods: {
     async onSubmit () {
-      await axios
-        .post(`${url}/api/${path}/order`, { data: this.clientFrom })
-        .then((res) => {
-          this.clientFrom.message = ''
-          this.$refs.form.resetForm()
-          this.$router.push({
-            path: `/CheckOut/${res.data.orderId}`
-          })
+      try {
+        const res = await axios.post(`${url}/api/${path}/order`, {
+          data: this.clientFrom
         })
+        this.clientFrom.message = ''
+        this.$refs.form.resetForm()
+        this.$router.push({
+          path: `/CheckOut/${res.data.orderId}`
+        })
+      } catch (err) {
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
+      }
       this.emit()
     },
     emit () {

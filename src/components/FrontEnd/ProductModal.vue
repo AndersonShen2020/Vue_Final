@@ -19,13 +19,19 @@
           <div class="row">
             <div class="col-sm-4">
               <div class="mb-2">
-                <img class="img-fluid" :src="product.imageUrl" :alt="product.title" />
+                <img
+                  class="img-fluid"
+                  :src="product.imageUrl"
+                  :alt="product.title"
+                />
               </div>
             </div>
             <div class="col-sm-8">
               <div class="row">
                 <div class="mb-3">
-                  <p class="badge bg-primary rounded-pill">分類：{{ product.category }}</p>
+                  <p class="badge bg-primary rounded-pill">
+                    分類：{{ product.category }}
+                  </p>
                 </div>
                 <div class="mb-3">
                   <p>商品內容：{{ product.description }}</p>
@@ -47,10 +53,16 @@
               {{ num }}
             </option>
           </select>
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            data-bs-dismiss="modal"
+          >
             取消
           </button>
-          <button type="button" class="btn btn-primary" @click="addToCart(id)">加入購物車</button>
+          <button type="button" class="btn btn-primary" @click="addToCart(id)">
+            加入購物車
+          </button>
         </div>
       </div>
     </div>
@@ -71,23 +83,35 @@ export default {
     }
   },
   methods: {
-    addToCart (id, qty = 1) {
+    async addToCart (id, qty = 1) {
       const data = {
         product_id: id,
         qty: this.qty | qty
       }
       this.isLoadingItem = id
-      axios.post(`${url}/api/${path}/cart`, { data }).then(() => {
+      try {
+        await axios.post(`${url}/api/${path}/cart`, { data })
         this.isLoadingItem = ''
         this.$emit('closeModal')
-      })
+      } catch (err) {
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
+      }
     }
   },
   watch: {
-    id (newVal) {
-      axios.get(`${url}/api/${path}/product/${newVal}`).then((res) => {
+    async id (newVal) {
+      try {
+        const res = await axios.get(`${url}/api/${path}/product/${newVal}`)
         this.product = res.data.product
-      })
+      } catch (err) {
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
+      }
     }
   }
 }

@@ -104,10 +104,17 @@ export default {
     async getOrders (page = 1) {
       this.isLoading = true
       const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders?page=${page}`
-      await axios.get(urlPath).then((res) => {
+      try {
+        const res = await axios.get(urlPath)
         this.orders = res.data.orders
         this.pagination = res.data.pagination
-      })
+      } catch (err) {
+        this.isLoading = false
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
+      }
       this.$refs.orderModal.hideModal()
       this.$refs.delModel.hideModal()
       this.isLoading = false
@@ -119,8 +126,16 @@ export default {
     async updateOrder (item) {
       this.isLoading = true
       const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
-      await axios.put(urlPath, { data: item })
-      await this.getOrders()
+      try {
+        await axios.put(urlPath, { data: item })
+      } catch (err) {
+        this.isLoading = false
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
+      }
+      this.getOrders()
       this.isLoading = false
     },
     openDelOrder (item) {
@@ -130,9 +145,16 @@ export default {
     async delOrder (item) {
       this.isLoading = true
       const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
-      await axios.delete(urlPath).then(() => {
+      try {
+        await axios.delete(urlPath)
         this.getOrders()
-      })
+      } catch (err) {
+        this.isLoading = false
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
+      }
       this.isLoading = false
     }
   },

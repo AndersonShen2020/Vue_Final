@@ -106,13 +106,17 @@ export default {
     async getCoupons (page = 1) {
       this.isLoading = true
       const urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupons?page=${page}`
-      await axios
-        .get(urlPath)
-        .then((res) => {
-          this.coupons = res.data.coupons
-          this.pagination = res.data.pagination
+      try {
+        const res = await axios.get(urlPath)
+        this.coupons = res.data.coupons
+        this.pagination = res.data.pagination
+      } catch (err) {
+        this.isLoading = false
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
         })
-        .catch()
+      }
       this.$refs.couponModal.hideModal()
       this.$refs.delCoupon.hideModal()
       this.isLoading = false

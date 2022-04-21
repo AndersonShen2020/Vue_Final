@@ -63,9 +63,9 @@ export default {
     }
   },
   methods: {
-    async deleteItem () {
+    deleteItem () {
       this.isLoading = true
-      await deleteProduct(this.tempProduct.id)
+      deleteProduct(this.tempProduct.id)
       // 更新畫面
       this.$emit('update')
       this.isLoading = false

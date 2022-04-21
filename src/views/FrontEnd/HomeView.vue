@@ -162,12 +162,16 @@ export default {
   methods: {
     async getCoffeeProducts () {
       try {
-        const { data: res } = await axios.get(`${url}/api/${path}/products/all`)
-        this.coffeeProducts = res.products.filter(
+        const { data } = await axios.get(`${url}/api/${path}/products/all`)
+        this.coffeeProducts = data.products.filter(
           (item) => item.classification === '咖啡豆'
         )
-      } catch (error) {
+      } catch (err) {
         this.isLoading = false
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
       }
       this.isLoading = false
     }

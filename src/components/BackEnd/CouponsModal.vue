@@ -140,13 +140,22 @@ export default {
       this.isLoading = true
       let authorization = 'post'
       let urlPath = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon`
-      const data = this.tempCoupon
       if (this.isNew === false) {
         authorization = 'put'
         urlPath = urlPath + `/${this.coupon.id}`
       }
-      await axios[authorization](urlPath, { data })
-      this.$emit('resetCoupons')
+      try {
+        const tempCoupon = this.tempCoupon
+        await axios[authorization](urlPath, { tempCoupon })
+        this.$emit('resetCoupons')
+        this.isLoading = false
+      } catch (err) {
+        this.isLoading = false
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
+      }
       this.isLoading = false
     }
   },

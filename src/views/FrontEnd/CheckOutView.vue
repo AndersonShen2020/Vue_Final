@@ -166,6 +166,10 @@ export default {
         this.order = data.order
       } catch (err) {
         this.isLoading = false
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
       }
       this.isLoading = false
     },
@@ -175,6 +179,10 @@ export default {
         await axios.post(`${url}/api/${path}/pay/${this.id}`)
       } catch (err) {
         this.isLoading = false
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
       }
       document.title = '完成訂單'
       this.isPaid = true

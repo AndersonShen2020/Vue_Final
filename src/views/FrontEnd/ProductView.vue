@@ -231,30 +231,50 @@ export default {
     }
   },
   methods: {
-    addToCart (id, qty = 1) {
+    async addToCart (id, qty = 1) {
       this.isLoading = true
       const data = {
         product_id: id,
         qty: this.qty | qty
       }
-      axios.post(`${url}/api/${path}/cart`, { data }).then(() => {
+      try {
+        await axios.post(`${url}/api/${path}/cart`, { data })
         emitter.emit('getCartNum')
         this.isLoading = false
-      })
+      } catch (err) {
+        this.isLoading = false
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
+      }
     },
     async getProduct () {
-      await axios.get(`${url}/api/${path}/product/${this.id}`).then((res) => {
+      try {
+        const res = await axios.get(`${url}/api/${path}/product/${this.id}`)
         this.product = res.data.product
         document.title = res.data.product.title
-      })
+      } catch (err) {
+        this.isLoading = false
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
+      }
     },
     async getProductsWithCategory () {
-      await axios.get(`${url}/api/${path}/products/all`).then((res) => {
-        const vm = this
+      try {
+        const res = axios.get(`${url}/api/${path}/products/all`)
         this.products = res.data.products.filter((item) => {
-          return item.classification === vm.product.classification
+          return item.classification === this.product.classification
         })
-      })
+      } catch (err) {
+        this.isLoading = false
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
+      }
       this.isLoading = false
     }
   },

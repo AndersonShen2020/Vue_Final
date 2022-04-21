@@ -71,7 +71,10 @@ export default {
           this.user = {}
         }
       } catch (err) {
-        alert(err.response.data.message)
+        this.$swal({
+          icon: 'error',
+          text: err.response.data.message
+        })
       }
     }
   },
