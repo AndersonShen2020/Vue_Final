@@ -131,8 +131,11 @@ export default {
         this.products = res.data.products
         this.isLoading = false
       } catch (err) {
+        this.isLoading = false
         this.$swal({
           icon: 'error',
+          timer: 2000,
+          showConfirmButton: false,
           text: err.response.data.message
         })
       }
@@ -154,6 +157,8 @@ export default {
       } catch (err) {
         this.$swal({
           icon: 'error',
+          timer: 2000,
+          showConfirmButton: false,
           text: err.response.data.message
         })
       }

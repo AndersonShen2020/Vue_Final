@@ -1,5 +1,6 @@
 import axios from 'axios'
 import router from '../router'
+import Swal from 'sweetalert2'
 
 const url = process.env.VUE_APP_API
 const path = process.env.VUE_APP_PATH
@@ -42,6 +43,10 @@ export async function checkAdmin () {
     await axios.post(`${url}/api/user/check`)
     router.push('/admin')
   } catch (err) {
+    Swal.fire({
+      icon: 'error',
+      text: err.response.data.message
+    })
     router.push('/Login')
   }
 }
@@ -54,7 +59,12 @@ export async function getProducts (page) {
     )
     return data
   } catch (err) {
-    router.push('/Login')
+    Swal.fire({
+      icon: 'error',
+      timer: 2000,
+      showConfirmButton: false,
+      text: err.response.data.message
+    })
   }
 }
 
@@ -63,7 +73,10 @@ export async function addProduct (product) {
   try {
     await axios.post(`${url}/api/${path}/admin/product`, product)
   } catch (err) {
-    alert(err.response.data.message)
+    Swal.fire({
+      icon: 'error',
+      text: err.response.data.message
+    })
   }
 }
 
@@ -75,7 +88,12 @@ export async function updateProduct (product) {
       product
     )
   } catch (err) {
-    alert(err.response.data.message)
+    Swal.fire({
+      icon: 'error',
+      timer: 2000,
+      showConfirmButton: false,
+      text: err.response.data.message
+    })
   }
 }
 
@@ -84,6 +102,11 @@ export async function deleteProduct (id) {
   try {
     await axios.delete(`${url}/api/${path}/admin/product/${id}`)
   } catch (err) {
-    alert(err.response.data.message)
+    Swal.fire({
+      icon: 'error',
+      timer: 2000,
+      showConfirmButton: false,
+      text: err.response.data.message
+    })
   }
 }

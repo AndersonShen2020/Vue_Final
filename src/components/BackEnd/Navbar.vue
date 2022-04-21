@@ -28,6 +28,8 @@ export default {
       } catch (err) {
         this.$swal({
           icon: 'error',
+          timer: 2000,
+          showConfirmButton: false,
           text: err.response.data.message
         })
       }
