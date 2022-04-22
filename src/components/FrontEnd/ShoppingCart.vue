@@ -177,12 +177,15 @@ export default {
     async useCoupon () {
       const coupon = { code: this.couponCode }
       try {
-        const res = axios.post(`${url}/api/${path}/coupon`, { data: coupon })
+        const { data } = await axios.post(`${url}/api/${path}/coupon`, {
+          data: coupon
+        })
         this.isLoading = true
         this.getCart()
         this.isCoupon = true
-        this.couponMsg = res.data.message
+        this.couponMsg = data.message
       } catch (err) {
+        this.isCoupon = false
         this.couponMsg = err.response.data.message
       }
     },
