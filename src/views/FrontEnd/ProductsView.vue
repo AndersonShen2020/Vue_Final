@@ -33,44 +33,44 @@ export default {
   mixins: [titleMixin],
   data () {
     return {
-      title: '產品列表'
+      title: '產品列表',
+      interval: null
     }
   },
   methods: {
-    setHeight () {
+    adjustLayout () {
+      let height = 20
+      const main = document.querySelector('.main')
+      const productsList = document.querySelector('.products-list')
+
       if (screen.width <= 390) {
-        const main = document.querySelector('.main')
-        main.style.height = 266 + this.$refs.ProductsList.clientHeight + 'px'
+        height = 240
+        main.style.height = productsList.clientHeight + height + 'px'
+      } else {
+        main.style.height = productsList.clientHeight + height + 'px'
       }
     }
   },
   mounted () {
-    if (screen.width <= 390) {
-      const main = document.querySelector('.main')
-      main.style.height = 266 + 163 * 14 + 'px'
-      console.log(main.style.height)
-    }
+    this.interval = setInterval(this.adjustLayout, 1000)
   },
-  updated () {
-    this.setHeight()
+  unmounted () {
+    clearInterval(this.interval)
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @media screen and (max-width: 390px) {
-  .main {
-    position: relative;
-    // height: 3721px;
-  }
   .products {
+    position: relative;
     .products-sidebar {
       position: absolute;
       z-index: 2;
     }
     .products-list {
-      position: absolute;
-      top: 272px;
+      position: relative;
+      top: 222px;
       z-index: 1;
     }
   }
