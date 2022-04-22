@@ -44,6 +44,13 @@ export default {
       }
     }
   },
+  mounted () {
+    if (screen.width <= 390) {
+      const main = document.querySelector('.main')
+      main.style.height = 266 + 163 * 14 + 'px'
+      console.log(main.style.height)
+    }
+  },
   updated () {
     this.setHeight()
   }
@@ -54,7 +61,7 @@ export default {
 @media screen and (max-width: 390px) {
   .main {
     position: relative;
-    height: 3721px;
+    // height: 3721px;
   }
   .products {
     .products-sidebar {
