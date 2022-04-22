@@ -274,6 +274,8 @@ import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
 
 import titleMixin from '@/mixins/titleMixin'
+
+import Swal from 'sweetalert2'
 const url = process.env.VUE_APP_API
 const path = process.env.VUE_APP_PATH
 
@@ -311,9 +313,9 @@ export default {
       this.isLoading = true
       try {
         await axios.post(`${url}/api/${path}/pay/${this.id}`)
-        this.$swal({
+        Swal.fire({
           iconHtml: '<i class="bi bi-emoji-smile"></i>',
-          timer: 2000,
+          // timer: 2000,
           showConfirmButton: false,
           title: '感謝您購買我們的產品，期待您的再次光臨！'
         })
@@ -340,10 +342,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.swal2-icon {
-  border-color: none;
-  font-size: 2rem;
-}
+// .swal2-icon {
+//   border-color: white;
+//   font-size: 2rem;
+// }
+
+// .no-border {
+//   border: 0 !important;
+// }
 
 .border-custom {
   border-bottom: 1px solid #dbdbdb;

@@ -35,7 +35,7 @@ export default {
   text-align: center;
   letter-spacing: 1px;
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
+  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity));
 }
 
 html {
