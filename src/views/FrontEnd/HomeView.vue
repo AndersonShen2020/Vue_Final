@@ -157,8 +157,11 @@
 import { Autoplay, Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue/swiper-vue'
 
-import 'swiper/swiper.scss'
-import 'swiper/modules/navigation/navigation.scss'
+// import 'swiper/swiper.scss'
+// import 'swiper/modules/navigation/navigation.scss'
+
+import '@/assets/stylesheets/swiper/swiper.scss'
+import '@/assets/stylesheets/swiper/navigation.scss'
 
 import axios from 'axios'
 
