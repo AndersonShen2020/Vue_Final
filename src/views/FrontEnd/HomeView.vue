@@ -225,23 +225,39 @@ export default {
       }
       this.isLoading = false
     },
-    subscription () {
+    async subscription () {
       const rule =
         /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/
       const result = rule.test(this.subscribeEmail)
+      const params = { email: this.subscribeEmail }
+      const pathEmail = process.env.VUE_APP_GOOGLE_SHEET_API
+
       if (result) {
-        this.$swal({
-          icon: 'success',
-          timer: 2000,
-          showConfirmButton: false,
-          text: '訂閱成功，感謝您的訂閱。'
-        })
+        try {
+          await axios.post(pathEmail, null, {
+            params
+          })
+          this.$swal({
+            icon: 'success',
+            timer: 2000,
+            showConfirmButton: false,
+            text: '訂閱成功，感謝您的訂閱。'
+          })
+          this.subscribeEmail = ''
+        } catch (err) {
+          this.$swal({
+            icon: 'error',
+            timer: 2000,
+            showConfirmButton: false,
+            text: '訂閱失敗，請重新輸入。'
+          })
+        }
       } else {
         this.$swal({
           icon: 'error',
           timer: 2000,
           showConfirmButton: false,
-          text: '信箱輸入錯誤，請重新輸入。'
+          text: '信箱格式錯誤，請重新輸入。'
         })
       }
     }
