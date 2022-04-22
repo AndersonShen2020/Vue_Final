@@ -61,7 +61,7 @@
           type="text"
           class="form-control"
           v-model="couponCode"
-          placeholder="輸入 pay88 將享有 8 折優惠"
+          placeholder="輸入優惠碼享 8 折優惠"
         />
         <button type="button" class="btn coffee-btn" @click="useCoupon">
           套用優惠卷
