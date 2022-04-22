@@ -9,6 +9,7 @@ Node 的版本使用 v12.19.0
 - Vue 3
 - Vue Cli
 - Vue Router
+- Google APPs Script
 
 ## 使用的 Plugin
 
@@ -18,6 +19,8 @@ Node 的版本使用 v12.19.0
 - VeeValidate
 - mitt
 - vue-loading-overlay
+- Swiper
+- Sweetalert2
 
 ## 開發過程的問題紀錄
 
