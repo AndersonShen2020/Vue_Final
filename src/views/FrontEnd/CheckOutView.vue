@@ -315,7 +315,7 @@ export default {
         await axios.post(`${url}/api/${path}/pay/${this.id}`)
         Swal.fire({
           iconHtml: '<i class="bi bi-emoji-smile"></i>',
-          // timer: 2000,
+          timer: 2000,
           showConfirmButton: false,
           title: '感謝您購買我們的產品，期待您的再次光臨！'
         })
@@ -342,15 +342,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .swal2-icon {
-//   border-color: white;
-//   font-size: 2rem;
-// }
-
-// .no-border {
-//   border: 0 !important;
-// }
-
 .border-custom {
   border-bottom: 1px solid #dbdbdb;
 }

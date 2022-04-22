@@ -6,12 +6,4 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
-.swal2-popup {
-  --bs-text-opacity: 1;
-  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
-}
-
-.swal2-icon {
-  border-color: #fff !important;
-  font-size: 2rem;
-}
+@import "./sweetalert2/sweetalert2";
