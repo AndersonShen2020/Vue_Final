@@ -317,4 +317,8 @@ export default {
 .object-fit_cover {
   object-fit: cover;
 }
+
+.swiper-slide {
+  height: auto;
+}
 </style>
