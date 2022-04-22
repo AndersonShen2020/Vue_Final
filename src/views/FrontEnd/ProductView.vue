@@ -271,13 +271,9 @@ export default {
     async getProductsWithCategory () {
       try {
         const { data } = await axios.get(`${url}/api/${path}/products/all`)
-        // const vm = this
-        this.products = data.products
-        // .filter((item) => {
-        //   console.log(item.classification)
-        //   console.log(vm.product)
-        //   return item.classification === vm.product.classification
-        // })
+        this.products = data.products.filter(
+          (item) => item.classification === this.product.classification
+        )
       } catch (err) {
         this.isLoading = false
         this.$swal({
@@ -290,10 +286,10 @@ export default {
       this.isLoading = false
     }
   },
-  mounted () {
+  async mounted () {
     this.isLoading = true
-    this.getProduct()
-    this.getProductsWithCategory()
+    await this.getProduct()
+    await this.getProductsWithCategory()
   },
   watch: {
     $route (to) {
