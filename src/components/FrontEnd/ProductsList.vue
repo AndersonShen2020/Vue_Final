@@ -187,13 +187,13 @@ export default {
 
   computed: {
     filterProducts () {
-      const vm = this
+      // const vm = this
       if (this.category === '全部' || this.category === undefined) {
         return this.products
       } else {
-        const filter = this.products.filter(function (item) {
-          return item.category === vm.category
-        })
+        const filter = this.products.filter(
+          (item) => item.category === this.category
+        )
         return filter
       }
     }
