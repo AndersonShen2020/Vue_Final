@@ -3,7 +3,7 @@
     <div class="container">
       <!-- cart -->
       <RouterLink
-        class="nav-link text-primary order-lg-2 order-md-0"
+        class="nav-link text-primary order-lg-2 order-md-0 coffee-nav-icon"
         to="/CheckOrder"
         @click="closeNavHam"
       >
@@ -135,5 +135,9 @@ export default {
 
 .coffee-nav-item:hover {
   font-weight: 700;
+}
+
+.coffee-nav-icon:hover {
+  transform: scale(1.1);
 }
 </style>
