@@ -3,11 +3,18 @@
   <div
     class="leading-img d-flex justify-content-center bg-cover2 position-relative"
   >
-    <div
-      class="text-primary align-self-center bg-dark bg-opacity-25 p-3 leading-title leading-text"
-    >
-      <p class="h3 fw-bold">工作與咖啡有各種組合</p>
-      <p class="h3 fw-bold leading-text-indent">找到專屬於你的最佳搭配</p>
+    <div class="align-self-center">
+      <div
+        class="text-primary bg-dark bg-opacity-25 p-3 leading-title leading-text"
+      >
+        <p class="h3 fw-bold">工作與咖啡有各種組合</p>
+        <p class="h3 fw-bold leading-text-indent">找到專屬於你的最佳搭配</p>
+      </div>
+      <div class="leading-btn">
+        <RouterLink class="btn coffee-btn p-3" to="/products">
+          前往商品頁面
+        </RouterLink>
+      </div>
     </div>
     <div class="position-absolute bottom-0 start-50 translate-middle-x">
       <div class="d3 down-animation"></div>
@@ -296,6 +303,10 @@ export default {
   transform: translate(100%, -40%);
 }
 
+.leading-btn {
+  transform: translate(100%, -40%);
+}
+
 @media screen and (max-width: 575.98px) {
   .leading-img {
     background-position: left;
@@ -303,6 +314,9 @@ export default {
   .leading-title {
     writing-mode: vertical-rl;
     transform: translate(-80%, -40%);
+  }
+  .leading-btn {
+    transform: translate(-70%, -250%);
   }
 }
 
