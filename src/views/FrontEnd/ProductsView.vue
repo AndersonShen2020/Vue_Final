@@ -1,15 +1,15 @@
 <template>
-  <div class="container main text-primary">
+  <div class="container main">
     <nav class="py-2 border-bottom">
       <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item">
           <RouterLink to="/"> 首頁 </RouterLink>
         </li>
-        <li class="breadcrumb-item">產品列表</li>
+        <li class="breadcrumb-item active">產品列表</li>
       </ol>
     </nav>
 
-    <div class="row mt-3 products">
+    <div class="row mt-3 products text-primary">
       <div class="col-md-3 products-sidebar">
         <ProductsSidebar />
       </div>
