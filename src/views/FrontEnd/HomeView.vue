@@ -11,7 +11,7 @@
         <p class="h3 fw-bold leading-text-indent">找到專屬於你的最佳搭配</p>
       </div>
       <div class="leading-btn">
-        <RouterLink class="btn coffee-btn p-3" to="/products">
+        <RouterLink class="btn btn-lg coffee-btn p-3" to="/products">
           前往商品頁面
         </RouterLink>
       </div>
@@ -316,7 +316,7 @@ export default {
     transform: translate(-80%, -40%);
   }
   .leading-btn {
-    transform: translate(-70%, -250%);
+    transform: translate(-78%, -250%);
   }
 }
 
