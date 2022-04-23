@@ -10,10 +10,10 @@
     </nav>
 
     <div class="row mt-3 products text-primary">
-      <div class="col-md-3 products-sidebar">
+      <div class="col-md-3">
         <ProductsSidebar />
       </div>
-      <div class="col-md-9 products-list" ref="ProductsList">
+      <div class="col-md-9">
         <ProductsList />
       </div>
     </div>
@@ -33,46 +33,8 @@ export default {
   mixins: [titleMixin],
   data () {
     return {
-      title: '產品列表',
-      interval: null
+      title: '產品列表'
     }
-  },
-  methods: {
-    adjustLayout () {
-      let height = 20
-      const main = document.querySelector('.main')
-      const productsList = document.querySelector('.products-list')
-
-      if (screen.width <= 390) {
-        height = 240
-        main.style.height = productsList.clientHeight + height + 'px'
-      } else {
-        main.style.height = productsList.clientHeight + height + 'px'
-      }
-    }
-  },
-  mounted () {
-    this.interval = setInterval(this.adjustLayout, 1000)
-  },
-  unmounted () {
-    clearInterval(this.interval)
   }
 }
 </script>
-
-<style lang="scss">
-@media screen and (max-width: 390px) {
-  .products {
-    position: relative;
-    .products-sidebar {
-      position: absolute;
-      z-index: 2;
-    }
-    .products-list {
-      position: relative;
-      top: 222px;
-      z-index: 1;
-    }
-  }
-}
-</style>
