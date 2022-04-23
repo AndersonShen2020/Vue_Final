@@ -3,13 +3,13 @@
     <div class="container">
       <div class="d-flex justify-content-center">
         <RouterLink class="me-3 coffee-nav-icon" to="/Login">
-          <i class="bi bi-person-circle" style="font-size: 1.2rem"></i>
+          <i class="bi bi-person-circle coffee-icon-size"></i>
         </RouterLink>
         <a
           class="coffee-nav-icon"
           href="https://github.com/AndersonShen2020/Vue_Final"
         >
-          <i class="bi bi-github" style="font-size: 1.2rem"></i>
+          <i class="bi bi-github coffee-icon-size"></i>
         </a>
       </div>
       <div class="row text-center">
@@ -23,5 +23,9 @@
 <style lang="scss">
 .coffee-nav-icon:hover {
   transform: scale(1.1);
+}
+
+.coffee-icon-size {
+  font-size: 1.2rem;
 }
 </style>

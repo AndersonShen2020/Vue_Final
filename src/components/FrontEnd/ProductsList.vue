@@ -7,21 +7,14 @@
   <template class="table align-middle d-lg-none d-block">
     <ul class="list-unstyled">
       <li
-        class="d-flex flex-column mb-3 product-effect p-2"
+        class="d-flex flex-column mb-3 product-effect p-2 products-list"
         v-for="product in filterProducts"
         :key="product?.id"
-        style="min-width: 130px"
       >
         <RouterLink class="d-flex" :to="`/product/${product?.id}`">
           <div
-            class="me-3"
+            class="me-3 products-list-bg"
             :style="{ backgroundImage: `url(${product.imageUrl})` }"
-            style="
-              min-width: 130px;
-              min-height: 130px;
-              background-size: cover;
-              background-position: center;
-            "
           ></div>
           <div class="d-flex flex-column justify-content-between flex-fill">
             <div class="text-primary">{{ product.title }}</div>
@@ -238,5 +231,16 @@ li:first-child {
 .btn-cart:hover {
   background-color: red;
   color: white;
+}
+
+.products-list {
+  min-width: 130px;
+}
+
+.products-list-bg {
+  min-width: 130px;
+  min-height: 130px;
+  background-size: cover;
+  background-position: center;
 }
 </style>

@@ -31,7 +31,7 @@
     <div
       class="d-flex flex-column justify-content-center align-items-center text-primary"
     >
-      <i class="bi bi-cart-fill" style="font-size: 10rem"></i>
+      <i class="bi bi-cart-fill cart-icon"></i>
       <p>您的購物車中沒有商品</p>
       <RouterLink to="/products">
         <button type="button" class="btn coffee-btn">去購物</button>
@@ -88,3 +88,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoprd>
+.cart-icon {
+  font-size: 10rem;
+}
+</style>

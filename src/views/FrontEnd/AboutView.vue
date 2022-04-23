@@ -43,10 +43,9 @@
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14460.742482510463!2d121.555108!3d25.027774!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6d61b8862127bcb7!2z5Yqg54i-56ys5ZKW5ZWhLemAmuWMluW6lyhLYWxkaSBjb2ZmZWUp!5e0!3m2!1szh-TW!2stw!4v1647934721458!5m2!1szh-TW!2stw"
           width="500"
           height="450"
-          style="border: 0"
           allowfullscreen
           loading="lazy"
-          class="mt-3"
+          class="mt-3 map-style"
         ></iframe>
       </div>
     </div>
@@ -69,6 +68,10 @@ export default {
 <style scoped lang="scss">
 p {
   line-height: 1.8;
+}
+
+.map-style {
+  border: 0;
 }
 
 @media screen and (max-width: 540px) {

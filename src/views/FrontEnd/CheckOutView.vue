@@ -114,16 +114,14 @@
             </li>
             <li class="row mt-3 px-3">
               <div
-                class="btn coffee-btn p-4"
-                style="letter-spacing: 2px"
+                class="btn coffee-btn p-4 coffee-btn-ls"
                 @click="payBill"
                 v-if="!isPaid"
               >
                 信用卡付款
               </div>
               <RouterLink
-                class="btn coffee-btn p-4"
-                style="letter-spacing: 2px"
+                class="btn coffee-btn p-4 coffee-btn-ls"
                 to="/Products"
                 v-else
                 >繼續購物 ！</RouterLink
@@ -241,16 +239,14 @@
                 </li>
                 <li class="row mt-3 px-3">
                   <div
-                    class="btn coffee-btn p-4"
-                    style="letter-spacing: 2px"
+                    class="btn coffee-btn p-4 coffee-btn-ls"
                     @click="payBill"
                     v-if="!isPaid"
                   >
                     信用卡付款
                   </div>
                   <RouterLink
-                    class="btn coffee-btn p-4"
-                    style="letter-spacing: 2px"
+                    class="btn coffee-btn p-4 coffee-btn-ls"
                     to="/Products"
                     v-else
                     >繼續購物 ！</RouterLink
@@ -348,5 +344,9 @@ export default {
 
 .border-custom:last-child {
   border-bottom: 0px solid #dbdbdb;
+}
+
+.coffee-btn-ls {
+  letter-spacing: 2px;
 }
 </style>
