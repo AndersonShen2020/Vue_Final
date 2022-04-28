@@ -73,10 +73,9 @@ export default {
       try {
         const res = await axios.get(`${url}/api/${path}/cart`)
         this.products = res.data.data.carts
-      } catch (err) {
+      } finally {
         this.isLoading = false
       }
-      this.isLoading = false
     },
     resetCart () {
       this.products = []
