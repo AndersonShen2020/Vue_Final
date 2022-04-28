@@ -3,7 +3,11 @@
     <ul class="pagination justify-content-center">
       <!-- 前一頁 -->
       <li class="page-item" :class="{ disabled: pages.current_page === 1 }">
-        <a class="page-link" @click.prevent="emitpages(pages.current_page - 1)">
+        <a
+          href="#"
+          class="page-link"
+          @click.prevent="emitpages(pages.current_page - 1)"
+        >
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
@@ -18,13 +22,20 @@
         <span class="page-link" v-if="page === pages.current_page">
           {{ page }}
         </span>
-        <a class="page-link" v-else @click.prevent="emitpages(page)">
+        <a href="#" class="page-link" v-else @click.prevent="emitpages(page)">
           {{ page }}
         </a>
       </li>
       <!-- 下一頁 -->
-      <li class="page-item" :class="{ disabled: pages.current_page === pages.total_pages }">
-        <a class="page-link" @click.prevent="emitpages(pages.current_page + 1)">
+      <li
+        class="page-item"
+        :class="{ disabled: pages.current_page === pages.total_pages }"
+      >
+        <a
+          href="#"
+          class="page-link"
+          @click.prevent="emitpages(pages.current_page + 1)"
+        >
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>
