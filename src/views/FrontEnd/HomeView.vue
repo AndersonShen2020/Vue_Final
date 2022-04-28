@@ -141,17 +141,21 @@
             <label class="form-label" for="email">
               <h2 class="text-primary">訂閱我們以獲得更多優惠資訊</h2>
             </label>
-            <div class="input-group">
-              <input
-                id="email"
-                type="email"
-                class="form-control"
-                placeholder="輸入 Email 訂閱我們"
-                v-model.trim="subscribeEmail"
-              />
-              <button class="btn btn-primary" type="submit">
-                <span>訂閱</span>
-              </button>
+            <div class="row">
+              <div class="col-6 mx-auto">
+                <div class="input-group">
+                  <input
+                    id="email"
+                    type="email"
+                    class="form-control"
+                    placeholder="輸入 Email 訂閱我們"
+                    v-model.trim="subscribeEmail"
+                  />
+                  <button class="btn btn-primary" type="submit">
+                    <span>訂閱</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </form>
         </div>
