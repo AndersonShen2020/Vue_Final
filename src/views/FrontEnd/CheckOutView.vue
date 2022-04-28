@@ -113,13 +113,13 @@
               <p class="col">{{ order.message }}</p>
             </li>
             <li class="row mt-3 px-3">
-              <div
+              <button
                 class="btn coffee-btn p-4 coffee-btn-ls"
                 @click="payBill"
                 v-if="!isPaid"
               >
                 信用卡付款
-              </div>
+              </button>
               <RouterLink
                 class="btn coffee-btn p-4 coffee-btn-ls"
                 to="/Products"
@@ -238,13 +238,13 @@
                   <p class="col">{{ order.message }}</p>
                 </li>
                 <li class="row mt-3 px-3">
-                  <div
+                  <button
                     class="btn coffee-btn p-4 coffee-btn-ls"
                     @click="payBill"
                     v-if="!isPaid"
                   >
                     信用卡付款
-                  </div>
+                  </button>
                   <RouterLink
                     class="btn coffee-btn p-4 coffee-btn-ls"
                     to="/Products"
