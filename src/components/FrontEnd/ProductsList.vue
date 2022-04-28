@@ -29,7 +29,7 @@
               <div class="d-flex">
                 <button
                   type="button"
-                  class="btn align-self-center btn-cart"
+                  class="btn align-self-center coffee-btn"
                   @click.prevent="addToCart(product.id)"
                   :disabled="isLoadingItem === product.id"
                 >
@@ -72,7 +72,7 @@
               </div>
               <button
                 type="button"
-                class="btn btn-cart align-self-center"
+                class="btn coffee-btn align-self-center"
                 @click.prevent="addToCart(product.id)"
                 :disabled="isLoadingItem === product.id"
               >
@@ -228,8 +228,10 @@ li:first-child {
 }
 
 .btn-cart:hover {
-  background-color: red;
-  color: white;
+  --bs-text-opacity: 1;
+  --bs-bg-opacity: 1;
+  color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity));
+  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity));
 }
 
 .products-list {
