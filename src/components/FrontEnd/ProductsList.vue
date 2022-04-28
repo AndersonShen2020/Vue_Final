@@ -180,7 +180,6 @@ export default {
 
   computed: {
     filterProducts () {
-      // const vm = this
       if (this.category === '全部' || this.category === undefined) {
         return this.products
       } else {

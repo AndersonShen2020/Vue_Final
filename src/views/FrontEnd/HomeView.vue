@@ -164,9 +164,6 @@
 import { Autoplay, Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue/swiper-vue'
 
-// import 'swiper/swiper.scss'
-// import 'swiper/modules/navigation/navigation.scss'
-
 import '@/assets/stylesheets/swiper/swiper.scss'
 import '@/assets/stylesheets/swiper/navigation.scss'
 
@@ -293,7 +290,6 @@ export default {
 .leading-text {
   padding: 1rem;
   letter-spacing: 0.25rem;
-  // text-shadow: white 0.1em 0.1em 0.2em;
   &-indent {
     text-indent: 10vmin;
   }
